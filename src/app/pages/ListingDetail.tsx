@@ -289,7 +289,7 @@ export function ListingDetail() {
               <div className="space-y-3">
                 <button
                   onClick={openScheduleModal}
-                  className="w-full bg-pink-700 hover:bg-pink-600 text-white py-3 rounded-lg font-semibold transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+                  className="w-full bg-pink-500/30 hover:bg-pink-500/60 text-white py-3 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
                 >
                   {t('listing.schedule')}
                 </button>

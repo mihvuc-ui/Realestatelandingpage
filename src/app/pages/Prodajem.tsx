@@ -295,7 +295,7 @@ ${formData.message}`;
                 <button
                   onClick={sendEmail}
                   disabled={!isFormValid}
-                  className="relative group flex items-center justify-center space-x-3 bg-pink-700 hover:bg-pink-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 disabled:hover:scale-100 disabled:hover:shadow-none overflow-hidden"
+                  className="relative group flex items-center justify-center space-x-3 bg-pink-500/30 hover:bg-pink-500/60 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 disabled:hover:scale-100 disabled:hover:shadow-none overflow-hidden border-2 border-pink-700 disabled:border-gray-600"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <Mail className="h-5 w-5 relative z-10" />

@@ -24,7 +24,7 @@ export function FeaturedListings() {
       <div className="text-center">
         <Link
           to="/browse"
-          className="inline-block bg-pink-700 hover:bg-pink-600 text-white px-8 py-3 rounded-lg font-black transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-500"
+          className="inline-block bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-3 rounded-lg font-black transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
         >
           Pogledajte Sve Nekretnine
         </Link>
