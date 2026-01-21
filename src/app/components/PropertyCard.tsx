@@ -20,7 +20,7 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
   return (
     <Link 
       to={`/listing/${apartment.id}`}
-      className="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border-2 border-gray-200 dark:border-cyan-500/40 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/30 dark:hover:shadow-fuchsia-600/30 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400 dark:hover:border-fuchsia-600"
+      className="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border-2 border-gray-200 dark:border-fuchsia-500/40 shadow-lg hover:shadow-2xl hover:shadow-fuchsia-500/30 dark:hover:shadow-fuchsia-600/40 transition-all duration-300 hover:-translate-y-2 hover:border-fuchsia-400 dark:hover:border-fuchsia-500"
     >
       {/* Image */}
       <div className="aspect-[4/3] overflow-hidden relative">
@@ -32,8 +32,8 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
         {/* Type Badge */}
         <span className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm border-2 ${
           apartment.type === 'sale' 
-            ? 'bg-cyan-500 text-white border-cyan-400 shadow-cyan-500/50' 
-            : 'bg-fuchsia-600 text-white border-fuchsia-500 shadow-fuchsia-600/50'
+            ? 'bg-fuchsia-600 text-white border-fuchsia-400 shadow-fuchsia-500/50' 
+            : 'bg-pink-600 text-white border-pink-500 shadow-pink-600/50'
         }`}>
           {apartment.type === 'sale' ? t('card.forSale') : t('card.forRent')}
         </span>
@@ -42,12 +42,12 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
       {/* Content */}
       <div className="p-5 bg-white dark:bg-slate-900">
         {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
           {apartment.name}
         </h3>
         
         {/* Location */}
-        <div className="flex items-center text-gray-600 dark:text-cyan-300 mb-3">
+        <div className="flex items-center text-gray-600 dark:text-fuchsia-300 mb-3">
           <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
           <span className="text-sm truncate">{apartment.location}</span>
         </div>
@@ -69,7 +69,7 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
         </div>
 
         {/* Price */}
-        <div className="text-2xl font-black bg-gradient-to-r from-cyan-500 via-fuchsia-600 to-fuchsia-700 dark:from-cyan-400 dark:via-fuchsia-500 dark:to-fuchsia-600 bg-clip-text text-transparent">
+        <div className="text-2xl font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent">
           €{apartment.price.toLocaleString()}
           {apartment.type === 'rent' && <span className="text-base">/{t('card.month')}</span>}
         </div>

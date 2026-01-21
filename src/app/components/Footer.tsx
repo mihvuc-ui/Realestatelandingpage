@@ -7,7 +7,7 @@ export function Footer() {
   const { t } = useLanguage();
   
   return (
-    <footer className="bg-white dark:bg-slate-900 border-t border-rose-200 dark:border-slate-800 transition-colors">
+    <footer className="bg-white dark:bg-slate-900 border-t border-fuchsia-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -20,15 +20,15 @@ export function Footer() {
             </p>
             <div className="flex flex-col space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-rose-600 dark:text-rose-400" />
+                <Mail className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
                 <span>agencijastepenik@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-rose-600 dark:text-rose-400" />
+                <Phone className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
                 <span>+381 62 671-155</span>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-rose-600 dark:text-rose-400" />
+                <MapPin className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
                 <span>Cara Lazara 5, 11000 Beograd, Srbija</span>
               </div>
             </div>
@@ -39,17 +39,17 @@ export function Footer() {
             <h3 className="text-gray-900 dark:text-white font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
-                <Link to="/" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <Link to="/" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.home')}
                 </Link>
               </li>
               <li>
-                <Link to="/browse" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <Link to="/browse" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.browse')}
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <Link to="/about" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.about')}
                 </Link>
               </li>
@@ -61,22 +61,22 @@ export function Footer() {
             <h3 className="text-gray-900 dark:text-white font-semibold mb-4">{t('footer.services')}</h3>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
-                <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <a href="#" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.buying')}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <a href="#" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.selling')}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <a href="#" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.renting')}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                <a href="#" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors">
                   {t('footer.legal')}
                 </a>
               </li>
@@ -85,7 +85,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-rose-200 dark:border-slate-800 text-center text-sm text-gray-600 dark:text-gray-400">
+        <div className="mt-8 pt-8 border-t border-fuchsia-200 dark:border-slate-800 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>&copy; 2026 Nekretnine Stepenik. {t('footer.rights')}</p>
         </div>
       </div>

@@ -234,7 +234,7 @@ export function BrowseListings() {
         </div>
 
         {/* Search and Filters Bar */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 mb-8 border border-rose-200 dark:border-slate-800 shadow-md transition-colors">
+        <div className="bg-white dark:bg-slate-900 rounded-xl p-6 mb-8 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
@@ -244,14 +244,14 @@ export function BrowseListings() {
                 placeholder="Pretražite po nazivu ili lokaciji..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
+                className="w-full bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500"
               />
             </div>
 
             {/* Filter Toggle (Mobile) */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="lg:hidden bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white flex items-center justify-center space-x-2"
+              className="lg:hidden bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white flex items-center justify-center space-x-2"
             >
               <SlidersHorizontal className="h-5 w-5" />
               <span>Filteri</span>
@@ -262,7 +262,7 @@ export function BrowseListings() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="appearance-none bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-rose-500 cursor-pointer"
+                className="appearance-none bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-fuchsia-500 cursor-pointer"
               >
                 <option value="newest">Najnovije</option>
                 <option value="price-asc">Cena: Od najniže</option>
@@ -274,8 +274,8 @@ export function BrowseListings() {
           </div>
 
           {/* Filters Panel - Nova struktura */}
-          <div className={`mt-6 pt-6 border-t border-gray-200 dark:border-cyan-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
-            <div className="bg-gradient-to-br from-gray-50 via-white to-cyan-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-cyan-950/30 rounded-2xl p-6 shadow-2xl border-2 border-cyan-400/40 dark:border-cyan-500/40 transition-colors">
+          <div className={`mt-6 pt-6 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
+            <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-6 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 
                 {/* Lokacija */}
@@ -284,7 +284,7 @@ export function BrowseListings() {
                   <select
                     value={locationFilter}
                     onChange={(e) => setLocationFilter(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-rose-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-rose-50 dark:hover:bg-slate-700"
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
                   >
                     <option value="all">Sve lokacije</option>
                     {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
@@ -299,7 +299,7 @@ export function BrowseListings() {
                   <select
                     value={typeFilter}
                     onChange={(e) => setTypeFilter(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-rose-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-rose-50 dark:hover:bg-slate-700"
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
                   >
                     <option value="all">{t('filters.allTypes')}</option>
                     <option value="sale">{t('filters.sale')}</option>
@@ -335,35 +335,35 @@ export function BrowseListings() {
               </div>
 
               {/* Način plaćanja - Cela nova sekcija */}
-              <div className="mt-6 pt-6 border-t border-rose-200 dark:border-slate-700">
+              <div className="mt-6 pt-6 border-t border-fuchsia-200 dark:border-slate-700">
                 <label className="block text-sm font-medium text-gray-900 dark:text-white mb-4">Način plaćanja</label>
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={() => setPaymentMethod('all')}
-                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
                       paymentMethod === 'all'
-                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
                     Sve
                   </button>
                   <button
                     onClick={() => setPaymentMethod('cash')}
-                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
                       paymentMethod === 'cash'
-                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
                     💵 Keš
                   </button>
                   <button
                     onClick={() => setPaymentMethod('credit')}
-                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
                       paymentMethod === 'credit'
-                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
                     💳 Kredit

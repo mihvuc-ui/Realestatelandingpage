@@ -35,7 +35,7 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
         {/* Custom Icon - Istočne kapije isometric view */}
         <div className={`${currentSize.icon} relative flex-shrink-0`}>
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-fuchsia-600 to-fuchsia-700 rounded-lg rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg shadow-cyan-500/30 dark:shadow-fuchsia-600/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500 via-pink-600 to-fuchsia-700 rounded-lg rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg shadow-fuchsia-500/30 dark:shadow-fuchsia-600/30"></div>
           
           {/* Icon SVG - Building with stepped profile (side view) */}
           <svg 
@@ -82,19 +82,19 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
             />
             
             {/* Windows/Details */}
-            <rect x="8" y="14.5" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
-            <rect x="12" y="10.5" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
-            <rect x="16" y="6.5" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
+            <rect x="8" y="14.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            <rect x="12" y="10.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            <rect x="16" y="6.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
             
-            <rect x="8" y="18" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
-            <rect x="12" y="14" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
-            <rect x="16" y="10" width="1.5" height="1.5" fill="rgba(6, 182, 212, 0.5)"/>
+            <rect x="8" y="18" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            <rect x="12" y="14" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            <rect x="16" y="10" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
           </svg>
         </div>
 
         {/* Text */}
         <div className="flex flex-col">
-          <span className={`${currentSize.text} font-black bg-gradient-to-r from-cyan-600 via-fuchsia-600 to-fuchsia-700 dark:from-cyan-400 dark:via-fuchsia-500 dark:to-fuchsia-600 bg-clip-text text-transparent group-hover:from-cyan-700 group-hover:via-fuchsia-700 group-hover:to-fuchsia-800 dark:group-hover:from-cyan-300 dark:group-hover:via-fuchsia-400 dark:group-hover:to-fuchsia-500 transition-all duration-300`}>
+          <span className={`${currentSize.text} font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-600 group-hover:via-pink-700 group-hover:to-fuchsia-800 dark:group-hover:from-fuchsia-300 dark:group-hover:via-pink-400 dark:group-hover:to-fuchsia-500 transition-all duration-300`}>
             Nekretnine Stepenik
           </span>
           {showTagline && (

@@ -26,8 +26,8 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 backdrop-blur-md bg-white/95 dark:bg-slate-950/95 border-b-2 border-cyan-400 dark:border-fuchsia-600 transition-all duration-300 ${
-      scrolled ? 'shadow-lg shadow-cyan-500/20 dark:shadow-fuchsia-600/20' : ''
+    <header className={`sticky top-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-fuchsia-500 dark:border-fuchsia-600 transition-all duration-300 ${
+      scrolled ? 'shadow-lg shadow-fuchsia-500/20 dark:shadow-fuchsia-600/30' : ''
     }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -39,7 +39,7 @@ export function Header() {
             <Link
               to="/"
               className={`text-sm font-semibold transition-colors ${
-                isActive('/') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                isActive('/') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
               }`}
             >
               {t('nav.home')}
@@ -47,7 +47,7 @@ export function Header() {
             <Link
               to="/browse"
               className={`text-sm font-semibold transition-colors ${
-                isActive('/browse') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                isActive('/browse') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
               }`}
             >
               {t('nav.browse')}
@@ -55,7 +55,7 @@ export function Header() {
             <Link
               to="/about"
               className={`text-sm font-semibold transition-colors ${
-                isActive('/about') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                isActive('/about') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
               }`}
             >
               {t('nav.about')}
@@ -67,7 +67,7 @@ export function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-cyan-100 dark:bg-slate-800 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-200 dark:hover:bg-slate-700 transition-colors shadow-sm border-2 border-cyan-400/30 dark:border-cyan-500/30"
+              className="p-2 rounded-lg bg-fuchsia-100 dark:bg-slate-800 text-fuchsia-600 dark:text-fuchsia-400 hover:bg-fuchsia-200 dark:hover:bg-slate-700 transition-colors shadow-sm border-2 border-fuchsia-400/30 dark:border-fuchsia-500/30"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -92,13 +92,13 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-cyan-400/30 dark:border-fuchsia-600/30">
+          <div className="md:hidden py-4 border-t border-fuchsia-400/30 dark:border-fuchsia-600/30">
             <nav className="flex flex-col space-y-3">
               <Link
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                  isActive('/') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
                 }`}
               >
                 {t('nav.home')}
@@ -107,7 +107,7 @@ export function Header() {
                 to="/browse"
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/browse') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                  isActive('/browse') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
                 }`}
               >
                 {t('nav.browse')}
@@ -116,7 +116,7 @@ export function Header() {
                 to="/about"
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/about') ? 'text-cyan-600 dark:text-cyan-400' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400'
+                  isActive('/about') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
                 }`}
               >
                 {t('nav.about')}
@@ -130,7 +130,7 @@ export function Header() {
               {/* Theme Toggle Mobile */}
               <button
                 onClick={toggleTheme}
-                className="flex items-center space-x-2 text-sm py-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors font-semibold"
+                className="flex items-center space-x-2 text-sm py-2 text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-300 transition-colors font-semibold"
               >
                 {theme === 'dark' ? (
                   <>

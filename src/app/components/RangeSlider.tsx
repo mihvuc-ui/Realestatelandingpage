@@ -26,14 +26,14 @@ export function RangeSlider({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-900 dark:text-cyan-300 mb-3 whitespace-nowrap">
+      <label className="block text-sm font-medium text-gray-900 dark:text-fuchsia-300 mb-3 whitespace-nowrap">
         {label}: {formatValue(value)}
       </label>
       
       <div className="relative h-6 flex items-center">
-        <div className="absolute w-full h-2 bg-gray-300 dark:bg-slate-700 rounded-full border-2 border-gray-400 dark:border-cyan-900/50 shadow-inner"></div>
+        <div className="absolute w-full h-2 bg-gray-300 dark:bg-slate-700 rounded-full border-2 border-gray-400 dark:border-fuchsia-900/50 shadow-inner"></div>
         <div 
-          className="absolute h-2 rounded-full bg-gradient-to-r from-cyan-500 via-fuchsia-600 to-fuchsia-700 shadow-lg shadow-cyan-500/50 dark:shadow-fuchsia-600/50"
+          className="absolute h-2 rounded-full bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 shadow-lg shadow-fuchsia-500/50 dark:shadow-fuchsia-600/50"
           style={{ width: `${percent}%` }}
         ></div>
         <input
