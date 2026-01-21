@@ -216,7 +216,7 @@ export function Header() {
               
               {/* Language Selector Mobile */}
               <div className="py-2">
-                <LanguageSelector />
+                <LanguageSelector isMobile={true} />
               </div>
               
               {/* Theme Toggle Mobile */}

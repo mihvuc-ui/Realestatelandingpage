@@ -20,7 +20,11 @@ const languages: LanguageOption[] = [
   { code: 'tr', name: 'Türkçe', FlagComponent: TurkeyFlag },
 ];
 
-export function LanguageSelector() {
+interface LanguageSelectorProps {
+  isMobile?: boolean;
+}
+
+export function LanguageSelector({ isMobile = false }: LanguageSelectorProps) {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -55,7 +59,7 @@ export function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-16 bg-white dark:bg-slate-900 rounded-lg shadow-xl border-2 border-pink-700 py-2 z-50">
+        <div className={`absolute ${isMobile ? 'left-0' : 'right-0'} mt-2 w-16 bg-white dark:bg-slate-900 rounded-lg shadow-xl border-2 border-pink-700 py-2 z-50`}>
           {languages.map((lang) => (
             <button
               key={lang.code}
