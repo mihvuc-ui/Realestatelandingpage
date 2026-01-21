@@ -23,12 +23,17 @@ export function Home() {
       
       <div>
         {/* Hero Section */}
-        <section className="h-screen flex flex-col">
+        <section className="h-screen flex flex-col relative">
           <Hero />
+          {/* Gradient blend to next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/30 to-black/60 z-[5] pointer-events-none"></div>
         </section>
 
         {/* Featured Listings */}
         <section className="h-screen py-6 relative overflow-hidden flex items-center">
+          {/* Gradient blend from previous section */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
+          
           {/* Belgrade Panorama Background - LOWEST LAYER */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback
@@ -50,6 +55,9 @@ export function Home() {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           </div>
           
+          {/* Gradient blend to next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-fuchsia-950/20 to-fuchsia-950/40 z-[5] pointer-events-none"></div>
+          
           {/* Content - TOP LAYER */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="text-center mb-8 -mt-12">
@@ -64,6 +72,9 @@ export function Home() {
 
         {/* CTA Section with Belgrade Panorama */}
         <section className="h-screen py-20 relative overflow-hidden flex items-center">
+          {/* Gradient blend from previous section */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
+          
           {/* Belgrade Panorama Background - LOWEST LAYER */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback
