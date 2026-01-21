@@ -233,8 +233,8 @@ export function BrowseListings() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Naša Ponuda</h1>
-          <p className="text-gray-600 dark:text-gray-400">Istražite našu pažljivo odabranu kolekciju nekretnina</p>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{t('browse.title')}</h1>
+          <p className="text-gray-600 dark:text-gray-400">{t('browse.subtitle')}</p>
         </div>
 
         {/* Search and Filters Bar */}
@@ -245,7 +245,7 @@ export function BrowseListings() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Pretražite po nazivu ili lokaciji..."
+                placeholder={t('browse.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500"
@@ -258,7 +258,7 @@ export function BrowseListings() {
               className="lg:hidden bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white flex items-center justify-center space-x-2"
             >
               <SlidersHorizontal className="h-5 w-5" />
-              <span>Filteri</span>
+              <span>{t('browse.filters')}</span>
             </button>
 
             {/* Sort */}
@@ -268,10 +268,10 @@ export function BrowseListings() {
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="appearance-none bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-fuchsia-500 cursor-pointer"
               >
-                <option value="newest">Najnovije</option>
-                <option value="price-asc">Cena: Od najniže</option>
-                <option value="price-desc">Cena: Od najviše</option>
-                <option value="sqm-desc">Površina: Najveća prvo</option>
+                <option value="newest">{t('browse.newest')}</option>
+                <option value="price-asc">{t('browse.priceAsc')}</option>
+                <option value="price-desc">{t('browse.priceDesc')}</option>
+                <option value="sqm-desc">{t('browse.sqmDesc')}</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
             </div>
@@ -284,13 +284,13 @@ export function BrowseListings() {
                 
                 {/* Lokacija */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Lokacija</label>
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('filters.location')}</label>
                   <select
                     value={locationFilter}
                     onChange={(e) => setLocationFilter(e.target.value)}
                     className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
                   >
-                    <option value="all">Sve lokacije</option>
+                    <option value="all">{t('filters.allLocations')}</option>
                     {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
                       <option key={loc} value={loc}>{loc}</option>
                     ))}
@@ -299,7 +299,7 @@ export function BrowseListings() {
 
                 {/* Tip */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Tip</label>
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('filters.type')}</label>
                   <select
                     value={typeFilter}
                     onChange={(e) => setTypeFilter(e.target.value)}
@@ -319,7 +319,7 @@ export function BrowseListings() {
                     step={10000}
                     value={priceTo}
                     onChange={setPriceTo}
-                    label="Maksimalna cena"
+                    label={t('browse.maxPrice')}
                     formatValue={(v) => `€${v.toLocaleString()}`}
                   />
                 </div>
@@ -332,7 +332,7 @@ export function BrowseListings() {
                     step={5}
                     value={sqmTo}
                     onChange={setSqmTo}
-                    label="Maksimalna površina"
+                    label={t('browse.maxArea')}
                     formatValue={(v) => `${v} m²`}
                   />
                 </div>
@@ -340,37 +340,37 @@ export function BrowseListings() {
 
               {/* Način plaćanja - Cela nova sekcija */}
               <div className="mt-6 pt-6 border-t border-fuchsia-200 dark:border-slate-700">
-                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-4">Način plaćanja</label>
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-4">{t('browse.paymentMethod')}</label>
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={() => setPaymentMethod('all')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
                       paymentMethod === 'all'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
                         : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
-                    Sve
+                    {t('browse.allPaymentMethods')}
                   </button>
                   <button
                     onClick={() => setPaymentMethod('cash')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
                       paymentMethod === 'cash'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
                         : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
-                    💵 Keš
+                    💵 {t('browse.cash')}
                   </button>
                   <button
                     onClick={() => setPaymentMethod('credit')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all ${
+                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
                       paymentMethod === 'credit'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/50'
+                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
                         : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
                     }`}
                   >
-                    💳 Kredit
+                    💳 {t('browse.credit')}
                   </button>
                 </div>
               </div>
@@ -385,7 +385,7 @@ export function BrowseListings() {
                 className="inline-flex items-center space-x-2 text-sm bg-gray-100 dark:bg-slate-800 hover:bg-red-600 text-gray-900 dark:text-gray-300 hover:text-white px-4 py-2 rounded-lg transition-colors border border-red-500/30 hover:border-red-500"
               >
                 <X className="h-4 w-4 text-red-400" />
-                <span>Obriši sve filtere</span>
+                <span>{t('browse.resetFilters')}</span>
               </button>
             </div>
           )}
@@ -393,7 +393,7 @@ export function BrowseListings() {
 
         {/* Results */}
         <div className="mb-6 text-gray-400">
-          Prikazuje se {filteredApartments.length} {filteredApartments.length === 1 ? 'nekretnina' : 'nekretnina'}
+          {t('browse.showing')} {filteredApartments.length} {t('browse.properties')}
         </div>
 
         {/* Listings Grid */}
@@ -405,12 +405,12 @@ export function BrowseListings() {
           </div>
         ) : (
           <div className="text-center py-20">
-            <p className="text-gray-400 text-lg">Nema nekretnina koje odgovaraju vašim kriterijumima.</p>
+            <p className="text-gray-400 text-lg">{t('browse.noPropertiesFound')}</p>
             <button
               onClick={resetFilters}
               className="mt-4 text-blue-400 hover:text-blue-300"
             >
-              Obriši sve filtere
+              {t('browse.resetFilters')}
             </button>
           </div>
         )}

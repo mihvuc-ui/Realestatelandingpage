@@ -9,19 +9,19 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
   const sizes = {
     sm: {
       icon: 'w-8 h-8',
-      text: 'text-lg',
+      text: 'text-xl',
       tagline: 'text-xs',
       container: 'space-x-2'
     },
     md: {
       icon: 'w-10 h-10',
-      text: 'text-xl',
+      text: 'text-2xl',
       tagline: 'text-sm',
       container: 'space-x-3'
     },
     lg: {
       icon: 'w-12 h-12',
-      text: 'text-2xl',
+      text: 'text-3xl',
       tagline: 'text-base',
       container: 'space-x-3'
     }
@@ -34,14 +34,14 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
       <div className={`flex items-center ${currentSize.container}`}>
         {/* Custom Icon - Istočne kapije isometric view */}
         <div className={`${currentSize.icon} relative flex-shrink-0`}>
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500 via-pink-600 to-fuchsia-700 rounded-lg rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg shadow-fuchsia-500/30 dark:shadow-fuchsia-600/30"></div>
+          {/* Solid Pink Background */}
+          <div className="absolute inset-0 bg-pink-500 rounded-lg rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg shadow-pink-500/30 dark:shadow-pink-600/30"></div>
           
-          {/* Icon SVG - Building with stepped profile (side view) */}
+          {/* Default Icon SVG - Building with stepped profile (side view) */}
           <svg 
             viewBox="0 0 24 24" 
             fill="none" 
-            className="relative z-10 w-full h-full p-1.5"
+            className="relative z-10 w-full h-full p-1.5 transition-opacity duration-500 ease-in-out group-hover:opacity-0"
             xmlns="http://www.w3.org/2000/svg"
           >
             {/* Single stepped building - side profile view */}
@@ -90,15 +90,85 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
             <rect x="12" y="14" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
             <rect x="16" y="10" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
           </svg>
+
+          {/* Hover Icon SVG - 3D Isometric Stairs (3 steps) */}
+          <svg 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            className="absolute inset-0 z-10 w-full h-full p-1.5 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* 3D Isometric Stairs - 3 Steps in Perspective */}
+            
+            {/* First Step (Bottom) */}
+            {/* Top face */}
+            <path 
+              d="M4 16 L9 13 L14 16 L9 19 Z" 
+              fill="white"
+              opacity="0.95"
+            />
+            {/* Right face */}
+            <path 
+              d="M14 16 L14 18 L9 21 L9 19 Z" 
+              fill="white"
+              opacity="0.7"
+            />
+            {/* Left face */}
+            <path 
+              d="M4 16 L4 18 L9 21 L9 19 Z" 
+              fill="white"
+              opacity="0.85"
+            />
+            
+            {/* Second Step (Middle) */}
+            {/* Top face */}
+            <path 
+              d="M6 12 L11 9 L16 12 L11 15 Z" 
+              fill="white"
+              opacity="0.95"
+            />
+            {/* Right face */}
+            <path 
+              d="M16 12 L16 14 L11 17 L11 15 Z" 
+              fill="white"
+              opacity="0.7"
+            />
+            {/* Left face */}
+            <path 
+              d="M6 12 L6 14 L11 17 L11 15 Z" 
+              fill="white"
+              opacity="0.85"
+            />
+            
+            {/* Third Step (Top) */}
+            {/* Top face */}
+            <path 
+              d="M8 8 L13 5 L18 8 L13 11 Z" 
+              fill="white"
+              opacity="0.95"
+            />
+            {/* Right face */}
+            <path 
+              d="M18 8 L18 10 L13 13 L13 11 Z" 
+              fill="white"
+              opacity="0.7"
+            />
+            {/* Left face */}
+            <path 
+              d="M8 8 L8 10 L13 13 L13 11 Z" 
+              fill="white"
+              opacity="0.85"
+            />
+          </svg>
         </div>
 
         {/* Text */}
         <div className="flex flex-col">
-          <span className={`${currentSize.text} font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-600 group-hover:via-pink-700 group-hover:to-fuchsia-800 dark:group-hover:from-fuchsia-300 dark:group-hover:via-pink-400 dark:group-hover:to-fuchsia-500 transition-all duration-300`}>
+          <span className={`${currentSize.text} font-light text-pink-500 dark:text-pink-500 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Nekretnine Stepenik
           </span>
           {showTagline && (
-            <span className={`${currentSize.tagline} text-gray-600 dark:text-gray-400 -mt-1`}>
+            <span className={`${currentSize.tagline} text-gray-600 dark:text-gray-400 -mt-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Vaš pouzdani partner
             </span>
           )}

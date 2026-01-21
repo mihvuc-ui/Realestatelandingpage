@@ -47,9 +47,8 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]" style={{ textShadow: '0 0 40px rgba(236, 72, 153, 0.6), 0 2px 20px rgba(0,0,0,0.9)' }}>
-            {t('hero.headline')}
-            <span className="bg-gradient-to-r from-fuchsia-400 via-pink-500 to-fuchsia-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(236,72,153,0.8)]"> {t('hero.headlineAccent')}</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6 leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]" style={{ textShadow: '0 0 40px rgba(236, 72, 153, 0.6), 0 2px 20px rgba(0,0,0,0.9)' }}>
+            {t('hero.headline')} {t('hero.headlineAccent')}
           </h1>
 
           {/* Subheadline */}
