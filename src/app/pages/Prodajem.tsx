@@ -61,21 +61,23 @@ ${formData.message}`;
       // Copy message to clipboard
       await navigator.clipboard.writeText(message);
       
-      // Show success notification
-      toast.success('Poruka je kopirana!', {
-        description: 'Zalepi poruku u Viber chat kada se otvori',
-        duration: 5000,
+      // Show success notification with manual Viber open option
+      toast.success('✅ Poruka je kopirana u clipboard!', {
+        description: 'Otvori Viber i zalepi poruku pritiskom na Viber dugme ili dugme ispod',
+        duration: 8000,
+        action: {
+          label: 'Otvori Viber',
+          onClick: () => {
+            // Try to open Viber when user clicks the button
+            window.open(`viber://chat?number=${phone.replace(/\+/g, '')}`, '_blank');
+          },
+        },
       });
-      
-      // Wait a moment for user to see the notification
-      setTimeout(() => {
-        // Open Viber app
-        window.location.href = `viber://contact?number=${encodeURIComponent(phone)}`;
-      }, 500);
     } catch (err) {
       console.error('Clipboard error:', err);
-      toast.error('Greška pri kopiranju', {
-        description: 'Molimo pokušajte ponovo',
+      toast.error('❌ Greška pri kopiranju', {
+        description: 'Molimo pokušajte ponovo ili kopirajte poruku ručno',
+        duration: 5000,
       });
     }
   };
