@@ -65,7 +65,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         {/* Call Button */}
         <a
           href="tel:+38162671155"
-          className="block w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white text-center py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+          className="block w-full bg-pink-700 hover:bg-pink-600 text-white text-center py-3 rounded-lg font-semibold transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
         >
           Pozovi Odmah
         </a>

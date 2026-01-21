@@ -76,14 +76,14 @@ export function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
                 <Link
                   to="/kupujem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-700 hover:bg-pink-600 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-500"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   <span>{t('cta.buying')}</span>
                 </Link>
                 <Link
                   to="/prodajem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-400 hover:scale-105"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-fuchsia-700 hover:bg-fuchsia-600 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-500 hover:scale-105"
                 >
                   <TrendingUp className="h-5 w-5" />
                   <span>{t('cta.selling')}</span>
@@ -92,7 +92,7 @@ export function Home() {
               {/* Kontaktirajte nas - Drugi red, centrirano */}
               <button
                 onClick={() => setIsContactModalOpen(true)}
-                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400 whitespace-nowrap"
+                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-700 hover:bg-pink-600 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-500 whitespace-nowrap"
               >
                 <Phone className="h-5 w-5" />
                 <span>{t('cta.contact')}</span>

@@ -167,7 +167,7 @@ export function About() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="tel:+38162671155"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center space-x-2 bg-pink-700 hover:bg-pink-600 text-white px-6 py-3 rounded-lg transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
             >
               <Phone className="h-4 w-4" />
               <span>+381 62 671-155</span>

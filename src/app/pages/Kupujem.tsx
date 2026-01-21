@@ -252,7 +252,7 @@ ${formData.message}`;
                 <button
                   onClick={sendEmail}
                   disabled={!isFormValid}
-                  className="flex items-center justify-center space-x-3 bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-2xl hover:scale-105 disabled:hover:scale-100"
+                  className="flex items-center justify-center space-x-3 bg-pink-700 hover:bg-pink-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 disabled:hover:scale-100 disabled:hover:shadow-none"
                 >
                   <Mail className="h-5 w-5" />
                   <span>{t('buying.emailButton')}</span>
