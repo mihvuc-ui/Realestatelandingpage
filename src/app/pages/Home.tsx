@@ -28,11 +28,33 @@ export function Home() {
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-4 bg-white dark:bg-black flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="text-center mb-4 mt-4">
-              <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-1">{t('featured.title')}</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm">
+        <section className="h-screen py-6 relative overflow-hidden flex items-center">
+          {/* Belgrade Panorama Background - LOWEST LAYER */}
+          <div className="absolute inset-0 z-0">
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1759662280507-424f675fbf82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMHBhbm9yYW1hJTIwY2l0eXNjYXBlfGVufDF8fHx8MTc2OTAxMTkyNHww&ixlib=rb-4.1.0&q=80&w=1920"
+              alt="Belgrade Panorama"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Dark Overlay - MIDDLE LAYER */}
+          <div className="absolute inset-0 z-[1] bg-gradient-to-br from-black/70 via-slate-950/60 to-black/70"></div>
+          
+          {/* Neon pink accent gradient overlay */}
+          <div className="absolute inset-0 z-[2] bg-gradient-to-tr from-fuchsia-600/20 via-transparent to-pink-600/20"></div>
+          
+          {/* Animated glow effects */}
+          <div className="absolute inset-0 z-[3] opacity-20">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/40 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          
+          {/* Content - TOP LAYER */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="text-center mb-8 -mt-12">
+              <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{t('featured.title')}</h2>
+              <p className="text-gray-100 dark:text-gray-100 max-w-2xl mx-auto text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 {t('featured.subtitle')}
               </p>
             </div>
