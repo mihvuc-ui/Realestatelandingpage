@@ -18,18 +18,21 @@ function AppContent() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors flex flex-col">
       <OrganizationSchema />
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<BrowseListings />} />
-        <Route path="/listing/:id" element={<ListingDetail />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/kupujem" element={<Kupujem />} />
-        <Route path="/prodajem" element={<Prodajem />} />
-        <Route path="/image-reorder" element={<ImageReorder />} />
-      </Routes>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/browse" element={<BrowseListings />} />
+          <Route path="/listing/:id" element={<ListingDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/kupujem" element={<Kupujem />} />
+          <Route path="/prodajem" element={<Prodajem />} />
+          <Route path="/image-reorder" element={<ImageReorder />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="relative bg-gradient-to-br from-black via-slate-950 to-black dark:from-black dark:via-slate-900 dark:to-black overflow-hidden transition-colors h-full flex items-center">
@@ -41,14 +41,36 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-fuchsia-500/20 border-2 border-fuchsia-400/50 rounded-full px-4 py-2 mb-8 shadow-lg shadow-fuchsia-500/30 backdrop-blur-sm transition-all duration-500 ease-out hover:bg-fuchsia-500/30 hover:border-fuchsia-300/70 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 cursor-default">
+          <div className="inline-flex items-center space-x-2 bg-fuchsia-500/20 border-2 border-fuchsia-400/50 rounded-full px-4 py-2 mb-8 shadow-lg shadow-fuchsia-500/30 backdrop-blur-sm transition-all duration-500 ease-out hover:bg-fuchsia-500/30 hover:border-fuchsia-300/70 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 active:bg-fuchsia-500/40 active:border-fuchsia-300/80 active:shadow-[0_0_50px_rgba(236,72,153,0.8)] active:scale-110 cursor-default touch-manipulation">
             <Building className="h-4 w-4 text-fuchsia-300 transition-colors duration-500 group-hover:text-fuchsia-200" />
             <span className="text-fuchsia-200 text-sm font-light transition-colors duration-500 hover:text-fuchsia-100">{t('hero.badge')}</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-6 leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]" style={{ textShadow: '0 0 40px rgba(236, 72, 153, 0.6), 0 2px 20px rgba(0,0,0,0.9)' }}>
-            {t('hero.headline')} {t('hero.headlineAccent')}
+            {language === 'sr' && (
+              <>
+                Pravi <span className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle">stepenik</span> između ponude{' '}
+                {t('hero.headlineAccent')}
+              </>
+            )}
+            {language === 'en' && (
+              <>
+                The right <span className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle">step</span> between offer{' '}
+                {t('hero.headlineAccent')}
+              </>
+            )}
+            {language === 'ru' && (
+              <>
+                Правильный <span className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle">шаг</span> ежду{' '}
+                {t('hero.headlineAccent')}
+              </>
+            )}
+            {language === 'tr' && (
+              <>
+                Teklif ile {t('hero.headlineAccent')} arasında doğru <span className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle">adım</span>
+              </>
+            )}
           </h1>
 
           {/* Subheadline */}
@@ -80,16 +102,16 @@ export function Hero() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-fuchsia-400/50 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
-            <div>
-              <div className="text-4xl font-light text-white mb-1">2021</div>
+            <div className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 active:drop-shadow-[0_0_30px_rgba(107,114,128,1)] cursor-default touch-manipulation">
+              <div className="text-4xl font-light text-white mb-1 transition-all duration-500 hover:drop-shadow-[0_0_20px_rgba(107,114,128,0.8)] hover:text-shadow-[0_0_10px_rgba(107,114,128,0.6)] animate-glow-subtle" style={{ transition: 'all 0.5s ease-out' }}>2021</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.founded')}</div>
             </div>
-            <div>
-              <div className="text-4xl font-light text-white mb-1">150+</div>
+            <div className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 active:drop-shadow-[0_0_30px_rgba(107,114,128,1)] cursor-default touch-manipulation">
+              <div className="text-4xl font-light text-white mb-1 transition-all duration-500 hover:drop-shadow-[0_0_20px_rgba(107,114,128,0.8)] animate-glow-subtle" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.3s' }}>150+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.completedDeals')}</div>
             </div>
-            <div>
-              <div className="text-4xl font-light text-white mb-1">500+</div>
+            <div className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 active:drop-shadow-[0_0_30px_rgba(107,114,128,1)] cursor-default touch-manipulation">
+              <div className="text-4xl font-light text-white mb-1 transition-all duration-500 hover:drop-shadow-[0_0_20px_rgba(107,114,128,0.8)] animate-glow-subtle" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.6s' }}>500+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.legalSupport')}</div>
             </div>
           </div>

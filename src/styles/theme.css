@@ -347,4 +347,31 @@
       text-size-adjust: 100%;
     }
   }
+
+  /* Custom animations for mobile touch effects */
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes glow-subtle {
+    0%, 100% {
+      filter: drop-shadow(0 0 0px rgba(107, 114, 128, 0));
+    }
+    50% {
+      filter: drop-shadow(0 0 8px rgba(107, 114, 128, 0.4));
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+
+  .animate-glow-subtle {
+    animation: glow-subtle 3s ease-in-out infinite;
+  }
 }
