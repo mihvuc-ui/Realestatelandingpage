@@ -13,16 +13,35 @@ import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { ImageReorder } from '@/app/components/ImageReorder';
 import { ContactModal } from '@/app/components/ContactModal';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
+import { useEffect, useState } from 'react';
 
 function AppContent() {
   const location = useLocation();
+  const [displayLocation, setDisplayLocation] = useState(location);
+  const [transitionStage, setTransitionStage] = useState('fadeIn');
+
+  useEffect(() => {
+    if (location !== displayLocation) {
+      setTransitionStage('fadeOut');
+    }
+  }, [location, displayLocation]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors flex flex-col">
       <OrganizationSchema />
       <Header />
-      <main className="flex-grow">
-        <Routes>
+      <main 
+        className={`flex-grow transition-opacity duration-500 ease-in-out ${
+          transitionStage === 'fadeOut' ? 'opacity-0' : 'opacity-100'
+        }`}
+        onTransitionEnd={() => {
+          if (transitionStage === 'fadeOut') {
+            setDisplayLocation(location);
+            setTransitionStage('fadeIn');
+          }
+        }}
+      >
+        <Routes location={displayLocation}>
           <Route path="/" element={<Home />} />
           <Route path="/browse" element={<BrowseListings />} />
           <Route path="/listing/:id" element={<ListingDetail />} />

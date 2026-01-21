@@ -86,40 +86,40 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               to="/"
-              className={`text-sm font-semibold transition-colors ${
-                isActive('/') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              className={`text-base font-light transition-all duration-300 ${
+                isActive('/') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
               }`}
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/browse"
-              className={`text-sm font-semibold transition-colors ${
-                isActive('/browse') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              className={`text-base font-light transition-all duration-300 ${
+                isActive('/browse') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
               }`}
             >
               {t('nav.browse')}
             </Link>
             <Link
               to="/kupujem"
-              className={`text-sm font-semibold transition-colors ${
-                isActive('/kupujem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              className={`text-base font-light transition-all duration-300 ${
+                isActive('/kupujem') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
               }`}
             >
               Kupujem
             </Link>
             <Link
               to="/prodajem"
-              className={`text-sm font-semibold transition-colors ${
-                isActive('/prodajem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              className={`text-base font-light transition-all duration-300 ${
+                isActive('/prodajem') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
               }`}
             >
               Prodajem
             </Link>
             <Link
               to="/about"
-              className={`text-sm font-semibold transition-colors ${
-                isActive('/about') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              className={`text-base font-light transition-all duration-300 ${
+                isActive('/about') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
               }`}
             >
               {t('nav.about')}
