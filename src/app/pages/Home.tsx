@@ -3,12 +3,11 @@ import { FeaturedListings } from '@/app/components/FeaturedListings';
 import { Footer } from '@/app/components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { ContactModal } from '@/app/components/ContactModal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { ShoppingCart, TrendingUp } from 'lucide-react';
 
 export function Home() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
 
   return (
@@ -64,23 +63,23 @@ export function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to="/browse"
-              className="inline-block bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+              to="/kupujem"
+              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
             >
-              {t('cta.browse')}
+              <ShoppingCart className="h-5 w-5" />
+              <span>Kupujem</span>
             </Link>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="inline-block bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 hover:from-fuchsia-700 hover:to-fuchsia-800 text-white px-8 py-4 rounded-lg font-bold transition-all shadow-lg shadow-fuchsia-600/50 hover:shadow-fuchsia-600/70 border-2 border-fuchsia-500/30 hover:scale-105"
+            <Link
+              to="/prodajem"
+              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-fuchsia-600/50 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-400 hover:scale-105"
             >
-              {t('nav.contact')}
-            </button>
+              <TrendingUp className="h-5 w-5" />
+              <span>Prodajem</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
-      
       {/* Footer Section */}
       <section className="snap-start snap-always">
         <Footer />

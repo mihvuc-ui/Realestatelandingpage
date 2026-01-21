@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Search, Building } from 'lucide-react';
+import { Search, Building, ShoppingCart, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
-import { ContactModal } from '@/app/components/ContactModal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
 export function Hero() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
 
   return (
@@ -62,20 +60,23 @@ export function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
-              to="/browse"
+              to="/kupujem"
               className="w-full sm:w-auto bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
             >
               <div className="flex items-center justify-center space-x-2">
-                <Search className="h-5 w-5" />
-                <span>{t('hero.viewListings')}</span>
+                <ShoppingCart className="h-5 w-5" />
+                <span>Kupujem</span>
               </div>
             </Link>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
+            <Link
+              to="/prodajem"
               className="w-full sm:w-auto bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all border-2 border-pink-400 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
             >
-              {t('nav.contact')}
-            </button>
+              <div className="flex items-center justify-center space-x-2">
+                <TrendingUp className="h-5 w-5" />
+                <span>Prodajem</span>
+              </div>
+            </Link>
           </div>
 
           {/* Stats */}
@@ -95,7 +96,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 }
