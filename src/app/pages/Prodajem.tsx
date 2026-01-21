@@ -55,8 +55,17 @@ ${formData.message}`;
 
   const sendViber = () => {
     const message = generateMessage();
-    const viberUrl = `viber://chat?number=${encodeURIComponent(phone)}&text=${encodeURIComponent(message)}`;
-    window.location.href = viberUrl;
+    // Copy message to clipboard first
+    navigator.clipboard.writeText(message).then(() => {
+      // Then open Viber
+      const viberUrl = `viber://chat?number=${encodeURIComponent(phone)}`;
+      window.location.href = viberUrl;
+    }).catch((err) => {
+      console.error('Failed to copy message:', err);
+      // Fallback: still open Viber even if clipboard fails
+      const viberUrl = `viber://chat?number=${encodeURIComponent(phone)}`;
+      window.location.href = viberUrl;
+    });
   };
 
   const sendEmail = () => {
