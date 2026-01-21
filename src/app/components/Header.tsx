@@ -24,8 +24,14 @@ export function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       
-      // On homepage, hide header when scrolled down
-      if (isHomePage && window.scrollY > 100) {
+      // Check if we're on mobile (screen width < 768px)
+      const isMobile = window.innerWidth < 768;
+      
+      // On homepage with mobile, hide header when scrolled past first section (viewport height)
+      if (isHomePage && isMobile && window.scrollY > window.innerHeight) {
+        setIsHeaderVisible(false);
+      } else if (isHomePage && !isMobile && window.scrollY > 100) {
+        // Desktop: hide header when scrolled down
         setIsHeaderVisible(false);
       } else if (!isHomePage) {
         setIsHeaderVisible(true);
@@ -35,20 +41,33 @@ export function Header() {
     const handleMouseMove = (e: MouseEvent) => {
       setMouseY(e.clientY);
       
-      // Show header when mouse is near the top (within 100px) on homepage
-      if (isHomePage && e.clientY < 100) {
+      // Only apply mouse hover logic on desktop
+      const isMobile = window.innerWidth < 768;
+      
+      // Show header when mouse is near the top (within 100px) on homepage and desktop
+      if (isHomePage && !isMobile && e.clientY < 100) {
         setIsHeaderVisible(true);
-      } else if (isHomePage && window.scrollY > 100) {
+      } else if (isHomePage && !isMobile && window.scrollY > 100) {
         setIsHeaderVisible(false);
+      }
+    };
+
+    // Handle touch on mobile - show header on touch at top
+    const handleTouchStart = (e: TouchEvent) => {
+      const isMobile = window.innerWidth < 768;
+      if (isHomePage && isMobile && e.touches[0].clientY < 100) {
+        setIsHeaderVisible(true);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchstart', handleTouchStart);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouchStart);
     };
   }, [isHomePage]);
 
