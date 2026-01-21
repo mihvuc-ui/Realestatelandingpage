@@ -50,19 +50,19 @@ Posebna vrednost ovog stana je njegova lokacija – Savski kej i šetalište uz 
 
 Dvostrana orijentacija stana omogućava obilje prirodne svetlosti tokom celog dana, kao i bolju cirkulaciju vazduha, što prostor čini prijatnijim i funkcionalnijim za svakodnevni život.`,
     images: [
-      'https://i.imgur.com/fYAApDHh.jpg',
-      'https://i.imgur.com/B24eQRZh.jpg',
-      'https://i.imgur.com/EmaLgNlh.jpg',
-      'https://i.imgur.com/2I2sUmJh.jpg',
-      'https://i.imgur.com/rhk2C8oh.jpg',
-      'https://i.imgur.com/srqdJnBh.jpg',
-      'https://i.imgur.com/nQxcF7Mh.jpg',
-      'https://i.imgur.com/l3eyZ2oh.jpg',
-      'https://i.imgur.com/lL8e1xxh.jpg',
-      'https://i.imgur.com/AVnXiPlh.jpg',
-      'https://i.imgur.com/P5DSIpCh.jpg',
-      'https://i.imgur.com/0I3SQAQh.jpg',
-      'https://i.imgur.com/E4cR7ICh.jpg',
+      'https://i.imgur.com/rhk2C8oh.jpg', // Nova pozicija 1 (stara slika 5)
+      'https://i.imgur.com/srqdJnBh.jpg', // Nova pozicija 2 (stara slika 6)
+      'https://i.imgur.com/nQxcF7Mh.jpg', // Nova pozicija 3 (stara slika 7)
+      'https://i.imgur.com/l3eyZ2oh.jpg', // Nova pozicija 4 (stara slika 8)
+      'https://i.imgur.com/lL8e1xxh.jpg', // Nova pozicija 5 (stara slika 9)
+      'https://i.imgur.com/AVnXiPlh.jpg', // Nova pozicija 6 (stara slika 10)
+      'https://i.imgur.com/P5DSIpCh.jpg', // Nova pozicija 7 (stara slika 11)
+      'https://i.imgur.com/0I3SQAQh.jpg', // Nova pozicija 8 (stara slika 12)
+      'https://i.imgur.com/E4cR7ICh.jpg', // Nova pozicija 9 (stara slika 13)
+      'https://i.imgur.com/B24eQRZh.jpg', // Nova pozicija 10 (stara slika 1)
+      'https://i.imgur.com/fYAApDHh.jpg', // Nova pozicija 11 (stara slika 2)
+      'https://i.imgur.com/EmaLgNlh.jpg', // Nova pozicija 12 (stara slika 3)
+      // Slika 4 je obrisana
     ],
     featured: true,
   },

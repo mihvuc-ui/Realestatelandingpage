@@ -6,6 +6,7 @@ import { BrowseListings } from '@/app/pages/BrowseListings';
 import { ListingDetail } from '@/app/pages/ListingDetail';
 import { About } from '@/app/pages/About';
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
+import { ImageReorder } from '@/app/components/ImageReorder';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
               <Route path="/browse" element={<BrowseListings />} />
               <Route path="/listing/:id" element={<ListingDetail />} />
               <Route path="/about" element={<About />} />
+              <Route path="/image-reorder" element={<ImageReorder />} />
             </Routes>
           </main>
           <Footer />
