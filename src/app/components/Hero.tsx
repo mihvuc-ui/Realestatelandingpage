@@ -59,7 +59,16 @@ export function Hero() {
             className="inline-flex items-center space-x-2 bg-fuchsia-500/20 border-2 border-fuchsia-400/50 rounded-full px-4 py-2 mb-8 shadow-lg shadow-fuchsia-500/30 backdrop-blur-sm transition-all duration-500 ease-out hover:bg-fuchsia-500/30 hover:border-fuchsia-300/70 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 active:bg-fuchsia-500/40 active:border-fuchsia-300/80 active:shadow-[0_0_50px_rgba(236,72,153,0.8)] active:scale-110 cursor-default touch-manipulation select-none"
             onTouchStart={handleTouchFeedback}
             onContextMenu={preventContextMenu}
-            style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+            onTouchEnd={(e) => e.preventDefault()}
+            onTouchMove={(e) => e.preventDefault()}
+            style={{ 
+              WebkitTouchCallout: 'none', 
+              WebkitUserSelect: 'none',
+              touchAction: 'none',
+              userSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
           >
             <Building className="h-4 w-4 text-fuchsia-300 transition-colors duration-500 group-hover:text-fuchsia-200" />
             <span className="text-fuchsia-200 text-sm font-extralight transition-colors duration-500 hover:text-fuchsia-100">{t('hero.badge')}</span>
