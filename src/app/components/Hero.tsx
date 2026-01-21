@@ -41,9 +41,9 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-fuchsia-500/20 border-2 border-fuchsia-400/50 rounded-full px-4 py-2 mb-8 shadow-lg shadow-fuchsia-500/30 backdrop-blur-sm">
-            <Building className="h-4 w-4 text-fuchsia-300" />
-            <span className="text-fuchsia-200 text-sm font-black">{t('hero.badge')}</span>
+          <div className="inline-flex items-center space-x-2 bg-fuchsia-500/20 border-2 border-fuchsia-400/50 rounded-full px-4 py-2 mb-8 shadow-lg shadow-fuchsia-500/30 backdrop-blur-sm transition-all duration-500 ease-out hover:bg-fuchsia-500/30 hover:border-fuchsia-300/70 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 cursor-default">
+            <Building className="h-4 w-4 text-fuchsia-300 transition-colors duration-500 group-hover:text-fuchsia-200" />
+            <span className="text-fuchsia-200 text-sm font-light transition-colors duration-500 hover:text-fuchsia-100">{t('hero.badge')}</span>
           </div>
 
           {/* Headline */}
@@ -81,15 +81,15 @@ export function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-fuchsia-400/50 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
             <div>
-              <div className="text-3xl font-black text-white mb-1">2021</div>
+              <div className="text-4xl font-light text-white mb-1">2021</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.founded')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black text-white mb-1">150+</div>
+              <div className="text-4xl font-light text-white mb-1">150+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.completedDeals')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black text-white mb-1">500+</div>
+              <div className="text-4xl font-light text-white mb-1">500+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.legalSupport')}</div>
             </div>
           </div>
