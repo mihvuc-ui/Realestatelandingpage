@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { ScheduleViewingModal } from '@/app/components/ScheduleViewingModal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
+import { Footer } from '@/app/components/Footer';
 
 export function ListingDetail() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export function ListingDetail() {
       <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center transition-colors">
         <div className="text-center">
           <h1 className="text-2xl text-gray-900 dark:text-white mb-4">{t('listing.notFound')}</h1>
-          <Link to="/browse" className="text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300">
+          <Link to="/browse" className="text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-300">
             {t('listing.backToBrowse')}
           </Link>
         </div>
@@ -96,7 +97,7 @@ export function ListingDetail() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Image Gallery */}
-            <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden mb-6 shadow-lg transition-colors border border-rose-200 dark:border-slate-800">
+            <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden mb-6 shadow-lg transition-colors border border-fuchsia-200 dark:border-slate-800">
               <div className="aspect-[16/10] relative">
                 <img
                   src={apartment.images[currentImageIndex]}
@@ -109,13 +110,13 @@ export function ListingDetail() {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-rose-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
                     >
                       <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-rose-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
                     >
                       <ChevronRight className="h-6 w-6" />
                     </button>
@@ -125,7 +126,7 @@ export function ListingDetail() {
                 {/* Expand Button */}
                 <button
                   onClick={openLightbox}
-                  className="absolute top-4 right-4 bg-black/50 hover:bg-rose-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
                   title="Uvećaj sliku"
                 >
                   <Maximize2 className="h-5 w-5" />
@@ -146,7 +147,7 @@ export function ListingDetail() {
                       onClick={() => setCurrentImageIndex(index)}
                       className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
                         index === currentImageIndex
-                          ? 'border-rose-500'
+                          ? 'border-fuchsia-500'
                           : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
@@ -162,7 +163,7 @@ export function ListingDetail() {
             </div>
 
             {/* Description */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-rose-200 dark:border-slate-800 shadow-md transition-colors">
+            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('listing.description')}</h2>
               <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{getDescription()}</div>
             </div>
@@ -170,12 +171,12 @@ export function ListingDetail() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-rose-200 dark:border-slate-800 sticky top-24 shadow-lg transition-colors">
+            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 sticky top-24 shadow-lg transition-colors">
               {/* Type Badge */}
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 shadow-sm ${
                 apartment.type === 'sale' 
                   ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' 
-                  : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
+                  : 'bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 border border-fuchsia-500/20'
               }`}>
                 {apartment.type === 'sale' ? t('listing.forSale') : t('listing.forRent')}
               </span>
@@ -188,14 +189,14 @@ export function ListingDetail() {
               </div>
 
               {/* Price */}
-              <div className="mb-6 pb-6 border-b border-rose-200 dark:border-slate-800">
-                <div className="text-3xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 dark:from-rose-400 dark:to-pink-400 bg-clip-text text-transparent">
+              <div className="mb-6 pb-6 border-b border-fuchsia-200 dark:border-slate-800">
+                <div className="text-3xl font-bold bg-gradient-to-r from-fuchsia-600 to-pink-600 dark:from-fuchsia-400 dark:to-pink-400 bg-clip-text text-transparent">
                   {formatPrice(apartment.price, apartment.type)}
                 </div>
               </div>
 
               {/* Features */}
-              <div className="space-y-4 mb-6 pb-6 border-b border-rose-200 dark:border-slate-800">
+              <div className="space-y-4 mb-6 pb-6 border-b border-fuchsia-200 dark:border-slate-800">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Bed className="h-5 w-5 mr-2" />
@@ -288,13 +289,13 @@ export function ListingDetail() {
               <div className="space-y-3">
                 <button
                   onClick={openScheduleModal}
-                  className="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+                  className="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
                 >
                   {t('listing.schedule')}
                 </button>
                 <button
                   onClick={openContactModal}
-                  className="w-full bg-rose-50 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white py-3 rounded-lg font-semibold transition-colors border border-rose-200 dark:border-slate-700 shadow-sm"
+                  className="w-full bg-fuchsia-50 dark:bg-slate-800 hover:bg-fuchsia-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white py-3 rounded-lg font-semibold transition-colors border border-fuchsia-200 dark:border-slate-700 shadow-sm"
                 >
                   {t('nav.contact')}
                 </button>
@@ -332,7 +333,7 @@ export function ListingDetail() {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-rose-600 text-white p-3 rounded-full transition-colors shadow-lg"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-fuchsia-600 text-white p-3 rounded-full transition-colors shadow-lg"
                 >
                   <ChevronLeft className="h-8 w-8" />
                 </button>
@@ -341,7 +342,7 @@ export function ListingDetail() {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-rose-600 text-white p-3 rounded-full transition-colors shadow-lg"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-fuchsia-600 text-white p-3 rounded-full transition-colors shadow-lg"
                 >
                   <ChevronRight className="h-8 w-8" />
                 </button>
@@ -368,6 +369,9 @@ export function ListingDetail() {
         onClose={closeScheduleModal}
         apartmentName={apartment.name}
       />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

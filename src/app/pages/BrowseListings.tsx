@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { RangeSlider } from '@/app/components/RangeSlider';
+import { Footer } from '@/app/components/Footer';
 
 export function BrowseListings() {
   const { t } = useLanguage();
@@ -411,6 +412,7 @@ export function BrowseListings() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

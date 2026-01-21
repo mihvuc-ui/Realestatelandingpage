@@ -1,5 +1,6 @@
 import { Hero } from '@/app/components/Hero';
 import { FeaturedListings } from '@/app/components/FeaturedListings';
+import { Footer } from '@/app/components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
@@ -11,13 +12,15 @@ export function Home() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors">
+    <div className="snap-y snap-mandatory overflow-y-scroll h-screen">
       {/* Hero Section */}
-      <Hero />
+      <section className="snap-start snap-always h-screen flex flex-col">
+        <Hero />
+      </section>
 
       {/* Featured Listings */}
-      <section className="py-20 bg-gray-50 dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="snap-start snap-always h-screen py-20 bg-gray-50 dark:bg-black flex items-center overflow-y-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-4">{t('featured.title')}</h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -29,7 +32,7 @@ export function Home() {
       </section>
 
       {/* CTA Section with Belgrade Panorama */}
-      <section className="py-20 relative overflow-hidden min-h-[500px]">
+      <section className="snap-start snap-always h-screen py-20 relative overflow-hidden flex items-center">
         {/* Belgrade Panorama Background - LOWEST LAYER */}
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
@@ -77,6 +80,11 @@ export function Home() {
       </section>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      
+      {/* Footer Section */}
+      <section className="snap-start snap-always">
+        <Footer />
+      </section>
     </div>
   );
 }

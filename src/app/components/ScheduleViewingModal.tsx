@@ -28,24 +28,24 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
       onClick={onClose}
     >
       <div 
-        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-rose-200 dark:border-slate-800 transition-colors"
+        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-fuchsia-200 dark:border-slate-800 transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-rose-500 hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-500 transition-colors"
+          className="absolute top-4 right-4 text-fuchsia-500 hover:text-fuchsia-600 dark:text-fuchsia-400 dark:hover:text-fuchsia-500 transition-colors"
         >
-          <X className="h-5 w-5" />
+          <X className="h-6 w-6" />
         </button>
 
         {/* Icon */}
         <div className="flex justify-center mb-6">
-          <div className="bg-gradient-to-r from-rose-500 to-pink-500 p-4 rounded-full">
+          <div className="bg-gradient-to-r from-fuchsia-500 to-pink-500 p-4 rounded-full">
             <MessageCircle className="h-8 w-8 text-white" />
           </div>
         </div>
@@ -59,7 +59,7 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
         </p>
 
         {/* Agent Info */}
-        <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl p-4 mb-6 border border-rose-100 dark:border-slate-700">
+        <div className="bg-gradient-to-br from-fuchsia-50 to-pink-50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl p-4 mb-6 border border-fuchsia-100 dark:border-slate-700">
           <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-1">
             Vaš agent
           </p>
@@ -96,7 +96,7 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
           {/* Email */}
           <a
             href={emailLink}
-            className="flex items-center justify-center space-x-3 w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+            className="flex items-center justify-center space-x-3 w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
           >
             <Mail className="h-5 w-5" />
             <span>Email</span>
@@ -107,7 +107,7 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">ili pozovite direktno</p>
             <a 
               href={`tel:${phone}`}
-              className="text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-500 font-semibold text-lg transition-colors"
+              className="text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-500 font-semibold text-lg transition-colors"
             >
               {phoneFormatted}
             </a>

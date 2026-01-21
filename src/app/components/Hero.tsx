@@ -10,7 +10,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative bg-gradient-to-br from-black via-slate-950 to-black dark:from-black dark:via-slate-900 dark:to-black overflow-hidden transition-colors">
+    <div className="relative bg-gradient-to-br from-black via-slate-950 to-black dark:from-black dark:via-slate-900 dark:to-black overflow-hidden transition-colors h-full flex items-center">
       {/* Belgrade Panorama Background Image */}
       <div className="absolute inset-0 z-0">
         <ImageWithFallback
@@ -89,7 +89,7 @@ export function Hero() {
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.completedDeals')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-400 to-fuchsia-600 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>100%</div>
+              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-400 to-fuchsia-600 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>500+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.legalSupport')}</div>
             </div>
           </div>

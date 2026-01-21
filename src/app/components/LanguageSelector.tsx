@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
+import { Globe } from 'lucide-react';
 
 type Language = 'sr' | 'en' | 'ru' | 'tr';
 
@@ -44,20 +45,21 @@ export function LanguageSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-rose-50 dark:hover:bg-slate-800 transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-fuchsia-50 dark:hover:bg-slate-800 transition-colors"
         aria-label="Izaberi jezik"
       >
-        <span className="text-2xl">{currentLanguage?.flag}</span>
+        <Globe className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+        <span className="text-sm font-semibold text-gray-900 dark:text-white">{currentLanguage?.flag} {currentLanguage?.name}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-rose-200 dark:border-slate-800 py-2 z-50">
+        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-fuchsia-200 dark:border-slate-800 py-2 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-rose-50 dark:hover:bg-slate-800 transition-colors ${
-                language === lang.code ? 'bg-rose-50 dark:bg-slate-800' : ''
+              className={`w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-fuchsia-50 dark:hover:bg-slate-800 transition-colors ${
+                language === lang.code ? 'bg-fuchsia-50 dark:bg-slate-800' : ''
               }`}
             >
               <span className="text-2xl">{lang.flag}</span>

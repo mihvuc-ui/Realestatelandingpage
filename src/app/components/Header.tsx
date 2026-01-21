@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
@@ -11,23 +11,52 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [mouseY, setMouseY] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const { t } = useLanguage();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const isActive = (path: string) => location.pathname === path;
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      
+      // On homepage, hide header when scrolled down
+      if (isHomePage && window.scrollY > 100) {
+        setIsHeaderVisible(false);
+      } else if (!isHomePage) {
+        setIsHeaderVisible(true);
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setMouseY(e.clientY);
+      
+      // Show header when mouse is near the top (within 100px) on homepage
+      if (isHomePage && e.clientY < 100) {
+        setIsHeaderVisible(true);
+      } else if (isHomePage && window.scrollY > 100) {
+        setIsHeaderVisible(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isHomePage]);
 
   return (
-    <header className={`sticky top-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-fuchsia-500 dark:border-fuchsia-600 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-fuchsia-500 dark:border-fuchsia-600 transition-all duration-500 ${
       scrolled ? 'shadow-lg shadow-fuchsia-500/20 dark:shadow-fuchsia-600/30' : ''
+    } ${
+      isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
     }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
