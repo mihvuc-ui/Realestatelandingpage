@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
+import { RangeSlider } from '@/app/components/RangeSlider';
 
 export function BrowseListings() {
   const { t } = useLanguage();
@@ -13,7 +14,7 @@ export function BrowseListings() {
   const [priceFrom, setPriceFrom] = useState(0);
   const [priceTo, setPriceTo] = useState(600000);
   const [sqmFrom, setSqmFrom] = useState(0);
-  const [sqmTo, setSqmTo] = useState(200);
+  const [sqmTo, setSqmTo] = useState(1000);
   const [paymentMethod, setPaymentMethod] = useState('all'); // all, cash, credit
   const [sortBy, setSortBy] = useState('newest');
   const [showFilters, setShowFilters] = useState(false);
@@ -158,7 +159,7 @@ export function BrowseListings() {
     setPriceFrom(0);
     setPriceTo(600000);
     setSqmFrom(0);
-    setSqmTo(200);
+    setSqmTo(1000);
     setPaymentMethod('all');
     setSortBy('newest');
   };
@@ -170,7 +171,7 @@ export function BrowseListings() {
            priceFrom !== 0 || 
            priceTo !== 600000 || 
            sqmFrom !== 0 || 
-           sqmTo !== 200 ||
+           sqmTo !== 1000 ||
            paymentMethod !== 'all';
   }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
 
@@ -306,94 +307,30 @@ export function BrowseListings() {
                   </select>
                 </div>
 
-                {/* Cena OD */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Cena od: €{priceFrom.toLocaleString()}
-                  </label>
-                  <div className="relative pt-1">
-                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
-                    {/* Progress fill */}
-                    <div 
-                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
-                      style={{ width: `${(priceFrom / 600000) * 100}%` }}
-                    ></div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="600000"
-                      step="10000"
-                      value={priceFrom}
-                      onChange={(e) => setPriceFrom(parseInt(e.target.value))}
-                      className="relative w-full z-10"
-                      style={{
-                        WebkitAppearance: 'none',
-                        appearance: 'none',
-                        background: 'transparent',
-                        height: '24px'
-                      }}
-                    />
-                  </div>
+                {/* Cena - Slider */}
+                <div className="md:col-span-2 lg:col-span-1">
+                  <RangeSlider
+                    min={0}
+                    max={600000}
+                    step={10000}
+                    value={priceTo}
+                    onChange={setPriceTo}
+                    label="Maksimalna cena"
+                    formatValue={(v) => `€${v.toLocaleString()}`}
+                  />
                 </div>
 
-                {/* Cena DO */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Cena do: €{priceTo.toLocaleString()}
-                  </label>
-                  <div className="relative pt-1">
-                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
-                    {/* Progress fill */}
-                    <div 
-                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
-                      style={{ width: `${(priceTo / 600000) * 100}%` }}
-                    ></div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="600000"
-                      step="10000"
-                      value={priceTo}
-                      onChange={(e) => setPriceTo(parseInt(e.target.value))}
-                      className="relative w-full z-10"
-                      style={{
-                        WebkitAppearance: 'none',
-                        appearance: 'none',
-                        background: 'transparent',
-                        height: '24px'
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* m² */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Površina od: {sqmFrom} m²
-                  </label>
-                  <div className="relative pt-1">
-                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
-                    {/* Progress fill */}
-                    <div 
-                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
-                      style={{ width: `${(sqmFrom / 200) * 100}%` }}
-                    ></div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="200"
-                      step="5"
-                      value={sqmFrom}
-                      onChange={(e) => setSqmFrom(parseInt(e.target.value))}
-                      className="relative w-full z-10"
-                      style={{
-                        WebkitAppearance: 'none',
-                        appearance: 'none',
-                        background: 'transparent',
-                        height: '24px'
-                      }}
-                    />
-                  </div>
+                {/* m² - Slider */}
+                <div className="md:col-span-2 lg:col-span-1">
+                  <RangeSlider
+                    min={0}
+                    max={1000}
+                    step={5}
+                    value={sqmTo}
+                    onChange={setSqmTo}
+                    label="Maksimalna površina"
+                    formatValue={(v) => `${v} m²`}
+                  />
                 </div>
               </div>
 
