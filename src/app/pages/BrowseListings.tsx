@@ -225,7 +225,7 @@ export function BrowseListings() {
   }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 py-12 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 py-12 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -274,8 +274,8 @@ export function BrowseListings() {
           </div>
 
           {/* Filters Panel - Nova struktura */}
-          <div className={`mt-6 pt-6 border-t border-rose-200 dark:border-slate-800 ${showFilters ? '' : 'hidden lg:block'}`}>
-            <div className="bg-gradient-to-br from-rose-100 via-pink-100 to-purple-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 rounded-2xl p-6 shadow-2xl border border-rose-200 dark:border-slate-700 transition-colors">
+          <div className={`mt-6 pt-6 border-t border-gray-200 dark:border-cyan-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
+            <div className="bg-gradient-to-br from-gray-50 via-white to-cyan-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-cyan-950/30 rounded-2xl p-6 shadow-2xl border-2 border-cyan-400/40 dark:border-cyan-500/40 transition-colors">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 
                 {/* Lokacija */}

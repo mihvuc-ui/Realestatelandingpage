@@ -22,7 +22,7 @@ export function ListingDetail() {
 
   if (!apartment) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 flex items-center justify-center transition-colors">
+      <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center transition-colors">
         <div className="text-center">
           <h1 className="text-2xl text-gray-900 dark:text-white mb-4">{t('listing.notFound')}</h1>
           <Link to="/browse" className="text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300">
@@ -81,7 +81,7 @@ export function ListingDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 py-8 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 py-8 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link

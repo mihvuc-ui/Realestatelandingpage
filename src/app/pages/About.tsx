@@ -2,7 +2,7 @@ import { Building2, Target, Heart, Award, Users, Home as HomeIcon, Phone, Mail, 
 
 export function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 py-16 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 py-16 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

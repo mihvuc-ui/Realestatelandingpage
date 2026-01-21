@@ -13,11 +13,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div 
-        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-rose-200 dark:border-slate-800 transition-colors"
+        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-cyan-500/20 dark:shadow-fuchsia-600/20 max-w-md w-full p-8 border-2 border-cyan-400 dark:border-fuchsia-600 relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
