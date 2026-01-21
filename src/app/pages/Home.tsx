@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { ShoppingCart, TrendingUp } from 'lucide-react';
+import { ShoppingCart, TrendingUp, Phone } from 'lucide-react';
+import { ContactModal } from '@/app/components/ContactModal';
 
 export function Home() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
 
   return (
@@ -61,21 +63,32 @@ export function Home() {
           <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             {t('cta.subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/kupujem"
-              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+          <div className="flex flex-col items-center justify-center gap-4">
+            {/* Kupujem i Prodajem - Prvi red */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+              <Link
+                to="/kupujem"
+                className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                <span>{t('cta.buying')}</span>
+              </Link>
+              <Link
+                to="/prodajem"
+                className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-fuchsia-600/50 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-400 hover:scale-105"
+              >
+                <TrendingUp className="h-5 w-5" />
+                <span>{t('cta.selling')}</span>
+              </Link>
+            </div>
+            {/* Kontaktirajte nas - Drugi red, centrirano */}
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400 whitespace-nowrap"
             >
-              <ShoppingCart className="h-5 w-5" />
-              <span>Kupujem</span>
-            </Link>
-            <Link
-              to="/prodajem"
-              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-fuchsia-600/50 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-400 hover:scale-105"
-            >
-              <TrendingUp className="h-5 w-5" />
-              <span>Prodajem</span>
-            </Link>
+              <Phone className="h-5 w-5" />
+              <span>{t('cta.contact')}</span>
+            </button>
           </div>
         </div>
       </section>
@@ -84,6 +97,12 @@ export function Home() {
       <section className="snap-start snap-always">
         <Footer />
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </div>
   );
 }

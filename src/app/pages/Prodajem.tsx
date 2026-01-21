@@ -26,21 +26,21 @@ export function Prodajem() {
   };
 
   const generateMessage = () => {
-    return `🏢 PRODAJEM NEKRETNINU
+    return `🏢 ${t('selling.title').toUpperCase()}
 
-👤 Vlasnik: ${formData.name}
-📱 Telefon: ${formData.phone}
-📧 Email: ${formData.email}
+👤 ${t('selling.name')}: ${formData.name}
+📱 ${t('selling.phone')}: ${formData.phone}
+📧 ${t('selling.email')}: ${formData.email}
 
-🏠 Detalji nekretnine:
-• Tip: ${formData.propertyType}
-• Lokacija: ${formData.location}
-• Površina: ${formData.squareMeters} m²
-• Sprat: ${formData.floor}
-• Broj soba: ${formData.rooms}
-• Cena: ${formData.price}
+🏠 ${t('selling.propertyDetails')}:
+• ${t('selling.propertyType')}: ${formData.propertyType}
+• ${t('selling.location')}: ${formData.location}
+• ${t('selling.squareMeters')}: ${formData.squareMeters}
+• ${t('selling.floor')}: ${formData.floor}
+• ${t('selling.rooms')}: ${formData.rooms}
+• ${t('selling.price')}: ${formData.price}
 
-💬 Dodatne informacije:
+💬 ${t('selling.additionalInfo')}:
 ${formData.message}`;
   };
 
@@ -61,7 +61,7 @@ ${formData.message}`;
 
   const sendEmail = () => {
     const message = generateMessage();
-    const subject = `Prodajem nekretninu - ${formData.location}`;
+    const subject = `${t('selling.title')} - ${formData.location}`;
     const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
     window.location.href = mailtoUrl;
   };
@@ -84,10 +84,10 @@ ${formData.message}`;
             <Building2 className="h-10 w-10 text-white" />
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-fuchsia-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 drop-shadow-2xl">
-            Prodajem Nekretninu
+            {t('selling.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Opišite nam vašu nekretninu i mi ćemo je brzo prodati po najboljoj ceni
+            {t('selling.subtitle')}
           </p>
         </div>
 
@@ -100,21 +100,21 @@ ${formData.message}`;
             {/* Form Header */}
             <div className="flex items-center space-x-3 mb-8 pb-6 border-b-2 border-fuchsia-500/30">
               <Zap className="h-6 w-6 text-fuchsia-400 animate-pulse" />
-              <h2 className="text-2xl font-bold text-white">Vaši Podaci</h2>
+              <h2 className="text-2xl font-bold text-white">{t('selling.personalInfo')}</h2>
             </div>
 
             {/* Personal Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Ime i Prezime *
+                  {t('selling.name')} *
                 </label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Vaše ime"
+                  placeholder={t('selling.namePlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                   required
                 />
@@ -122,14 +122,14 @@ ${formData.message}`;
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Telefon *
+                  {t('selling.phone')} *
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+381 62 123 456"
+                  placeholder={t('selling.phonePlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                   required
                 />
@@ -137,14 +137,14 @@ ${formData.message}`;
 
               <div className="md:col-span-2">
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Email
+                  {t('selling.email')}
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="vas.email@primer.com"
+                  placeholder={t('selling.emailPlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                 />
               </div>
@@ -153,13 +153,13 @@ ${formData.message}`;
             {/* Property Details */}
             <div className="flex items-center space-x-3 mb-8 pb-6 border-b-2 border-fuchsia-500/30">
               <Home className="h-6 w-6 text-pink-400 animate-pulse" />
-              <h2 className="text-2xl font-bold text-white">Detalji Nekretnine</h2>
+              <h2 className="text-2xl font-bold text-white">{t('selling.propertyDetails')}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Tip Nekretnine
+                  {t('selling.propertyType')}
                 </label>
                 <select
                   name="propertyType"
@@ -167,25 +167,25 @@ ${formData.message}`;
                   onChange={handleChange}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all cursor-pointer backdrop-blur-sm"
                 >
-                  <option value="">Izaberite tip</option>
-                  <option value="Stan">Stan</option>
-                  <option value="Kuća">Kuća</option>
-                  <option value="Poslovni prostor">Poslovni prostor</option>
-                  <option value="Plac">Plac</option>
-                  <option value="Garaža">Garaža</option>
+                  <option value="">{t('selling.selectType')}</option>
+                  <option value={t('selling.apartment')}>{t('selling.apartment')}</option>
+                  <option value={t('selling.house')}>{t('selling.house')}</option>
+                  <option value={t('selling.commercial')}>{t('selling.commercial')}</option>
+                  <option value={t('selling.land')}>{t('selling.land')}</option>
+                  <option value={t('selling.garage')}>{t('selling.garage')}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Lokacija *
+                  {t('selling.location')} *
                 </label>
                 <input
                   type="text"
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  placeholder="Npr. Novi Beograd, Vračar..."
+                  placeholder={t('selling.locationPlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                   required
                 />
@@ -193,14 +193,14 @@ ${formData.message}`;
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Površina (m²) *
+                  {t('selling.squareMeters')} *
                 </label>
                 <input
                   type="text"
                   name="squareMeters"
                   value={formData.squareMeters}
                   onChange={handleChange}
-                  placeholder="Npr. 65 m²"
+                  placeholder={t('selling.squareMetersPlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                   required
                 />
@@ -208,56 +208,56 @@ ${formData.message}`;
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Sprat
+                  {t('selling.floor')}
                 </label>
                 <input
                   type="text"
                   name="floor"
                   value={formData.floor}
                   onChange={handleChange}
-                  placeholder="Npr. 3/5"
+                  placeholder={t('selling.floorPlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Broj Soba
+                  {t('selling.rooms')}
                 </label>
                 <input
                   type="text"
                   name="rooms"
                   value={formData.rooms}
                   onChange={handleChange}
-                  placeholder="Npr. 2.0, 3.0..."
+                  placeholder={t('selling.roomsPlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Cena
+                  {t('selling.price')}
                 </label>
                 <input
                   type="text"
                   name="price"
                   value={formData.price}
                   onChange={handleChange}
-                  placeholder="Npr. 120,000€"
+                  placeholder={t('selling.pricePlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all backdrop-blur-sm"
                 />
               </div>
 
               <div className="md:col-span-2">
                 <label className="block text-sm font-semibold text-fuchsia-400 mb-3">
-                  Dodatne Informacije
+                  {t('selling.additionalInfo')}
                 </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Opišite stanje nekretnine, dodatne pogodnosti, renovacije, parking, terasu, itd..."
+                  placeholder={t('selling.messagePlaceholder')}
                   className="w-full bg-slate-800/50 border-2 border-fuchsia-500/30 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 transition-all resize-none backdrop-blur-sm"
                 ></textarea>
               </div>
@@ -267,7 +267,7 @@ ${formData.message}`;
             <div className="space-y-4">
               <p className="text-center text-fuchsia-300 font-semibold mb-4 flex items-center justify-center space-x-2">
                 <Star className="h-5 w-5 text-fuchsia-400 animate-pulse" />
-                <span>Odaberite način slanja:</span>
+                <span>{t('selling.sendVia')}</span>
                 <Star className="h-5 w-5 text-fuchsia-400 animate-pulse" />
               </p>
               
@@ -279,7 +279,7 @@ ${formData.message}`;
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <MessageCircle className="h-5 w-5 relative z-10" />
-                  <span className="relative z-10">WhatsApp</span>
+                  <span className="relative z-10">{t('selling.whatsapp')}</span>
                 </button>
 
                 <button
@@ -289,7 +289,7 @@ ${formData.message}`;
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <Phone className="h-5 w-5 relative z-10" />
-                  <span className="relative z-10">Viber</span>
+                  <span className="relative z-10">{t('selling.viber')}</span>
                 </button>
 
                 <button
@@ -299,12 +299,12 @@ ${formData.message}`;
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <Mail className="h-5 w-5 relative z-10" />
-                  <span className="relative z-10">Email</span>
+                  <span className="relative z-10">{t('selling.emailButton')}</span>
                 </button>
               </div>
 
               <p className="text-center text-sm text-gray-500 mt-4">
-                * Obavezna polja
+                {t('selling.required')}
               </p>
             </div>
           </div>
@@ -313,22 +313,22 @@ ${formData.message}`;
         {/* Info Card */}
         <div className="bg-gradient-to-br from-fuchsia-600 via-pink-600 to-purple-600 rounded-3xl p-8 text-center shadow-2xl shadow-fuchsia-500/50 mb-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
-          <h3 className="text-2xl font-bold text-white mb-6 relative z-10">Prednosti Prodaje Preko Nas</h3>
+          <h3 className="text-2xl font-bold text-white mb-6 relative z-10">{t('selling.advantages')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white relative z-10">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <TrendingUp className="h-12 w-12 mx-auto mb-3 text-fuchsia-200" />
-              <div className="text-3xl font-bold mb-2">Brza</div>
-              <div className="text-fuchsia-100">Prodaja</div>
+              <div className="text-3xl font-bold mb-2">{t('selling.fastSale')}</div>
+              <div className="text-fuchsia-100">{t('selling.fastSaleText')}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <Euro className="h-12 w-12 mx-auto mb-3 text-pink-200" />
-              <div className="text-3xl font-bold mb-2">Najbolja</div>
-              <div className="text-fuchsia-100">Cena</div>
+              <div className="text-3xl font-bold mb-2">{t('selling.bestPrice')}</div>
+              <div className="text-fuchsia-100">{t('selling.bestPriceText')}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <Star className="h-12 w-12 mx-auto mb-3 text-purple-200" />
-              <div className="text-3xl font-bold mb-2">Pravna</div>
-              <div className="text-fuchsia-100">Sigurnost</div>
+              <div className="text-3xl font-bold mb-2">{t('selling.legalSafety')}</div>
+              <div className="text-fuchsia-100">{t('selling.legalSafetyText')}</div>
             </div>
           </div>
         </div>

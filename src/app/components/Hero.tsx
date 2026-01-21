@@ -61,20 +61,20 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               to="/kupujem"
-              className="w-full sm:w-auto bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+              className="w-full sm:w-56 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
             >
               <div className="flex items-center justify-center space-x-2">
                 <ShoppingCart className="h-5 w-5" />
-                <span>Kupujem</span>
+                <span>{t('hero.buying')}</span>
               </div>
             </Link>
             <Link
               to="/prodajem"
-              className="w-full sm:w-auto bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all border-2 border-pink-400 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+              className="w-full sm:w-56 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all border-2 border-pink-400 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
             >
               <div className="flex items-center justify-center space-x-2">
                 <TrendingUp className="h-5 w-5" />
-                <span>Prodajem</span>
+                <span>{t('hero.selling')}</span>
               </div>
             </Link>
           </div>
