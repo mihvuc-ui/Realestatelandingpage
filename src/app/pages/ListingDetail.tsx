@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { apartments } from '@/data/apartments';
 import { Bed, Bath, Square, MapPin, ArrowLeft, ChevronLeft, ChevronRight, Building2, Flame, Car, Calendar, Compass, Armchair, Navigation, Maximize2, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
 
 export function ListingDetail() {
@@ -10,6 +10,11 @@ export function ListingDetail() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  // Scroll to top when component loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]); // Runs whenever the id changes (new apartment)
 
   if (!apartment) {
     return (
