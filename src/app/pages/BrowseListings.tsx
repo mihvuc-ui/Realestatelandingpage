@@ -198,7 +198,7 @@ export function BrowseListings() {
                 step="10000"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
-                className="w-full accent-blue-500"
+                className="w-full"
               />
             </div>
 
@@ -214,7 +214,7 @@ export function BrowseListings() {
                 step="5"
                 value={sqmRange[0]}
                 onChange={(e) => setSqmRange([parseInt(e.target.value), sqmRange[1]])}
-                className="w-full accent-blue-500"
+                className="w-full"
               />
             </div>
 
@@ -230,7 +230,7 @@ export function BrowseListings() {
                 step="5"
                 value={sqmRange[1]}
                 onChange={(e) => setSqmRange([sqmRange[0], parseInt(e.target.value)])}
-                className="w-full accent-blue-500"
+                className="w-full"
               />
             </div>
           </div>
