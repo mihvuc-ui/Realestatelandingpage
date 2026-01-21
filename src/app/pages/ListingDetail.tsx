@@ -3,6 +3,7 @@ import { apartments } from '@/data/apartments';
 import { Bed, Bath, Square, MapPin, ArrowLeft, ChevronLeft, ChevronRight, Building2, Flame, Car, Calendar, Compass, Armchair, Navigation, Maximize2, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
+import { ScheduleViewingModal } from '@/app/components/ScheduleViewingModal';
 
 export function ListingDetail() {
   const { id } = useParams();
@@ -10,6 +11,7 @@ export function ListingDetail() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
 
   // Scroll to top when component loads
   useEffect(() => {
@@ -58,6 +60,14 @@ export function ListingDetail() {
 
   const closeContactModal = () => {
     setIsContactModalOpen(false);
+  };
+
+  const openScheduleModal = () => {
+    setIsScheduleModalOpen(true);
+  };
+
+  const closeScheduleModal = () => {
+    setIsScheduleModalOpen(false);
   };
 
   return (
@@ -264,7 +274,10 @@ export function ListingDetail() {
 
               {/* CTA Buttons */}
               <div className="space-y-3">
-                <button className="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg">
+                <button
+                  onClick={openScheduleModal}
+                  className="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
+                >
                   Zakažite Razgledanje
                 </button>
                 <button
@@ -335,6 +348,13 @@ export function ListingDetail() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
+      />
+
+      {/* Schedule Viewing Modal */}
+      <ScheduleViewingModal
+        isOpen={isScheduleModalOpen}
+        onClose={closeScheduleModal}
+        apartmentName={apartment.name}
       />
     </div>
   );
