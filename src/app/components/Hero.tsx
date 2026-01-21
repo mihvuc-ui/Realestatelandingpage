@@ -61,7 +61,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               to="/kupujem"
-              className="w-full sm:w-56 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
+              className="w-full sm:w-56 bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-fuchsia-400"
             >
               <div className="flex items-center justify-center space-x-2">
                 <ShoppingCart className="h-5 w-5" />
@@ -70,7 +70,7 @@ export function Hero() {
             </Link>
             <Link
               to="/prodajem"
-              className="w-full sm:w-56 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all border-2 border-pink-400 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+              className="w-full sm:w-56 bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white px-8 py-4 rounded-lg font-black transition-all border-2 border-pink-400 shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
             >
               <div className="flex items-center justify-center space-x-2">
                 <TrendingUp className="h-5 w-5" />
@@ -82,15 +82,15 @@ export function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-fuchsia-400/50 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-400 to-pink-500 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>2021</div>
+              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-300 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>2021</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.founded')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-pink-400 to-fuchsia-500 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>150+</div>
+              <div className="text-3xl font-black bg-gradient-to-r from-purple-300 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>150+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.completedDeals')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-400 to-fuchsia-600 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>500+</div>
+              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-500 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>500+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.legalSupport')}</div>
             </div>
           </div>

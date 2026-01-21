@@ -6,6 +6,9 @@ import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { RangeSlider } from '@/app/components/RangeSlider';
 import { Footer } from '@/app/components/Footer';
+import { SEO } from '@/app/components/SEO';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { BreadcrumbSchema } from '@/app/components/SchemaMarkup';
 
 export function BrowseListings() {
   const { t } = useLanguage();
