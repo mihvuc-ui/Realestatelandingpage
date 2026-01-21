@@ -2,14 +2,17 @@ import { Link } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ContactModal } from '@/app/components/ContactModal';
 import { Logo } from '@/app/components/Logo';
+import { LanguageSelector } from '@/app/components/LanguageSelector';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -36,14 +39,14 @@ export function Header() {
           <Logo size="md" />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             <Link
               to="/"
               className={`text-sm transition-colors ${
                 isActive('/') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              Početna
+              {t('nav.home')}
             </Link>
             <Link
               to="/browse"
@@ -51,7 +54,7 @@ export function Header() {
                 isActive('/browse') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              Ponuda
+              {t('nav.browse')}
             </Link>
             <Link
               to="/about"
@@ -59,8 +62,11 @@ export function Header() {
                 isActive('/about') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              O Nama
+              {t('nav.about')}
             </Link>
+            
+            {/* Language Selector */}
+            <LanguageSelector />
             
             {/* Theme Toggle */}
             <button
@@ -75,7 +81,7 @@ export function Header() {
               onClick={() => setIsContactModalOpen(true)}
               className="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white px-4 py-2 rounded-lg text-sm transition-all shadow-md hover:shadow-lg"
             >
-              Kontaktirajte Nas
+              {t('nav.contact')}
             </button>
           </div>
 
@@ -99,7 +105,7 @@ export function Header() {
                   isActive('/') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                Početna
+                {t('nav.home')}
               </Link>
               <Link
                 to="/browse"
@@ -108,7 +114,7 @@ export function Header() {
                   isActive('/browse') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                Ponuda
+                {t('nav.browse')}
               </Link>
               <Link
                 to="/about"
@@ -117,8 +123,13 @@ export function Header() {
                   isActive('/about') ? 'text-rose-600 dark:text-rose-400' : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                O Nama
+                {t('nav.about')}
               </Link>
+              
+              {/* Language Selector Mobile */}
+              <div className="py-2">
+                <LanguageSelector />
+              </div>
               
               {/* Theme Toggle Mobile */}
               <button
@@ -128,12 +139,12 @@ export function Header() {
                 {theme === 'dark' ? (
                   <>
                     <Sun className="h-5 w-5" />
-                    <span>Svetla Tema</span>
+                    <span>{t('nav.lightTheme')}</span>
                   </>
                 ) : (
                   <>
                     <Moon className="h-5 w-5" />
-                    <span>Tamna Tema</span>
+                    <span>{t('nav.darkTheme')}</span>
                   </>
                 )}
               </button>
@@ -142,7 +153,7 @@ export function Header() {
                 onClick={() => setIsContactModalOpen(true)}
                 className="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white px-4 py-2 rounded-lg text-sm text-center transition-all shadow-md"
               >
-                Kontaktirajte Nas
+                {t('nav.contact')}
               </button>
             </nav>
           </div>

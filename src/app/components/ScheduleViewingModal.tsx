@@ -11,7 +11,7 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
 
   const phone = '+38162671155';
   const phoneFormatted = '+381 62 671 155';
-  const email = 'branka@nekretnine-stepenik.rs';
+  const email = 'brankastepenik@gmail.com';
   const whatsappNumber = '38162671155'; // WhatsApp format (bez +)
   
   // WhatsApp poruka sa imenom stana ako postoji

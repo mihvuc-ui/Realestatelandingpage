@@ -3,8 +3,10 @@ import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export function BrowseListings() {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
@@ -272,16 +274,16 @@ export function BrowseListings() {
 
           {/* Filters Panel - Nova struktura */}
           <div className={`mt-6 pt-6 border-t border-rose-200 dark:border-slate-800 ${showFilters ? '' : 'hidden lg:block'}`}>
-            <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 rounded-2xl p-6 shadow-2xl border border-slate-700">
+            <div className="bg-gradient-to-br from-rose-100 via-pink-100 to-purple-100 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 rounded-2xl p-6 shadow-2xl border border-rose-200 dark:border-slate-700 transition-colors">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 
                 {/* Lokacija */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3">Lokacija</label>
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Lokacija</label>
                   <select
                     value={locationFilter}
                     onChange={(e) => setLocationFilter(e.target.value)}
-                    className="w-full bg-slate-700/50 border-2 border-slate-600 text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-slate-700"
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-rose-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-rose-50 dark:hover:bg-slate-700"
                   >
                     <option value="all">Sve lokacije</option>
                     {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
@@ -292,21 +294,21 @@ export function BrowseListings() {
 
                 {/* Tip */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3">Tip</label>
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Tip</label>
                   <select
                     value={typeFilter}
                     onChange={(e) => setTypeFilter(e.target.value)}
-                    className="w-full bg-slate-700/50 border-2 border-slate-600 text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-slate-700"
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-rose-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-rose-50 dark:hover:bg-slate-700"
                   >
-                    <option value="all">Svi tipovi</option>
-                    <option value="sale">Prodaja</option>
-                    <option value="rent">Izdavanje</option>
+                    <option value="all">{t('filters.allTypes')}</option>
+                    <option value="sale">{t('filters.sale')}</option>
+                    <option value="rent">{t('filters.rent')}</option>
                   </select>
                 </div>
 
                 {/* Cena OD */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
                     Cena od: €{priceFrom.toLocaleString()}
                   </label>
                   <div className="relative pt-1">
@@ -336,7 +338,7 @@ export function BrowseListings() {
 
                 {/* Cena DO */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
                     Cena do: €{priceTo.toLocaleString()}
                   </label>
                   <div className="relative pt-1">
@@ -366,7 +368,7 @@ export function BrowseListings() {
 
                 {/* m² */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">
                     Površina od: {sqmFrom} m²
                   </label>
                   <div className="relative pt-1">
@@ -396,15 +398,15 @@ export function BrowseListings() {
               </div>
 
               {/* Način plaćanja - Cela nova sekcija */}
-              <div className="mt-6 pt-6 border-t border-slate-700">
-                <label className="block text-sm font-medium text-white mb-4">Način plaćanja</label>
+              <div className="mt-6 pt-6 border-t border-rose-200 dark:border-slate-700">
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-4">Način plaćanja</label>
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={() => setPaymentMethod('all')}
                     className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
                       paymentMethod === 'all'
                         ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
                     }`}
                   >
                     Sve
@@ -414,7 +416,7 @@ export function BrowseListings() {
                     className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
                       paymentMethod === 'cash'
                         ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
                     }`}
                   >
                     💵 Keš
@@ -424,7 +426,7 @@ export function BrowseListings() {
                     className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
                       paymentMethod === 'credit'
                         ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
-                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-slate-700 border-2 border-rose-300 dark:border-slate-600'
                     }`}
                   >
                     💳 Kredit

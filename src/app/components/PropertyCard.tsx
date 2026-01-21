@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { Bed, Bath, Square, MapPin } from 'lucide-react';
 import type { Apartment } from '@/data/apartments';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface PropertyCardProps {
   apartment: Apartment;
 }
 
 export function PropertyCard({ apartment }: PropertyCardProps) {
+  const { t } = useLanguage();
+  
   const formatPrice = (price: number, type: string) => {
     if (type === 'rent') {
-      return `€${price.toLocaleString()}/mesečno`;
+      return `€${price.toLocaleString()}/${t('listing.perMonth')}`;
     }
     return `€${price.toLocaleString()}`;
   };
@@ -38,7 +41,7 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
               ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white' 
               : 'bg-gradient-to-r from-rose-500 to-pink-500 text-white'
           }`}>
-            {apartment.type === 'sale' ? 'Prodaja' : 'Izdavanje'}
+            {apartment.type === 'sale' ? t('listing.forSale') : t('listing.forRent')}
           </span>
         </div>
       </div>
@@ -66,11 +69,11 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
         <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 pt-4 border-t border-rose-200 dark:border-slate-700">
           <div className="flex items-center">
             <Bed className="h-4 w-4 mr-1" />
-            <span>{apartment.bedrooms} Sobe</span>
+            <span>{apartment.bedrooms}</span>
           </div>
           <div className="flex items-center">
             <Bath className="h-4 w-4 mr-1" />
-            <span>{apartment.bathrooms} Kup.</span>
+            <span>{apartment.bathrooms}</span>
           </div>
           <div className="flex items-center">
             <Square className="h-4 w-4 mr-1" />

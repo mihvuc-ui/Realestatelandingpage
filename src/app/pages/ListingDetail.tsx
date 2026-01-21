@@ -4,6 +4,7 @@ import { Bed, Bath, Square, MapPin, ArrowLeft, ChevronLeft, ChevronRight, Buildi
 import { useState, useEffect } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { ScheduleViewingModal } from '@/app/components/ScheduleViewingModal';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export function ListingDetail() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ export function ListingDetail() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+  const { t, language } = useLanguage();
 
   // Scroll to top when component loads
   useEffect(() => {
@@ -22,18 +24,26 @@ export function ListingDetail() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 flex items-center justify-center transition-colors">
         <div className="text-center">
-          <h1 className="text-2xl text-gray-900 dark:text-white mb-4">Nekretnina nije pronađena</h1>
+          <h1 className="text-2xl text-gray-900 dark:text-white mb-4">{t('listing.notFound')}</h1>
           <Link to="/browse" className="text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300">
-            Nazad na ponudu
+            {t('listing.backToBrowse')}
           </Link>
         </div>
       </div>
     );
   }
 
+  // Get the description in the current language, fallback to default description
+  const getDescription = () => {
+    if (apartment.descriptions && apartment.descriptions[language as keyof typeof apartment.descriptions]) {
+      return apartment.descriptions[language as keyof typeof apartment.descriptions];
+    }
+    return apartment.description;
+  };
+
   const formatPrice = (price: number, type: string) => {
     if (type === 'rent') {
-      return `€${price.toLocaleString()}/mesečno`;
+      return `€${price.toLocaleString()}/${t('listing.perMonth')}`;
     }
     return `€${price.toLocaleString()}`;
   };
@@ -79,7 +89,7 @@ export function ListingDetail() {
           className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span>Nazad na ponudu</span>
+          <span>{t('listing.backToBrowse')}</span>
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -153,8 +163,8 @@ export function ListingDetail() {
 
             {/* Description */}
             <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-rose-200 dark:border-slate-800 shadow-md transition-colors">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">O ovoj nekretnini</h2>
-              <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{apartment.description}</div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('listing.description')}</h2>
+              <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{getDescription()}</div>
             </div>
           </div>
 
@@ -167,7 +177,7 @@ export function ListingDetail() {
                   ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' 
                   : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
               }`}>
-                {apartment.type === 'sale' ? 'Prodaja' : 'Izdavanje'}
+                {apartment.type === 'sale' ? t('listing.forSale') : t('listing.forRent')}
               </span>
 
               {/* Title & Location */}
@@ -189,21 +199,21 @@ export function ListingDetail() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Bed className="h-5 w-5 mr-2" />
-                    <span>Broj Soba</span>
+                    <span>{t('listing.bedrooms')}</span>
                   </div>
                   <span className="text-gray-900 dark:text-white font-semibold">{apartment.bedrooms}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Bath className="h-5 w-5 mr-2" />
-                    <span>Kupatila</span>
+                    <span>{t('listing.bathrooms')}</span>
                   </div>
                   <span className="text-gray-900 dark:text-white font-semibold">{apartment.bathrooms}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Square className="h-5 w-5 mr-2" />
-                    <span>Površina</span>
+                    <span>{t('listing.area')}</span>
                   </div>
                   <span className="text-gray-900 dark:text-white font-semibold">{apartment.squareMeters} m²</span>
                 </div>
@@ -211,7 +221,7 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Building2 className="h-5 w-5 mr-2" />
-                      <span>Sprat</span>
+                      <span>{t('listing.floor')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold">{apartment.floor}</span>
                   </div>
@@ -220,7 +230,7 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Flame className="h-5 w-5 mr-2" />
-                      <span>Grejanje</span>
+                      <span>{t('listing.heating')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold">{apartment.heating}</span>
                   </div>
@@ -229,7 +239,7 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Car className="h-5 w-5 mr-2" />
-                      <span>Parking</span>
+                      <span>{t('listing.parking')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.parking}</span>
                   </div>
@@ -238,7 +248,7 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Calendar className="h-5 w-5 mr-2" />
-                      <span>Renoviran</span>
+                      <span>{t('listing.renovated')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold">{apartment.yearRenovated}</span>
                   </div>
@@ -247,7 +257,7 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Compass className="h-5 w-5 mr-2" />
-                      <span>Orijentacija</span>
+                      <span>{t('listing.orientation')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.orientation}</span>
                   </div>
@@ -256,16 +266,18 @@ export function ListingDetail() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Armchair className="h-5 w-5 mr-2" />
-                      <span>Nameštaj</span>
+                      <span>{t('listing.furniture')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.furnished}</span>
+                    <span className="text-gray-900 dark:text-white font-semibold text-sm text-right">
+                      {apartment.furnished}
+                    </span>
                   </div>
                 )}
                 {apartment.distanceToRiver && (
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Navigation className="h-5 w-5 mr-2" />
-                      <span>Udaljenost od reke</span>
+                      <span>{t('listing.distanceToRiver')}</span>
                     </div>
                     <span className="text-gray-900 dark:text-white font-semibold">{apartment.distanceToRiver}</span>
                   </div>
@@ -278,13 +290,13 @@ export function ListingDetail() {
                   onClick={openScheduleModal}
                   className="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg"
                 >
-                  Zakažite Razgledanje
+                  {t('listing.schedule')}
                 </button>
                 <button
                   onClick={openContactModal}
                   className="w-full bg-rose-50 dark:bg-slate-800 hover:bg-rose-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white py-3 rounded-lg font-semibold transition-colors border border-rose-200 dark:border-slate-700 shadow-sm"
                 >
-                  Kontaktirajte Nas
+                  {t('nav.contact')}
                 </button>
               </div>
             </div>

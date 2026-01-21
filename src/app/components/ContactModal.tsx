@@ -1,4 +1,5 @@
 import { X, Phone, User } from 'lucide-react';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -6,6 +7,8 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const { t } = useLanguage();
+  
   if (!isOpen) return null;
 
   return (
@@ -34,7 +37,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
         {/* Title */}
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
-          Kontaktirajte Nas
+          {t('contact.title')}
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
           Pozovite nas za sve informacije
@@ -45,7 +48,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <div className="flex items-center mb-4">
             <User className="h-5 w-5 text-rose-600 dark:text-rose-400 mr-3" />
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Glavni agent u posrednistvu</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{t('contact.agent')}</p>
               <p className="font-semibold text-gray-900 dark:text-white">Branka Gojković</p>
             </div>
           </div>

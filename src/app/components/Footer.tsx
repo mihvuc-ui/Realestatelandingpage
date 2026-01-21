@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Logo } from '@/app/components/Logo';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-white dark:bg-slate-900 border-t border-rose-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -13,7 +16,7 @@ export function Footer() {
               <Logo size="md" showTagline />
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm max-w-md mb-4 mt-6">
-              Vaša pouzdana agencija za nekretnine. Pratimo vas od početka do kraja, sa pravnom podrškom našeg advokatskog tima.
+              {t('footer.description')}
             </p>
             <div className="flex flex-col space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center space-x-2">
@@ -33,21 +36,21 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-gray-900 dark:text-white font-semibold mb-4">Brzi Linkovi</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
                 <Link to="/" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Početna
+                  {t('footer.home')}
                 </Link>
               </li>
               <li>
                 <Link to="/browse" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Ponuda
+                  {t('footer.browse')}
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  O Nama
+                  {t('footer.about')}
                 </Link>
               </li>
             </ul>
@@ -55,26 +58,26 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-gray-900 dark:text-white font-semibold mb-4">Naše Usluge</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold mb-4">{t('footer.services')}</h3>
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
                 <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Kupovina Nekretnina
+                  {t('footer.buying')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Prodaja Nekretnina
+                  {t('footer.selling')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Iznajmljivanje
+                  {t('footer.renting')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
-                  Pravna Podrška
+                  {t('footer.legal')}
                 </a>
               </li>
             </ul>
@@ -83,7 +86,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-rose-200 dark:border-slate-800 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>&copy; 2026 Nekretnine Stepenik. Sva prava zadržana.</p>
+          <p>&copy; 2026 Nekretnine Stepenik. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>
