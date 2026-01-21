@@ -12,7 +12,11 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('stepenik-theme');
-    return (saved as Theme) || 'dark';
+    // If no saved preference, default to light
+    if (!saved) {
+      return 'light';
+    }
+    return saved as Theme;
   });
 
   useEffect(() => {

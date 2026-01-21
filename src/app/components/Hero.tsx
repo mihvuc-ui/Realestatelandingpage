@@ -82,15 +82,15 @@ export function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-fuchsia-400/50 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-300 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>2021</div>
+              <div className="text-3xl font-black text-white mb-1">2021</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.founded')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-purple-300 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>150+</div>
+              <div className="text-3xl font-black text-white mb-1">150+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.completedDeals')}</div>
             </div>
             <div>
-              <div className="text-3xl font-black bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-500 bg-clip-text text-transparent mb-1 drop-shadow-[0_0_15px_rgba(236,72,153,0.8)]" style={{ textShadow: '0 0 30px rgba(236, 72, 153, 0.6)' }}>500+</div>
+              <div className="text-3xl font-black text-white mb-1">500+</div>
               <div className="text-sm text-gray-200 dark:text-gray-300 font-semibold">{t('hero.legalSupport')}</div>
             </div>
           </div>
