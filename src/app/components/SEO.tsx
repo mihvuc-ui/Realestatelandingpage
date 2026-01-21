@@ -23,6 +23,9 @@ export function SEO({
 
   return (
     <Helmet>
+      {/* Viewport - Prevent zoom on rotation */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />

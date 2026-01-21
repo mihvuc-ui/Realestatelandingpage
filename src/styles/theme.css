@@ -251,11 +251,7 @@
   }
 
   input[type="range"]::-moz-range-thumb:hover {
-    background: linear-gradient(135deg, #f43f5e, #ec4899);
-    transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(244, 114, 182, 0.8),
-                0 0 40px rgba(244, 114, 182, 0.5),
-                0 0 60px rgba(244, 114, 182, 0.3);
+    background: linear-gradient(135deg, #fb7185, #f472b6);
   }
 
   /* Active state - kada držiš mišem */
@@ -304,5 +300,51 @@
 
   .dark input[type="range"]::-moz-range-thumb:hover {
     background: linear-gradient(135deg, #fb7185, #f472b6);
+  }
+
+  /* Mobile landscape orientation fixes */
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
+    html, body {
+      overflow-x: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    /* Prevent snap-scroll issues on landscape */
+    .snap-y {
+      scroll-snap-type: none !important;
+    }
+    
+    /* Ensure proper height calculation */
+    .h-screen {
+      height: 100vh;
+      height: 100dvh; /* Dynamic viewport height for better mobile support */
+    }
+    
+    .min-h-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+  }
+
+  /* Prevent zoom on focus for iOS */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      font-size: 16px !important; /* Prevents iOS zoom */
+    }
+  }
+
+  /* Fix for rotation zoom issues */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
   }
 }
