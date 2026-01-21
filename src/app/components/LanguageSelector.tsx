@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { Globe } from 'lucide-react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
 type Language = 'sr' | 'en' | 'ru' | 'tr';
@@ -49,7 +48,6 @@ export function LanguageSelector() {
         aria-label="Izaberi jezik"
       >
         <span className="text-2xl">{currentLanguage?.flag}</span>
-        <Globe className="h-4 w-4 text-gray-600 dark:text-gray-400" />
       </button>
 
       {isOpen && (
