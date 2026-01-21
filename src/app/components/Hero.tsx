@@ -83,7 +83,7 @@ export function Hero() {
             {language === 'sr' && (
               <>
                 Pravi <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
+                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -94,7 +94,7 @@ export function Hero() {
             {language === 'en' && (
               <>
                 The right <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
+                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -105,7 +105,7 @@ export function Hero() {
             {language === 'ru' && (
               <>
                 Правильный <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
+                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -116,7 +116,7 @@ export function Hero() {
             {language === 'tr' && (
               <>
                 Teklif ile {t('hero.headlineAccent')} arasında doğru <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-fuchsia-300 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-fuchsia-200 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
+                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -153,17 +153,17 @@ export function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-fuchsia-400/50 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
+          <div className="grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-pink-700 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
             <div 
               className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
               onTouchStart={handleTouchFeedback}
               onContextMenu={preventContextMenu}
               style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
             >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500">
-                <div className="text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out' }}>2021</div>
+              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
+                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out' }}>2021</div>
               </div>
-              <div className="text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.founded')}</div>
+              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.founded')}</div>
             </div>
             <div 
               className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
@@ -171,10 +171,10 @@ export function Hero() {
               onContextMenu={preventContextMenu}
               style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
             >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500">
-                <div className="text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.3s' }}>150+</div>
+              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
+                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.3s' }}>150+</div>
               </div>
-              <div className="text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.completedDeals')}</div>
+              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.completedDeals')}</div>
             </div>
             <div 
               className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
@@ -182,10 +182,10 @@ export function Hero() {
               onContextMenu={preventContextMenu}
               style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
             >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500">
-                <div className="text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.6s' }}>500+</div>
+              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
+                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.6s' }}>500+</div>
               </div>
-              <div className="text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.legalSupport')}</div>
+              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.legalSupport')}</div>
             </div>
           </div>
         </div>

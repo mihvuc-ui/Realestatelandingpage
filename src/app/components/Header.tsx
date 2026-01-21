@@ -86,40 +86,50 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               to="/"
-              className={`text-base font-light transition-all duration-300 ${
-                isActive('/') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+                isActive('/') 
+                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
+                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
               }`}
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/browse"
-              className={`text-base font-light transition-all duration-300 ${
-                isActive('/browse') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+                isActive('/browse') 
+                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
+                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
               }`}
             >
               {t('nav.browse')}
             </Link>
             <Link
               to="/kupujem"
-              className={`text-base font-light transition-all duration-300 ${
-                isActive('/kupujem') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+                isActive('/kupujem') 
+                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
+                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
               }`}
             >
               Kupujem
             </Link>
             <Link
               to="/prodajem"
-              className={`text-base font-light transition-all duration-300 ${
-                isActive('/prodajem') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+                isActive('/prodajem') 
+                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
+                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
               }`}
             >
               Prodajem
             </Link>
             <Link
               to="/about"
-              className={`text-base font-light transition-all duration-300 ${
-                isActive('/about') ? 'text-fuchsia-500 dark:text-fuchsia-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]' : 'text-gray-700 dark:text-gray-400 hover:text-fuchsia-500 dark:hover:text-fuchsia-400 hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+                isActive('/about') 
+                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
+                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
               }`}
             >
               {t('nav.about')}
@@ -131,7 +141,7 @@ export function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-fuchsia-100 dark:bg-slate-800 text-fuchsia-600 dark:text-fuchsia-400 hover:bg-fuchsia-200 dark:hover:bg-slate-700 transition-colors shadow-sm border-2 border-fuchsia-400/30 dark:border-fuchsia-500/30"
+              className="p-2 rounded-lg bg-pink-500/30 border-2 border-pink-700 text-white hover:bg-pink-500/60 transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -139,7 +149,7 @@ export function Header() {
             
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 hover:from-fuchsia-700 hover:to-fuchsia-800 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-md shadow-fuchsia-600/30 hover:shadow-lg hover:shadow-fuchsia-600/40 border-2 border-fuchsia-500/30"
+              className="bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
             >
               {t('nav.contact')}
             </button>

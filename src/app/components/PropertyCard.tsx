@@ -20,17 +20,17 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
   return (
     <Link 
       to={`/listing/${apartment.id}`}
-      className="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border-2 border-gray-200 dark:border-fuchsia-500/40 shadow-lg hover:shadow-2xl hover:shadow-fuchsia-500/30 dark:hover:shadow-fuchsia-600/40 transition-all duration-300 hover:-translate-y-2 hover:border-fuchsia-400 dark:hover:border-fuchsia-500"
+      className="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border-2 border-gray-200 dark:border-pink-700 shadow-lg hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-300 hover:-translate-y-2 hover:border-pink-700 dark:hover:border-pink-700 flex flex-col h-[340px]"
     >
-      {/* Image */}
-      <div className="aspect-[4/3] overflow-hidden relative">
+      {/* Image - Extended */}
+      <div className="h-[180px] overflow-hidden relative flex-shrink-0">
         <img 
           src={apartment.images[0]} 
           alt={apartment.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
         {/* Type Badge */}
-        <span className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm border-2 ${
+        <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm border-2 ${
           apartment.type === 'sale' 
             ? 'bg-fuchsia-600 text-white border-fuchsia-400 shadow-fuchsia-500/50' 
             : 'bg-pink-600 text-white border-pink-500 shadow-pink-600/50'
@@ -39,39 +39,41 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
         </span>
       </div>
 
-      {/* Content */}
-      <div className="p-5 bg-white dark:bg-slate-900">
+      {/* Content - Compact at bottom */}
+      <div className="p-4 bg-white dark:bg-slate-900 flex flex-col flex-1">
         {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+        <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors line-clamp-1">
           {apartment.name}
         </h3>
         
         {/* Location */}
-        <div className="flex items-center text-gray-600 dark:text-fuchsia-300 mb-3">
-          <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-          <span className="text-sm truncate">{apartment.location}</span>
+        <div className="flex items-center text-gray-600 dark:text-fuchsia-300 mb-2">
+          <MapPin className="h-3.5 w-3.5 mr-1 flex-shrink-0" />
+          <span className="text-xs truncate">{apartment.location}</span>
         </div>
 
         {/* Features */}
-        <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300 mb-4 text-sm">
+        <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 mb-3 text-xs">
           <div className="flex items-center">
-            <Bed className="h-4 w-4 mr-1" />
+            <Bed className="h-3.5 w-3.5 mr-1" />
             <span>{apartment.bedrooms}</span>
           </div>
           <div className="flex items-center">
-            <Bath className="h-4 w-4 mr-1" />
+            <Bath className="h-3.5 w-3.5 mr-1" />
             <span>{apartment.bathrooms}</span>
           </div>
           <div className="flex items-center">
-            <Square className="h-4 w-4 mr-1" />
+            <Square className="h-3.5 w-3.5 mr-1" />
             <span>{apartment.squareMeters}m²</span>
           </div>
         </div>
 
         {/* Price */}
-        <div className="text-2xl font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent">
-          €{apartment.price.toLocaleString()}
-          {apartment.type === 'rent' && <span className="text-base">/{t('card.month')}</span>}
+        <div className="inline-block px-3 py-1.5 rounded-lg bg-pink-500/30 border-2 border-pink-700 shadow-[0_0_10px_rgba(236,72,153,0.3)] mt-auto">
+          <span className="text-lg font-black text-pink-500 dark:text-pink-500">
+            €{apartment.price.toLocaleString()}
+            {apartment.type === 'rent' && <span className="text-sm">/{t('card.month')}</span>}
+          </span>
         </div>
       </div>
     </Link>

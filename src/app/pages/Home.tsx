@@ -28,11 +28,11 @@ export function Home() {
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-20 bg-white dark:bg-black flex items-center">
+        <section className="h-screen py-4 bg-white dark:bg-black flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-4">{t('featured.title')}</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <div className="text-center mb-4 mt-4">
+              <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-1">{t('featured.title')}</h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm">
                 {t('featured.subtitle')}
               </p>
             </div>

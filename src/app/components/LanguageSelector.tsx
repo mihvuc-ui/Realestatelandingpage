@@ -1,20 +1,23 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
-import { Globe } from 'lucide-react';
+import { SerbiaFlag } from '@/app/components/flags/SerbiaFlag';
+import { UKFlag } from '@/app/components/flags/UKFlag';
+import { RussiaFlag } from '@/app/components/flags/RussiaFlag';
+import { TurkeyFlag } from '@/app/components/flags/TurkeyFlag';
 
 type Language = 'sr' | 'en' | 'ru' | 'tr';
 
 interface LanguageOption {
   code: Language;
   name: string;
-  flag: string;
+  FlagComponent: React.ComponentType<{ className?: string }>;
 }
 
 const languages: LanguageOption[] = [
-  { code: 'sr', name: 'Srpski', flag: '🇷🇸' },
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+  { code: 'sr', name: 'Srpski', FlagComponent: SerbiaFlag },
+  { code: 'en', name: 'English', FlagComponent: UKFlag },
+  { code: 'ru', name: 'Русский', FlagComponent: RussiaFlag },
+  { code: 'tr', name: 'Türkçe', FlagComponent: TurkeyFlag },
 ];
 
 export function LanguageSelector() {
@@ -45,25 +48,23 @@ export function LanguageSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-fuchsia-50 dark:hover:bg-slate-800 transition-colors"
+        className="flex items-center justify-center p-2 rounded-lg bg-pink-500/30 border-2 border-pink-700 hover:bg-pink-500/60 transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
         aria-label="Izaberi jezik"
       >
-        <Globe className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-        <span className="text-sm font-semibold text-gray-900 dark:text-white">{currentLanguage?.flag} {currentLanguage?.name}</span>
+        {currentLanguage && <currentLanguage.FlagComponent className="w-6 h-4" />}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-fuchsia-200 dark:border-slate-800 py-2 z-50">
+        <div className="absolute right-0 mt-2 w-16 bg-white dark:bg-slate-900 rounded-lg shadow-xl border-2 border-pink-700 py-2 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-fuchsia-50 dark:hover:bg-slate-800 transition-colors ${
-                language === lang.code ? 'bg-fuchsia-50 dark:bg-slate-800' : ''
+              className={`w-full flex items-center justify-center px-2 py-2.5 hover:bg-pink-500/30 transition-colors ${
+                language === lang.code ? 'bg-pink-500/20' : ''
               }`}
             >
-              <span className="text-2xl">{lang.flag}</span>
-              <span className="text-gray-900 dark:text-white font-medium">{lang.name}</span>
+              <lang.FlagComponent className="w-6 h-4" />
             </button>
           ))}
         </div>
