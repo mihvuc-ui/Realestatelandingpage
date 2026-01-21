@@ -8,22 +8,156 @@ export function BrowseListings() {
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
-  const [priceRange, setPriceRange] = useState([0, 600000]);
-  const [sqmRange, setSqmRange] = useState([0, 200]);
+  const [priceFrom, setPriceFrom] = useState(0);
+  const [priceTo, setPriceTo] = useState(600000);
+  const [sqmFrom, setSqmFrom] = useState(0);
+  const [sqmTo, setSqmTo] = useState(200);
+  const [paymentMethod, setPaymentMethod] = useState('all'); // all, cash, credit
   const [sortBy, setSortBy] = useState('newest');
   const [showFilters, setShowFilters] = useState(false);
 
+  // Kompletna lista beogradskih lokacija i okolnih opština/sela
+  const allBelgradeLocations = [
+    // Opštine Beograda
+    'Barajevo',
+    'Voždovac',
+    'Voždovac - Autokomanda',
+    'Voždovac - Banjica',
+    'Voždovac - Kumodraž',
+    'Voždovac - Šumice',
+    'Voždovac - Konjarnik',
+    'Vračar',
+    'Vračar - Centar',
+    'Vračar - Hram',
+    'Vračar - Karađorđev Park',
+    'Vračar - Neimar',
+    'Vračar - Crveni Krst',
+    'Grocka',
+    'Zvezdara',
+    'Zvezdara - Centar',
+    'Zvezdara - Đeram',
+    'Zvezdara - Veliki Mokri Lug',
+    'Zvezdara - Mali Mokri Lug',
+    'Zvezdara - Mirijevo',
+    'Zvezdara - Vukov Spomenik',
+    'Zemun',
+    'Zemun - Centar',
+    'Zemun - Gornji Grad',
+    'Zemun - Donji Grad',
+    'Zemun - Gardoš',
+    'Zemun - Kalvarija',
+    'Zemun - Sava Kovačević',
+    'Zemun - Novi Grad',
+    'Zemun - Batajnica',
+    'Zemun - Zemun Polje',
+    'Lazarevac',
+    'Mladenovac',
+    'Novi Beograd',
+    'Novi Beograd - Blok 61',
+    'Novi Beograd - Blok 62',
+    'Novi Beograd - Blok 63',
+    'Novi Beograd - Blok 64',
+    'Novi Beograd - Blok 70',
+    'Novi Beograd - Blok 70a',
+    'Novi Beograd - Blok 11a',
+    'Novi Beograd - Blok 19',
+    'Novi Beograd - Blok 20',
+    'Novi Beograd - Blok 21',
+    'Novi Beograd - Blok 22',
+    'Novi Beograd - Blok 23',
+    'Novi Beograd - Blok 28',
+    'Novi Beograd - Blok 29',
+    'Novi Beograd - Blok 30',
+    'Novi Beograd - Fontana',
+    'Novi Beograd - Geneks',
+    'Novi Beograd - Airport City',
+    'Novi Beograd - Belville',
+    'Novi Beograd - Delta City',
+    'Novi Beograd - Paviljoni',
+    'Novi Beograd - Sava Centar',
+    'Novi Beograd - Tošin Bunar',
+    'Obrenovac',
+    'Palilula',
+    'Palilula - Karaburma',
+    'Palilula - Višnjička Banja',
+    'Palilula - Hadžipopovac',
+    'Palilula - Krnjača',
+    'Palilula - Kotež',
+    'Palilula - Bogoslovija',
+    'Palilula - Borča',
+    'Palilula - Ovča',
+    'Rakovica',
+    'Rakovica - Miljakovac',
+    'Rakovica - Kneževac',
+    'Rakovica - Labudovo Brdo',
+    'Rakovica - Košutnjak',
+    'Savski Venac',
+    'Savski Venac - Centar',
+    'Savski Venac - Dedinje',
+    'Savski Venac - Senjak',
+    'Savski Venac - Vračar',
+    'Savski Venac - Topčidersko Brdo',
+    'Sopot',
+    'Stari Grad',
+    'Stari Grad - Centar',
+    'Stari Grad - Dorćol',
+    'Stari Grad - London',
+    'Stari Grad - Skadarlija',
+    'Stari Grad - Jalija',
+    'Surčin',
+    'Surčin - Bečmen',
+    'Surčin - Dobanovci',
+    'Surčin - Jakovo',
+    'Surčin - Petrovčić',
+    'Čukarica',
+    'Čukarica - Ada Ciganlija',
+    'Čukarica - Banovo Brdo',
+    'Čukarica - Žarkovo',
+    'Čukarica - Julino Brdo',
+    'Čukarica - Filmski Grad',
+    'Čukarica - Kumodraž',
+    'Čukarica - Makiš',
+    'Čukarica - Požeška',
+    'Čukarica - Skojevsko Naselje',
+    // Okolne opštine i naselja
+    'Bežanijska Kosa',
+    'Borča',
+    'Višnjica',
+    'Vrčin',
+    'Jabučki Rit',
+    'Jajinci',
+    'Kaluđerica',
+    'Kitka',
+    'Krnjača',
+    'Leštane',
+    'Ovča',
+    'Padinska Skela',
+    'Pinosava',
+    'Resnik',
+    'Ripanj',
+    'Rušanj',
+    'Sremčica',
+    'Ugrinovci',
+    'Umka',
+    'Veliki Mokri Lug',
+    'Vinča',
+    'Zuce',
+    'Železnik'
+  ];
+
   const uniqueLocations = useMemo(() => {
-    const locations = apartments.map(apt => apt.location);
-    return ['all', ...Array.from(new Set(locations))];
+    return ['all', ...allBelgradeLocations.sort()];
   }, []);
 
   const resetFilters = () => {
     setSearchQuery('');
     setLocationFilter('all');
     setTypeFilter('all');
-    setPriceRange([0, 600000]);
-    setSqmRange([0, 200]);
+    setPriceFrom(0);
+    setPriceTo(600000);
+    setSqmFrom(0);
+    setSqmTo(200);
+    setPaymentMethod('all');
     setSortBy('newest');
   };
 
@@ -31,11 +165,12 @@ export function BrowseListings() {
     return searchQuery !== '' || 
            locationFilter !== 'all' || 
            typeFilter !== 'all' || 
-           priceRange[0] !== 0 || 
-           priceRange[1] !== 600000 || 
-           sqmRange[0] !== 0 || 
-           sqmRange[1] !== 200;
-  }, [searchQuery, locationFilter, typeFilter, priceRange, sqmRange]);
+           priceFrom !== 0 || 
+           priceTo !== 600000 || 
+           sqmFrom !== 0 || 
+           sqmTo !== 200 ||
+           paymentMethod !== 'all';
+  }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
 
   const filteredApartments = useMemo(() => {
     let filtered = apartments.filter(apt => {
@@ -56,12 +191,12 @@ export function BrowseListings() {
       }
 
       // Price range
-      if (apt.price < priceRange[0] || apt.price > priceRange[1]) {
+      if (apt.price < priceFrom || apt.price > priceTo) {
         return false;
       }
 
       // Square meters range
-      if (apt.squareMeters < sqmRange[0] || apt.squareMeters > sqmRange[1]) {
+      if (apt.squareMeters < sqmFrom || apt.squareMeters > sqmTo) {
         return false;
       }
 
@@ -84,7 +219,7 @@ export function BrowseListings() {
     });
 
     return filtered;
-  }, [searchQuery, locationFilter, typeFilter, priceRange, sqmRange, sortBy]);
+  }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-pink-50/30 to-purple-50/50 dark:bg-slate-950 py-12 transition-colors">
@@ -135,103 +270,167 @@ export function BrowseListings() {
             </div>
           </div>
 
-          {/* Filters (Desktop always shown, Mobile toggleable) */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-4 pt-4 border-t border-rose-200 dark:border-slate-800 ${showFilters ? '' : 'hidden lg:grid'}`}>
-            {/* Location */}
-            <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Lokacija</label>
-              <select
-                value={locationFilter}
-                onChange={(e) => setLocationFilter(e.target.value)}
-                size={1}
-                onMouseEnter={(e) => {
-                  const select = e.currentTarget;
-                  select.size = Math.min(uniqueLocations.length, 8);
-                }}
-                onMouseLeave={(e) => {
-                  const select = e.currentTarget;
-                  select.size = 1;
-                }}
-                onClick={(e) => {
-                  const select = e.currentTarget;
-                  if (select.size === 1) {
-                    select.size = Math.min(uniqueLocations.length, 8);
-                  }
-                }}
-                onBlur={(e) => {
-                  const select = e.currentTarget;
-                  select.size = 1;
-                }}
-                className="w-full bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 rounded-lg px-3 py-2 text-gray-900 dark:text-white focus:outline-none focus:border-rose-500 overflow-y-auto cursor-pointer"
-              >
-                {uniqueLocations.map(loc => (
-                  <option key={loc} value={loc}>
-                    {loc === 'all' ? 'Sve lokacije' : loc}
-                  </option>
-                ))}
-              </select>
-            </div>
+          {/* Filters Panel - Nova struktura */}
+          <div className={`mt-6 pt-6 border-t border-rose-200 dark:border-slate-800 ${showFilters ? '' : 'hidden lg:block'}`}>
+            <div className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 rounded-2xl p-6 shadow-2xl border border-slate-700">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                
+                {/* Lokacija */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">Lokacija</label>
+                  <select
+                    value={locationFilter}
+                    onChange={(e) => setLocationFilter(e.target.value)}
+                    className="w-full bg-slate-700/50 border-2 border-slate-600 text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-slate-700"
+                  >
+                    <option value="all">Sve lokacije</option>
+                    {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
+                      <option key={loc} value={loc}>{loc}</option>
+                    ))}
+                  </select>
+                </div>
 
-            {/* Type */}
-            <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Tip</label>
-              <select
-                value={typeFilter}
-                onChange={(e) => setTypeFilter(e.target.value as any)}
-                className="w-full bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 rounded-lg px-3 py-2 text-gray-900 dark:text-white focus:outline-none focus:border-rose-500"
-              >
-                <option value="all">Svi tipovi</option>
-                <option value="sale">Prodaja</option>
-                <option value="rent">Izdavanje</option>
-              </select>
-            </div>
+                {/* Tip */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">Tip</label>
+                  <select
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}
+                    className="w-full bg-slate-700/50 border-2 border-slate-600 text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all cursor-pointer hover:bg-slate-700"
+                  >
+                    <option value="all">Svi tipovi</option>
+                    <option value="sale">Prodaja</option>
+                    <option value="rent">Izdavanje</option>
+                  </select>
+                </div>
 
-            {/* Price Range Max */}
-            <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">
-                Maks. Cena: €{priceRange[1].toLocaleString()}
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="600000"
-                step="10000"
-                value={priceRange[1]}
-                onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
-                className="w-full"
-              />
-            </div>
+                {/* Cena OD */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">
+                    Cena od: €{priceFrom.toLocaleString()}
+                  </label>
+                  <div className="relative pt-1">
+                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
+                    {/* Progress fill */}
+                    <div 
+                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
+                      style={{ width: `${(priceFrom / 600000) * 100}%` }}
+                    ></div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="600000"
+                      step="10000"
+                      value={priceFrom}
+                      onChange={(e) => setPriceFrom(parseInt(e.target.value))}
+                      className="relative w-full z-10"
+                      style={{
+                        WebkitAppearance: 'none',
+                        appearance: 'none',
+                        background: 'transparent',
+                        height: '24px'
+                      }}
+                    />
+                  </div>
+                </div>
 
-            {/* Square Meters Min */}
-            <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">
-                Min. Površina: {sqmRange[0]} m²
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="200"
-                step="5"
-                value={sqmRange[0]}
-                onChange={(e) => setSqmRange([parseInt(e.target.value), sqmRange[1]])}
-                className="w-full"
-              />
-            </div>
+                {/* Cena DO */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">
+                    Cena do: €{priceTo.toLocaleString()}
+                  </label>
+                  <div className="relative pt-1">
+                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
+                    {/* Progress fill */}
+                    <div 
+                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
+                      style={{ width: `${(priceTo / 600000) * 100}%` }}
+                    ></div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="600000"
+                      step="10000"
+                      value={priceTo}
+                      onChange={(e) => setPriceTo(parseInt(e.target.value))}
+                      className="relative w-full z-10"
+                      style={{
+                        WebkitAppearance: 'none',
+                        appearance: 'none',
+                        background: 'transparent',
+                        height: '24px'
+                      }}
+                    />
+                  </div>
+                </div>
 
-            {/* Square Meters Max */}
-            <div>
-              <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">
-                Maks. Površina: {sqmRange[1]} m²
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="200"
-                step="5"
-                value={sqmRange[1]}
-                onChange={(e) => setSqmRange([sqmRange[0], parseInt(e.target.value)])}
-                className="w-full"
-              />
+                {/* m² */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">
+                    Površina od: {sqmFrom} m²
+                  </label>
+                  <div className="relative pt-1">
+                    <div className="absolute w-full h-2 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-600 rounded-full top-1/2 -translate-y-1/2 border-2 border-gray-800 shadow-inner"></div>
+                    {/* Progress fill */}
+                    <div 
+                      className="absolute h-2 rounded-full top-1/2 -translate-y-1/2 bg-gradient-to-r from-rose-500 to-pink-500 shadow-lg shadow-rose-500/50"
+                      style={{ width: `${(sqmFrom / 200) * 100}%` }}
+                    ></div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="200"
+                      step="5"
+                      value={sqmFrom}
+                      onChange={(e) => setSqmFrom(parseInt(e.target.value))}
+                      className="relative w-full z-10"
+                      style={{
+                        WebkitAppearance: 'none',
+                        appearance: 'none',
+                        background: 'transparent',
+                        height: '24px'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Način plaćanja - Cela nova sekcija */}
+              <div className="mt-6 pt-6 border-t border-slate-700">
+                <label className="block text-sm font-medium text-white mb-4">Način plaćanja</label>
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={() => setPaymentMethod('all')}
+                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                      paymentMethod === 'all'
+                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
+                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                    }`}
+                  >
+                    Sve
+                  </button>
+                  <button
+                    onClick={() => setPaymentMethod('cash')}
+                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                      paymentMethod === 'cash'
+                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
+                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                    }`}
+                  >
+                    💵 Keš
+                  </button>
+                  <button
+                    onClick={() => setPaymentMethod('credit')}
+                    className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+                      paymentMethod === 'credit'
+                        ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-lg shadow-rose-500/50'
+                        : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700 border-2 border-slate-600'
+                    }`}
+                  >
+                    💳 Kredit
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
