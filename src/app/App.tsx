@@ -13,6 +13,7 @@ import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { ImageReorder } from '@/app/components/ImageReorder';
 import { ContactModal } from '@/app/components/ContactModal';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
+import { Toaster } from '@/app/components/ui/sonner';
 import { useEffect, useState } from 'react';
 
 function AppContent() {
@@ -63,6 +64,7 @@ export default function App() {
         <LanguageProvider>
           <Router>
             <AppContent />
+            <Toaster richColors position="top-center" />
           </Router>
         </LanguageProvider>
       </ThemeProvider>

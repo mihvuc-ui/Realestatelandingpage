@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Home, MapPin, Euro, Bed, MessageCircle, Phone, Mail, Send, Sparkles } from 'lucide-react';
 import { Footer } from '@/app/components/Footer';
 import { useLanguage } from '@/app/contexts/LanguageContext';
+import { toast } from 'sonner';
 
 export function Kupujem() {
   const { t } = useLanguage();
@@ -49,19 +50,30 @@ ${formData.message}`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const sendViber = () => {
+  const sendViber = async () => {
     const message = generateMessage();
-    // Copy message to clipboard first
-    navigator.clipboard.writeText(message).then(() => {
-      // Then open Viber
-      const viberUrl = `viber://chat?number=${encodeURIComponent(phone)}`;
-      window.location.href = viberUrl;
-    }).catch((err) => {
-      console.error('Failed to copy message:', err);
-      // Fallback: still open Viber even if clipboard fails
-      const viberUrl = `viber://chat?number=${encodeURIComponent(phone)}`;
-      window.location.href = viberUrl;
-    });
+    
+    try {
+      // Copy message to clipboard
+      await navigator.clipboard.writeText(message);
+      
+      // Show success notification
+      toast.success('Poruka je kopirana!', {
+        description: 'Zalepi poruku u Viber chat kada se otvori',
+        duration: 5000,
+      });
+      
+      // Wait a moment for user to see the notification
+      setTimeout(() => {
+        // Open Viber app
+        window.location.href = `viber://contact?number=${encodeURIComponent(phone)}`;
+      }, 500);
+    } catch (err) {
+      console.error('Clipboard error:', err);
+      toast.error('Greška pri kopiranju', {
+        description: 'Molimo pokušajte ponovo',
+      });
+    }
   };
 
   const sendEmail = () => {
