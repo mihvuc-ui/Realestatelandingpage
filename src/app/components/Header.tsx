@@ -82,6 +82,22 @@ export function Header() {
               {t('nav.browse')}
             </Link>
             <Link
+              to="/kupujem"
+              className={`text-sm font-semibold transition-colors ${
+                isActive('/kupujem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              }`}
+            >
+              Kupujem
+            </Link>
+            <Link
+              to="/prodajem"
+              className={`text-sm font-semibold transition-colors ${
+                isActive('/prodajem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+              }`}
+            >
+              Prodajem
+            </Link>
+            <Link
               to="/about"
               className={`text-sm font-semibold transition-colors ${
                 isActive('/about') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
@@ -140,6 +156,24 @@ export function Header() {
                 }`}
               >
                 {t('nav.browse')}
+              </Link>
+              <Link
+                to="/kupujem"
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-sm font-semibold py-2 transition-colors ${
+                  isActive('/kupujem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+                }`}
+              >
+                Kupujem
+              </Link>
+              <Link
+                to="/prodajem"
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-sm font-semibold py-2 transition-colors ${
+                  isActive('/prodajem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+                }`}
+              >
+                Prodajem
               </Link>
               <Link
                 to="/about"

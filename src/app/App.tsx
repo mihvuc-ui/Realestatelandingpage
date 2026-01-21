@@ -5,6 +5,8 @@ import { Home } from '@/app/pages/Home';
 import { BrowseListings } from '@/app/pages/BrowseListings';
 import { ListingDetail } from '@/app/pages/ListingDetail';
 import { About } from '@/app/pages/About';
+import { Kupujem } from '@/app/pages/Kupujem';
+import { Prodajem } from '@/app/pages/Prodajem';
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { ImageReorder } from '@/app/components/ImageReorder';
@@ -21,6 +23,8 @@ function AppContent() {
         <Route path="/browse" element={<BrowseListings />} />
         <Route path="/listing/:id" element={<ListingDetail />} />
         <Route path="/about" element={<About />} />
+        <Route path="/kupujem" element={<Kupujem />} />
+        <Route path="/prodajem" element={<Prodajem />} />
         <Route path="/image-reorder" element={<ImageReorder />} />
       </Routes>
     </div>
