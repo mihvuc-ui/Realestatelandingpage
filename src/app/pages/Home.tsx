@@ -34,25 +34,15 @@ export function Home() {
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
-          {/* Belgrade Panorama Background - LOWEST LAYER */}
+          {/* Belgrade Panorama Background - Clean Day Image */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1759662280507-424f675fbf82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMHBhbm9yYW1hJTIwY2l0eXNjYXBlfGVufDF8fHx8MTc2OTAxMTkyNHww&ixlib=rb-4.1.0&q=80&w=1920"
+              src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
               alt="Belgrade Panorama"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-80"
             />
-          </div>
-          
-          {/* Dark Overlay - MIDDLE LAYER */}
-          <div className="absolute inset-0 z-[1] bg-gradient-to-br from-black/70 via-slate-950/60 to-black/70"></div>
-          
-          {/* Neon pink accent gradient overlay */}
-          <div className="absolute inset-0 z-[2] bg-gradient-to-tr from-fuchsia-600/20 via-transparent to-pink-600/20"></div>
-          
-          {/* Animated glow effects */}
-          <div className="absolute inset-0 z-[3] opacity-20">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/40 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            {/* White fade overlay */}
+            <div className="absolute inset-0 bg-white/40"></div>
           </div>
           
           {/* Gradient blend to next section */}
@@ -75,25 +65,15 @@ export function Home() {
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
           
-          {/* Belgrade Panorama Background - LOWEST LAYER */}
+          {/* Belgrade Panorama Background - Clean Day Image */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1759662280507-424f675fbf82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMHBhbm9yYW1hJTIwY2l0eXNjYXBlfGVufDF8fHx8MTc2OTAxMTkyNHww&ixlib=rb-4.1.0&q=80&w=1920"
+              src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
               alt="Belgrade Panorama"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-80"
             />
-          </div>
-          
-          {/* Neon Pink Color Overlay - MIDDLE LAYER */}
-          <div className="absolute inset-0 z-[1] bg-gradient-to-br from-black/60 via-slate-950/50 to-black/60"></div>
-          
-          {/* Neon pink accent gradient overlay */}
-          <div className="absolute inset-0 z-[2] bg-gradient-to-tr from-fuchsia-600/20 via-transparent to-pink-600/20"></div>
-          
-          {/* Animated glow effects */}
-          <div className="absolute inset-0 z-[3] opacity-20">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/40 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            {/* White fade overlay */}
+            <div className="absolute inset-0 bg-white/40"></div>
           </div>
           
           {/* Content - TOP LAYER */}
