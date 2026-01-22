@@ -28,6 +28,9 @@ function AppContent() {
     }
   }, [location, displayLocation]);
 
+  // Check if current page is Home to hide footer
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors flex flex-col">
       <OrganizationSchema />
@@ -54,7 +57,7 @@ function AppContent() {
           <Route path="/image-reorder" element={<ImageReorder />} />
         </Routes>
       </main>
-      <Footer />
+      {!isHomePage && <Footer />}
     </div>
   );
 }

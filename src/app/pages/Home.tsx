@@ -1,16 +1,74 @@
 import { Hero } from '@/app/components/Hero';
 import { FeaturedListings } from '@/app/components/FeaturedListings';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { ShoppingCart, TrendingUp, Phone } from 'lucide-react';
+import { ShoppingCart, TrendingUp, Phone, MapPin, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { SEO } from '@/app/components/SEO';
+import { Logo } from '@/app/components/Logo';
 
 export function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Smooth scroll snap with lock mechanism
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrollLocked || !scrollContainerRef.current) return;
+
+      e.preventDefault();
+      
+      const sections = scrollContainerRef.current.querySelectorAll('.snap-section');
+      const scrollTop = scrollContainerRef.current.scrollTop;
+      const containerHeight = scrollContainerRef.current.clientHeight;
+      
+      // Determine current section
+      let currentIndex = 0;
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const containerRect = scrollContainerRef.current!.getBoundingClientRect();
+        if (rect.top <= containerRect.top + 50) {
+          currentIndex = index;
+        }
+      });
+
+      // Scroll direction
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+
+      if (targetIndex !== currentIndex) {
+        // Lock scroll
+        setIsScrollLocked(true);
+
+        // Smooth scroll to target section
+        const targetSection = sections[targetIndex] as HTMLElement;
+        scrollContainerRef.current.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
+        });
+
+        // Unlock after 1 second
+        setTimeout(() => {
+          setIsScrollLocked(false);
+        }, 1000);
+      }
+    };
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [isScrollLocked]);
 
   return (
     <>
@@ -21,16 +79,16 @@ export function Home() {
         canonical="/"
       />
       
-      <div>
+      <div ref={scrollContainerRef} className="snap-y snap-mandatory overflow-y-scroll h-screen hide-scrollbar">
         {/* Hero Section */}
-        <section className="h-screen flex flex-col relative">
+        <section className="h-screen flex flex-col relative snap-section">
           <Hero />
           {/* Gradient blend to next section */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/30 to-black/60 z-[5] pointer-events-none"></div>
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-6 relative overflow-hidden flex items-center">
+        <section className="h-screen py-6 relative overflow-hidden flex items-center snap-section">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
@@ -61,7 +119,7 @@ export function Home() {
         </section>
 
         {/* CTA Section with Belgrade Panorama */}
-        <section className="h-screen py-20 relative overflow-hidden flex items-center">
+        <section className="h-screen py-20 relative overflow-hidden flex items-center snap-section">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
           
@@ -110,6 +168,113 @@ export function Home() {
                 <Phone className="h-5 w-5" />
                 <span>{t('cta.contact')}</span>
               </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer Section - Full Screen */}
+        <section className="h-screen py-20 relative overflow-hidden flex items-center snap-section bg-white dark:bg-slate-900">
+          {/* Gradient blend from previous section */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/30 to-transparent z-[5] pointer-events-none"></div>
+          
+          {/* Footer Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+              {/* Brand */}
+              <div className="col-span-1 md:col-span-2">
+                <div className="mb-4">
+                  <Logo size="md" showTagline />
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 text-sm max-w-md mb-4 mt-6 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                  {t('footer.description')}
+                </p>
+                <div className="flex flex-col space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <div className="flex items-center space-x-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                    <Mail className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
+                    <span>agencijastepenik@gmail.com</span>
+                  </div>
+                  <div className="flex items-center space-x-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                    <Phone className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
+                    <span>+381 62 671-155</span>
+                  </div>
+                  <div className="flex items-center space-x-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                    <MapPin className="h-4 w-4 text-fuchsia-600 dark:text-fuchsia-400" />
+                    <span>Cara Lazara 5, 11000 Beograd, Srbija</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h3 className="text-gray-900 dark:text-white font-semibold mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.quickLinks')}</h3>
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li>
+                    <Link to="/" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.home')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/browse" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.browse')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.about')}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Services */}
+              <div>
+                <h3 className="text-gray-900 dark:text-white font-semibold mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.services')}</h3>
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li>
+                    <Link to="/kupujem" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.buying')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/prodajem" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.selling')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/rentiranje" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.renting')}
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                      {t('footer.legal')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Minimal Stats Section */}
+            <div className="mt-8 pt-8 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div className="group cursor-default transition-all">
+                  <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">2021</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('stats.yearFounded')}</div>
+                </div>
+                <div className="group cursor-default transition-all">
+                  <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">150+</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('stats.completedDeals')}</div>
+                </div>
+                <div className="group cursor-default transition-all">
+                  <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">100%</div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('stats.legalSupport')}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Copyright */}
+            <div className="mt-8 pt-8 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30 text-center text-sm text-gray-700 dark:text-gray-300">
+              <p className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">&copy; 2026 Nekretnine Stepenik. {t('footer.rights')}</p>
             </div>
           </div>
         </section>
