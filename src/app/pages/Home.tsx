@@ -58,14 +58,71 @@ export function Home() {
       }
     };
 
+    // Touch handling for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (isScrollLocked || !scrollContainerRef.current) return;
+
+      touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      // Minimum swipe distance (50px)
+      if (Math.abs(deltaY) < 50) return;
+
+      e.preventDefault();
+
+      const sections = scrollContainerRef.current.querySelectorAll('.snap-section');
+      
+      // Determine current section
+      let currentIndex = 0;
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const containerRect = scrollContainerRef.current!.getBoundingClientRect();
+        if (rect.top <= containerRect.top + 50) {
+          currentIndex = index;
+        }
+      });
+
+      // Scroll direction (swipe down = negative deltaY = go up)
+      const direction = deltaY > 0 ? 1 : -1;
+      const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+
+      if (targetIndex !== currentIndex) {
+        // Lock scroll
+        setIsScrollLocked(true);
+
+        // Smooth scroll to target section
+        const targetSection = sections[targetIndex] as HTMLElement;
+        scrollContainerRef.current.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
+        });
+
+        // Unlock after 1 second
+        setTimeout(() => {
+          setIsScrollLocked(false);
+        }, 1000);
+      }
+    };
+
     const container = scrollContainerRef.current;
     if (container) {
       container.addEventListener('wheel', handleWheel, { passive: false });
+      container.addEventListener('touchstart', handleTouchStart, { passive: true });
+      container.addEventListener('touchend', handleTouchEnd, { passive: false });
     }
 
     return () => {
       if (container) {
         container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchend', handleTouchEnd);
       }
     };
   }, [isScrollLocked]);
