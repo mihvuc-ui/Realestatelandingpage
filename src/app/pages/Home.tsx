@@ -44,17 +44,38 @@ export function Home() {
         // Lock scroll
         setIsScrollLocked(true);
 
-        // Smooth scroll to target section
+        // Smooth scroll to target section with optimized animation
         const targetSection = sections[targetIndex] as HTMLElement;
-        scrollContainerRef.current.scrollTo({
-          top: targetSection.offsetTop,
-          behavior: 'smooth'
-        });
+        const startPosition = scrollContainerRef.current.scrollTop;
+        const targetPosition = targetSection.offsetTop;
+        const distance = targetPosition - startPosition;
+        const duration = 1200; // 1.2 seconds - fast but smooth
+        let startTime: number | null = null;
 
-        // Unlock after 1 second
+        // Ease-out-quart: Fast start, smooth slow ending
+        const easeOutQuart = (t: number): number => {
+          return 1 - Math.pow(1 - t, 4);
+        };
+
+        const animation = (currentTime: number) => {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          const ease = easeOutQuart(progress);
+          
+          scrollContainerRef.current!.scrollTop = startPosition + distance * ease;
+
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          }
+        };
+
+        requestAnimationFrame(animation);
+
+        // Unlock after animation completes
         setTimeout(() => {
           setIsScrollLocked(false);
-        }, 1000);
+        }, 1200);
       }
     };
 
@@ -156,8 +177,8 @@ export function Home() {
               alt="Belgrade Panorama"
               className="w-full h-full object-cover opacity-80"
             />
-            {/* White fade overlay */}
-            <div className="absolute inset-0 bg-white/40"></div>
+            {/* White fade overlay for light mode / Dark gray for dark mode */}
+            <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/90"></div>
           </div>
           
           {/* Gradient blend to next section */}
@@ -167,7 +188,7 @@ export function Home() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="text-center mb-8 -mt-12">
               <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{t('featured.title')}</h2>
-              <p className="text-gray-100 dark:text-gray-100 max-w-2xl mx-auto text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              <p className="text-gray-100 dark:text-white max-w-2xl mx-auto text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 {t('featured.subtitle')}
               </p>
             </div>
@@ -187,8 +208,8 @@ export function Home() {
               alt="Belgrade Panorama"
               className="w-full h-full object-cover opacity-80"
             />
-            {/* White fade overlay */}
-            <div className="absolute inset-0 bg-white/40"></div>
+            {/* White fade overlay for light mode / Dark gray for dark mode */}
+            <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/90"></div>
           </div>
           
           {/* Content - TOP LAYER */}
@@ -196,7 +217,7 @@ export function Home() {
             <h2 className="text-3xl sm:text-4xl font-black text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
               {t('cta.title')}
             </h2>
-            <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <p className="text-gray-100 dark:text-white text-lg mb-8 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               {t('cta.subtitle')}
             </p>
             <div className="flex flex-col items-center justify-center gap-4">
@@ -204,14 +225,14 @@ export function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
                 <Link
                   to="/kupujem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105 border-2 border-pink-700"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   <span>{t('cta.buying')}</span>
                 </Link>
                 <Link
                   to="/prodajem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] border-2 border-pink-700 hover:scale-105"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 border-2 border-pink-700 hover:scale-105"
                 >
                   <TrendingUp className="h-5 w-5" />
                   <span>{t('cta.selling')}</span>
@@ -220,7 +241,7 @@ export function Home() {
               {/* Kontaktirajte nas - Drugi red, centrirano */}
               <button
                 onClick={() => setIsContactModalOpen(true)}
-                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700 whitespace-nowrap"
+                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-black transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105 border-2 border-pink-700 whitespace-nowrap"
               >
                 <Phone className="h-5 w-5" />
                 <span>{t('cta.contact')}</span>

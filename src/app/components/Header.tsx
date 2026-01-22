@@ -92,60 +92,60 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link
               to="/"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/browse"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/browse') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.browse')}
             </Link>
             <Link
               to="/rentiranje"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/rentiranje') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.renting')}
             </Link>
             <Link
               to="/kupujem"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/kupujem') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.buying')}
             </Link>
             <Link
               to="/prodajem"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/prodajem') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.selling')}
             </Link>
             <Link
               to="/about"
-              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap shadow-lg hover:shadow-2xl hover:scale-105 ${ 
                 isActive('/about') 
-                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
-                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-pink-500/40' 
+                  : 'bg-pink-500/30 border-pink-700 text-white shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-pink-500/40'
               }`}
             >
               {t('nav.about')}
@@ -157,7 +157,7 @@ export function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="px-4 py-2 text-sm font-bold transition-all border-2 bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105"
+              className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 bg-pink-500/30 border-pink-700 text-white shadow-lg shadow-pink-500/20 hover:bg-pink-500/60 hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -165,7 +165,7 @@ export function Header() {
             
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md hover:from-pink-500 hover:to-purple-500 hover:shadow-lg hover:scale-105"
+              className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40 hover:bg-pink-500/80 hover:shadow-2xl hover:shadow-pink-500/50 hover:scale-105"
             >
               {t('nav.contact')}
             </button>
