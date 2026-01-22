@@ -27,9 +27,13 @@ export function Header() {
       // Check if we're on mobile (screen width < 768px)
       const isMobile = window.innerWidth < 768;
       
-      // On homepage with mobile, hide header when scrolled past first section (viewport height)
-      if (isHomePage && isMobile && window.scrollY > window.innerHeight) {
-        setIsHeaderVisible(false);
+      // On homepage with mobile, hide header on any scroll, show only at very top
+      if (isHomePage && isMobile) {
+        if (window.scrollY === 0) {
+          setIsHeaderVisible(true);
+        } else {
+          setIsHeaderVisible(false);
+        }
       } else if (isHomePage && !isMobile && window.scrollY > 100) {
         // Desktop: hide header when scrolled down
         setIsHeaderVisible(false);
@@ -52,10 +56,10 @@ export function Header() {
       }
     };
 
-    // Handle touch on mobile - show header on touch at top
+    // Handle touch on mobile - show header only when at very top
     const handleTouchStart = (e: TouchEvent) => {
       const isMobile = window.innerWidth < 768;
-      if (isHomePage && isMobile && e.touches[0].clientY < 100) {
+      if (isHomePage && isMobile && window.scrollY === 0 && e.touches[0].clientY < 100) {
         setIsHeaderVisible(true);
       }
     };
@@ -72,8 +76,8 @@ export function Header() {
   }, [isHomePage]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-fuchsia-500 dark:border-fuchsia-600 transition-all duration-500 ${
-      scrolled ? 'shadow-lg shadow-fuchsia-500/20 dark:shadow-fuchsia-600/30' : ''
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-gray-700 dark:border-gray-600 transition-all duration-500 ${
+      scrolled ? 'shadow-lg shadow-gray-700/20 dark:shadow-gray-600/30' : ''
     } ${
       isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
     }`}>
