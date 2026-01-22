@@ -76,7 +76,7 @@ export function Header() {
   }, [isHomePage]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-black/95 border-b-2 border-gray-700 dark:border-gray-600 transition-all duration-500 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-slate-950/95 border-b-2 border-gray-700 dark:border-gray-600 transition-all duration-500 ${ 
       scrolled ? 'shadow-lg shadow-gray-700/20 dark:shadow-gray-600/30' : ''
     } ${
       isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
