@@ -24,13 +24,13 @@ export function About() {
               Nekretnine Stepenik je agencija za nekretnine osnovana 2021. godine sa jasnom misijom: pružiti kompletnu, transparentnu i profesionalnu podršku svim klijentima koji žele da kupe, prodaju ili iznajme nekretninu.
             </p>
             <p>
-              Ono što nas izdvaja je naš holistički pristup. Ne samo da pomažemo u pronalaženju savršene nekretnine, već vas <strong>pratimo od početka do kraja procesa</strong> - od prvog razgledanja, preko pregovaranja, pa sve do potpisivanja ugovora i predaje ključeva.
+              Ono što nas izdvaja je naš autentičan i strastven pristup svakom poslu. Ne samo da pomažemo u pronalaženju savršene nekretnine, već vas <strong>pratimo od početka do kraja procesa</strong> - od prvog razgledanja, preko pregovaranja, pa sve do potpisivanja ugovora i predaje ključeva.
             </p>
             <p>
               Naš <strong>advokatski tim</strong> brine se o svim pravnim aspektima transakcije, što znači da možete biti potpuno sigurni da su vaša prava zaštićena i da nema skrivenih rizika. Pravna podrška je uključena u naše usluge - to nije dodatna stavka, već neodvojivi deo našeg pristupa.
             </p>
             <p>
-              Za nepune pet godina rada, uspešno smo završili <strong>preko 150 poslova</strong> u prodaji i izdavanju nekretnina. Svaki zadovoljan klijent je za nas potvrda da radimo pravu stvar.
+              Za nepunih pet godina rada, uspešno smo završili <strong>preko 150 poslova</strong> u prodaji i izdavanju nekretnina. Svaki zadovoljan klijent je za nas potvrda da radimo pravu stvar.
             </p>
           </div>
         </div>

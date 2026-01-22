@@ -1,4 +1,5 @@
 import { X, User, Phone } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -6,24 +7,54 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Track initial scroll position when modal opens
+    const initialScrollY = window.scrollY;
+    setScrollY(initialScrollY);
+
+    // Handle scroll to close modal
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = Math.abs(currentScrollY - initialScrollY);
+      
+      // Close modal if user scrolls more than 150px
+      if (scrollDifference > 150) {
+        onClose();
+      }
+    };
+
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-300"
       onClick={onClose}
     >
       <div 
-        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-fuchsia-200 dark:border-slate-800 transition-colors"
+        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-fuchsia-200 dark:border-slate-800 transition-colors animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button - X */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-fuchsia-500 hover:text-fuchsia-600 dark:text-fuchsia-400 dark:hover:text-fuchsia-500 transition-colors z-10 p-2 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-900/30 rounded-full"
+          className="absolute top-4 right-4 text-gray-400 hover:text-fuchsia-600 dark:text-gray-500 dark:hover:text-fuchsia-400 transition-all z-10 p-2 hover:bg-fuchsia-100 dark:hover:bg-fuchsia-900/30 rounded-full hover:rotate-90 duration-300"
           aria-label="Close modal"
         >
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6 stroke-[2.5]" />
         </button>
 
         {/* Icon */}
