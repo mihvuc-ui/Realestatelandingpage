@@ -75,25 +75,6 @@ export function About() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="bg-gradient-to-r from-fuchsia-600 via-pink-600 to-purple-600 rounded-xl p-8 text-center mb-12 shadow-lg">
-          <h2 className="text-2xl font-bold text-white mb-8">Naši Rezultati</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">2021</div>
-              <div className="text-fuchsia-100">Godina Osnivanja</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">150+</div>
-              <div className="text-fuchsia-100">Završenih Poslova</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">100%</div>
-              <div className="text-fuchsia-100">Pravna Podrška</div>
-            </div>
-          </div>
-        </div>
-
         {/* What We Do */}
         <div className="bg-white dark:bg-slate-900 rounded-xl p-8 border border-fuchsia-200 dark:border-slate-800 mb-12 shadow-md transition-colors">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Šta Radimo</h2>

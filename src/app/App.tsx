@@ -8,6 +8,7 @@ import { ListingDetail } from '@/app/pages/ListingDetail';
 import { About } from '@/app/pages/About';
 import { Kupujem } from '@/app/pages/Kupujem';
 import { Prodajem } from '@/app/pages/Prodajem';
+import { Rentiranje } from '@/app/pages/Rentiranje';
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { ImageReorder } from '@/app/components/ImageReorder';
@@ -45,6 +46,7 @@ function AppContent() {
         <Routes location={displayLocation}>
           <Route path="/" element={<Home />} />
           <Route path="/browse" element={<BrowseListings />} />
+          <Route path="/rentiranje" element={<Rentiranje />} />
           <Route path="/listing/:id" element={<ListingDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/kupujem" element={<Kupujem />} />

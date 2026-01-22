@@ -84,6 +84,24 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Minimal Stats Section */}
+        <div className="mt-12 pt-8 border-t border-fuchsia-200 dark:border-slate-800">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="group cursor-default transition-all">
+              <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">2021</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors">{t('stats.yearFounded')}</div>
+            </div>
+            <div className="group cursor-default transition-all">
+              <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">150+</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors">{t('stats.completedDeals')}</div>
+            </div>
+            <div className="group cursor-default transition-all">
+              <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">100%</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors">{t('stats.legalSupport')}</div>
+            </div>
+          </div>
+        </div>
+
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-fuchsia-200 dark:border-slate-800 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>&copy; 2026 Nekretnine Stepenik. {t('footer.rights')}</p>

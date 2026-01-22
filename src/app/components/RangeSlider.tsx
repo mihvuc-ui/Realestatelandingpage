@@ -26,7 +26,7 @@ export function RangeSlider({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-900 dark:text-fuchsia-300 mb-3 whitespace-nowrap">
+      <label className="block text-xs font-normal text-gray-900 dark:text-fuchsia-300 mb-3 whitespace-nowrap">
         {label}: {formatValue(value)}
       </label>
       

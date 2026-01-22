@@ -10,19 +10,19 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
     sm: {
       icon: 'w-8 h-8',
       text: 'text-xl',
-      tagline: 'text-xs',
+      tagline: 'text-[9px]',
       container: 'space-x-2'
     },
     md: {
       icon: 'w-10 h-10',
       text: 'text-2xl',
-      tagline: 'text-sm',
+      tagline: 'text-[10px]',
       container: 'space-x-3'
     },
     lg: {
       icon: 'w-12 h-12',
       text: 'text-3xl',
-      tagline: 'text-base',
+      tagline: 'text-xs',
       container: 'space-x-3'
     }
   };
@@ -168,8 +168,8 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
             Nekretnine Stepenik
           </span>
           {showTagline && (
-            <span className={`${currentSize.tagline} text-gray-600 dark:text-gray-400 -mt-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Vaš pouzdani partner
+            <span className={`${currentSize.tagline} font-extralight text-gray-600 dark:text-gray-400 -mt-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Pravi stepenik između ponude i promišljene odluke
             </span>
           )}
         </div>

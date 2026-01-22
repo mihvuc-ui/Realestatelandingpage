@@ -80,56 +80,68 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Logo size="md" />
+          <div className="mr-8">
+            <Logo size="md" />
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link
               to="/"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
                 isActive('/') 
-                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
-                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
               }`}
             >
               {t('nav.home')}
             </Link>
             <Link
               to="/browse"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
                 isActive('/browse') 
-                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
-                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
               }`}
             >
               {t('nav.browse')}
             </Link>
             <Link
-              to="/kupujem"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
-                isActive('/kupujem') 
-                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
-                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
+              to="/rentiranje"
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+                isActive('/rentiranje') 
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
               }`}
             >
-              Kupujem
+              {t('nav.renting')}
+            </Link>
+            <Link
+              to="/kupujem"
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
+                isActive('/kupujem') 
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
+              }`}
+            >
+              {t('nav.buying')}
             </Link>
             <Link
               to="/prodajem"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
                 isActive('/prodajem') 
-                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
-                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
               }`}
             >
-              Prodajem
+              {t('nav.selling')}
             </Link>
             <Link
               to="/about"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 ${
+              className={`px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap ${
                 isActive('/about') 
-                  ? 'bg-pink-500/70 border-pink-700 text-white shadow-[0_0_50px_rgba(236,72,153,0.9)]' 
-                  : 'bg-pink-500/50 border-pink-700 text-white hover:bg-pink-500/70 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105'
+                  ? 'bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md' 
+                  : 'bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105'
               }`}
             >
               {t('nav.about')}
@@ -141,7 +153,7 @@ export function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-pink-500/30 border-2 border-pink-700 text-white hover:bg-pink-500/60 transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+              className="px-4 py-2 text-sm font-bold transition-all border-2 bg-pink-100 border-pink-200 text-gray-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-300 hover:border-pink-300 shadow-sm hover:shadow-md hover:scale-105"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -149,7 +161,7 @@ export function Header() {
             
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
+              className="px-4 py-2 text-sm font-bold transition-all border-2 whitespace-nowrap bg-gradient-to-r from-pink-400 to-purple-400 border-pink-300 text-gray-800 shadow-md hover:from-pink-500 hover:to-purple-500 hover:shadow-lg hover:scale-105"
             >
               {t('nav.contact')}
             </button>
@@ -187,13 +199,22 @@ export function Header() {
                 {t('nav.browse')}
               </Link>
               <Link
+                to="/rentiranje"
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-sm font-semibold py-2 transition-colors ${
+                  isActive('/rentiranje') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
+                }`}
+              >
+                {t('nav.renting')}
+              </Link>
+              <Link
                 to="/kupujem"
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-semibold py-2 transition-colors ${
                   isActive('/kupujem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
                 }`}
               >
-                Kupujem
+                {t('nav.buying')}
               </Link>
               <Link
                 to="/prodajem"
@@ -202,7 +223,7 @@ export function Header() {
                   isActive('/prodajem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
                 }`}
               >
-                Prodajem
+                {t('nav.selling')}
               </Link>
               <Link
                 to="/about"

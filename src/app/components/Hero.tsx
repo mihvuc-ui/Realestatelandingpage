@@ -6,6 +6,7 @@ import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 
 export function Hero() {
   const { t, language } = useLanguage();
+  const [isHovering, setIsHovering] = useState(false);
 
   // Haptic feedback function for mobile
   const handleTouchFeedback = (e: React.TouchEvent) => {
@@ -83,11 +84,31 @@ export function Hero() {
             {language === 'sr' && (
               <>
                 Pravi <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
-                  onTouchStart={handleTouchFeedback}
+                  className="inline-flex relative cursor-default select-none"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                  onTouchStart={(e) => {
+                    handleTouchFeedback(e);
+                    setIsHovering(true);
+                  }}
+                  onTouchEnd={() => setIsHovering(false)}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-                >stepenik</span> između ponude{' '}
+                >
+                  {'stepenik'.split('').map((letter, index) => (
+                    <span
+                      key={index}
+                      className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400"
+                      style={{
+                        transform: isHovering ? `translateY(${index * -4}px)` : 'translateY(0)',
+                        transitionDelay: isHovering ? `${index * 50}ms` : '0ms',
+                        textShadow: isHovering ? '0 0 20px rgba(236, 72, 153, 0.8)' : 'none',
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  ))}
+                </span> između ponude{' '}
                 {t('hero.headlineAccent')}
               </>
             )}
@@ -150,43 +171,6 @@ export function Hero() {
                 <span>{t('hero.selling')}</span>
               </div>
             </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto pt-8 border-t-2 border-pink-700 shadow-[0_-2px_20px_rgba(236,72,153,0.3)]">
-            <div 
-              className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
-              onTouchStart={handleTouchFeedback}
-              onContextMenu={preventContextMenu}
-              style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-            >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
-                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out' }}>2021</div>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.founded')}</div>
-            </div>
-            <div 
-              className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
-              onTouchStart={handleTouchFeedback}
-              onContextMenu={preventContextMenu}
-              style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-            >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
-                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.3s' }}>150+</div>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.completedDeals')}</div>
-            </div>
-            <div 
-              className="transition-all duration-500 ease-out hover:scale-105 active:scale-110 cursor-default touch-manipulation select-none"
-              onTouchStart={handleTouchFeedback}
-              onContextMenu={preventContextMenu}
-              style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-            >
-              <div className="inline-flex items-center justify-center bg-pink-500/30 border-2 border-pink-700 rounded-xl px-3 sm:px-6 py-3 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] transition-all duration-500 w-full">
-                <div className="text-2xl sm:text-4xl font-extralight text-white" style={{ transition: 'all 0.5s ease-out', animationDelay: '0.6s' }}>500+</div>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-200 dark:text-gray-300 font-light mt-3">{t('hero.legalSupport')}</div>
-            </div>
           </div>
         </div>
       </div>
