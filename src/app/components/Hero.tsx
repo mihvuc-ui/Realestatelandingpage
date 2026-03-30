@@ -37,26 +37,6 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
-          <div 
-            className="inline-flex items-center space-x-2 bg-pink-500/30 border-2 border-pink-700 rounded-full px-4 py-2 mb-8 shadow-[0_0_10px_rgba(236,72,153,0.2)] backdrop-blur-sm transition-all duration-500 ease-out hover:bg-pink-500/60 hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 active:bg-pink-500/70 active:shadow-[0_0_60px_rgba(236,72,153,1)] active:scale-110 cursor-default touch-manipulation select-none"
-            onTouchStart={handleTouchFeedback}
-            onContextMenu={preventContextMenu}
-            onTouchEnd={(e) => e.preventDefault()}
-            onTouchMove={(e) => e.preventDefault()}
-            style={{ 
-              WebkitTouchCallout: 'none', 
-              WebkitUserSelect: 'none',
-              touchAction: 'none',
-              userSelect: 'none',
-              MozUserSelect: 'none',
-              msUserSelect: 'none'
-            }}
-          >
-            <Building className="h-4 w-4 text-pink-600 transition-colors duration-500 group-hover:text-pink-700" />
-            <span className="text-gray-700 text-sm font-extralight transition-colors duration-500 hover:text-gray-800">{t('hero.badge')}</span>
-          </div>
-
           {/* Headline */}
           <h1 
             className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none" 

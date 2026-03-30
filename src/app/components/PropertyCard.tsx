@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Bed, Bath, Square, MapPin } from 'lucide-react';
+import { Bed, Bath, Square, MapPin, ArrowRight } from 'lucide-react';
 import type { Apartment } from '@/data/apartments';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 
@@ -37,6 +37,14 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
         }`}>
           {apartment.type === 'sale' ? t('card.forSale') : t('card.forRent')}
         </span>
+
+        {/* View Details Button - Only visible on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+          <div className="inline-flex items-center space-x-2 bg-pink-500/90 hover:bg-pink-500 text-white px-6 py-3 rounded-lg font-black shadow-lg shadow-pink-500/50 border-2 border-pink-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <span>{t('card.viewDetails')}</span>
+            <ArrowRight className="h-5 w-5" />
+          </div>
+        </div>
       </div>
 
       {/* Content - Compact at bottom */}
@@ -68,11 +76,11 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
           </div>
         </div>
 
-        {/* Price */}
-        <div className="inline-block px-4 py-2 rounded-lg bg-pink-500/30 border-2 border-pink-700 shadow-[0_0_10px_rgba(236,72,153,0.3)] mt-auto">
-          <span className="text-xl font-black text-pink-500 dark:text-pink-500">
+        {/* Price - Minimal style, enhanced on hover */}
+        <div className="inline-block px-3 py-1.5 rounded-lg bg-transparent group-hover:bg-pink-500/30 border border-gray-300 dark:border-pink-700/50 group-hover:border-pink-700 group-hover:shadow-[0_0_10px_rgba(236,72,153,0.3)] transition-all duration-300 mt-auto">
+          <span className="text-lg font-bold text-gray-700 dark:text-gray-300 group-hover:text-pink-500 dark:group-hover:text-pink-500 group-hover:font-black transition-all">
             €{apartment.price.toLocaleString()}
-            {apartment.type === 'rent' && <span className="text-sm">/{t('card.month')}</span>}
+            {apartment.type === 'rent' && <span className="text-xs">/{t('card.month')}</span>}
           </span>
         </div>
       </div>

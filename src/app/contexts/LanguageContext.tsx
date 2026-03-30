@@ -211,6 +211,7 @@ const translations: Record<Language, any> = {
       forSale: 'Prodaja',
       forRent: 'Iznajmljivanje',
       month: 'mesečno',
+      viewDetails: 'Pogledaj Detalje',
     },
     stats: {
       title: 'Naši Rezultati',
@@ -479,6 +480,7 @@ const translations: Record<Language, any> = {
       forSale: 'For Sale',
       forRent: 'For Rent',
       month: 'per month',
+      viewDetails: 'View Details',
     },
     stats: {
       title: 'Our Results',
@@ -747,6 +749,7 @@ const translations: Record<Language, any> = {
       forSale: 'Продажа',
       forRent: 'Аренда',
       month: 'в месяц',
+      viewDetails: 'Подробнее',
     },
     stats: {
       title: 'Наши Результаты',
@@ -1015,6 +1018,7 @@ const translations: Record<Language, any> = {
       forSale: 'Satılık',
       forRent: 'Kiralık',
       month: 'aylık',
+      viewDetails: 'Detayları Görüntüle',
     },
     stats: {
       title: 'Sonuçlarımız',

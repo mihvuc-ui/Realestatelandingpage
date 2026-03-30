@@ -1,10 +1,10 @@
 import { Hero } from '@/app/components/Hero';
 import { FeaturedListings } from '@/app/components/FeaturedListings';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { ShoppingCart, TrendingUp, Phone, MapPin, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { ShoppingCart, TrendingUp, Phone, MapPin, Mail } from 'lucide-react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { SEO } from '@/app/components/SEO';
 import { Logo } from '@/app/components/Logo';
@@ -12,161 +12,26 @@ import { Logo } from '@/app/components/Logo';
 export function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // Smooth scroll snap with lock mechanism
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (isScrollLocked || !scrollContainerRef.current) return;
-
-      e.preventDefault();
-      
-      const sections = scrollContainerRef.current.querySelectorAll('.snap-section');
-      const scrollTop = scrollContainerRef.current.scrollTop;
-      const containerHeight = scrollContainerRef.current.clientHeight;
-      
-      // Determine current section
-      let currentIndex = 0;
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const containerRect = scrollContainerRef.current!.getBoundingClientRect();
-        if (rect.top <= containerRect.top + 50) {
-          currentIndex = index;
-        }
-      });
-
-      // Scroll direction
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
-
-      if (targetIndex !== currentIndex) {
-        // Lock scroll
-        setIsScrollLocked(true);
-
-        // Smooth scroll to target section with optimized animation
-        const targetSection = sections[targetIndex] as HTMLElement;
-        const startPosition = scrollContainerRef.current.scrollTop;
-        const targetPosition = targetSection.offsetTop;
-        const distance = targetPosition - startPosition;
-        const duration = 1200; // 1.2 seconds - fast but smooth
-        let startTime: number | null = null;
-
-        // Ease-out-quart: Fast start, smooth slow ending
-        const easeOutQuart = (t: number): number => {
-          return 1 - Math.pow(1 - t, 4);
-        };
-
-        const animation = (currentTime: number) => {
-          if (startTime === null) startTime = currentTime;
-          const timeElapsed = currentTime - startTime;
-          const progress = Math.min(timeElapsed / duration, 1);
-          const ease = easeOutQuart(progress);
-          
-          scrollContainerRef.current!.scrollTop = startPosition + distance * ease;
-
-          if (progress < 1) {
-            requestAnimationFrame(animation);
-          }
-        };
-
-        requestAnimationFrame(animation);
-
-        // Unlock after animation completes
-        setTimeout(() => {
-          setIsScrollLocked(false);
-        }, 1200);
-      }
-    };
-
-    // Touch handling for mobile
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (isScrollLocked || !scrollContainerRef.current) return;
-
-      touchEndY = e.changedTouches[0].clientY;
-      const deltaY = touchStartY - touchEndY;
-
-      // Minimum swipe distance (50px)
-      if (Math.abs(deltaY) < 50) return;
-
-      e.preventDefault();
-
-      const sections = scrollContainerRef.current.querySelectorAll('.snap-section');
-      
-      // Determine current section
-      let currentIndex = 0;
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const containerRect = scrollContainerRef.current!.getBoundingClientRect();
-        if (rect.top <= containerRect.top + 50) {
-          currentIndex = index;
-        }
-      });
-
-      // Scroll direction (swipe down = negative deltaY = go up)
-      const direction = deltaY > 0 ? 1 : -1;
-      const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
-
-      if (targetIndex !== currentIndex) {
-        // Lock scroll
-        setIsScrollLocked(true);
-
-        // Smooth scroll to target section
-        const targetSection = sections[targetIndex] as HTMLElement;
-        scrollContainerRef.current.scrollTo({
-          top: targetSection.offsetTop,
-          behavior: 'smooth'
-        });
-
-        // Unlock after 1 second
-        setTimeout(() => {
-          setIsScrollLocked(false);
-        }, 1000);
-      }
-    };
-
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.addEventListener('wheel', handleWheel, { passive: false });
-      container.addEventListener('touchstart', handleTouchStart, { passive: true });
-      container.addEventListener('touchend', handleTouchEnd, { passive: false });
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener('wheel', handleWheel);
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchend', handleTouchEnd);
-      }
-    };
-  }, [isScrollLocked]);
 
   return (
     <>
       <SEO
         title="Nekretnine u Beogradu – Prodaja i Izdavanje Stanova"
         description="Agencija za nekretnine Stepenik Beograd. Prodaja stanova, iznajmljivanje stanova, kuće na prodaju. Preko 150 uspešno završenih poslova. Profesionalna pravna podrška."
-        keywords="nekretnine Beograd, prodaja stanova Beograd, izdavanje stanova Beograd, stan na prodaju, stan za izdavanje, agencija za nekretnine Beograd, kuće na prodaju Srbija, nekretnine Srbija"
+        keywords="nekretnine Beograd, prodaja stanov Beograd, izdavanje stanov Beograd, stan na prodaju, stan za izdavanje, agencija za nekretnine Beograd, kuće na prodaju Srbija, nekretnine Srbija"
         canonical="/"
       />
       
-      <div ref={scrollContainerRef} className="snap-y snap-mandatory overflow-y-scroll h-screen hide-scrollbar">
+      <div className="overflow-y-auto h-screen hide-scrollbar scroll-smooth">
         {/* Hero Section */}
-        <section className="h-screen flex flex-col relative snap-section">
+        <section className="h-screen flex flex-col relative">
           <Hero />
           {/* Gradient blend to next section */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/30 to-black/60 z-[5] pointer-events-none"></div>
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-6 relative overflow-hidden flex items-center snap-section">
+        <section className="h-screen py-6 relative overflow-hidden flex items-center">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
@@ -197,7 +62,7 @@ export function Home() {
         </section>
 
         {/* CTA Section with Belgrade Panorama */}
-        <section className="h-screen py-20 relative overflow-hidden flex items-center snap-section">
+        <section className="h-screen py-20 relative overflow-hidden flex items-center">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
           
