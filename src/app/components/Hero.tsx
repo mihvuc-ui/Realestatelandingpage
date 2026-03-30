@@ -25,7 +25,7 @@ export function Hero() {
   return (
     <div className="relative bg-white dark:bg-gray-50 overflow-hidden transition-colors h-full flex items-center">
       {/* Belgrade Panorama Background Image - Day - Clean */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0">
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
           alt="Belgrade Panorama"
