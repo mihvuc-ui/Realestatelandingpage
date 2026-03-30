@@ -35,25 +35,26 @@ export function Hero() {
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32">
+        <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
           <h1 
-            className="text-4xl sm:text-5xl lg:text-6xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none" 
-            style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', fontWeight: 350 }}
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words" 
+            style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', fontWeight: 370 }}
             onContextMenu={preventContextMenu}
           >
             {language === 'sr' && (
               <>
                 Pravi <span 
-                  className="inline-flex relative cursor-default select-none"
+                  className="inline-flex relative cursor-default select-none touch-manipulation"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                   onTouchStart={(e) => {
+                    e.preventDefault();
                     handleTouchFeedback(e);
                     setIsHovering(true);
+                    setTimeout(() => setIsHovering(false), 2000);
                   }}
-                  onTouchEnd={() => setIsHovering(false)}
                   onContextMenu={preventContextMenu}
                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
                 >

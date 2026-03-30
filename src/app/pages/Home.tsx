@@ -31,7 +31,7 @@ export function Home() {
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-12 md:py-16 relative overflow-hidden flex items-center snap-start snap-always">
+        <section className="h-screen py-16 md:py-20 relative overflow-hidden flex items-center snap-start snap-always">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
@@ -50,10 +50,10 @@ export function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-fuchsia-950/20 to-fuchsia-950/40 z-[5] pointer-events-none"></div>
           
           {/* Content - TOP LAYER */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-            <div className="text-center mb-6 md:mb-8 px-4">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{t('featured.title')}</h2>
-              <p className="text-gray-100 dark:text-white max-w-2xl mx-auto text-sm sm:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          <div className="relative z-10 max-w-6xl mx-auto px-8 sm:px-10 lg:px-16 w-full">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-4">{t('featured.title')}</h2>
+              <p className="text-gray-100 dark:text-white max-w-xl mx-auto text-sm sm:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-4">
                 {t('featured.subtitle')}</p>
             </div>
             <FeaturedListings />
@@ -89,14 +89,14 @@ export function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
                 <Link
                   to="/kupujem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105 hover:border-2 hover:border-pink-700"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.3)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   <span>{t('hero.buying')}</span>
                 </Link>
                 <Link
                   to="/prodajem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 hover:border-2 hover:border-pink-700 hover:scale-105"
+                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.3)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:border-2 hover:border-pink-700 hover:scale-105"
                 >
                   <TrendingUp className="h-5 w-5" />
                   <span>{t('hero.selling')}</span>
@@ -105,7 +105,7 @@ export function Home() {
               {/* Kontaktirajte nas - Drugi red, centrirano */}
               <button
                 onClick={() => setIsContactModalOpen(true)}
-                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg shadow-pink-500/20 hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105 hover:border-2 hover:border-pink-700 whitespace-nowrap"
+                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.3)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700 whitespace-nowrap"
               >
                 <Phone className="h-5 w-5" />
                 <span>{t('cta.contact')}</span>
