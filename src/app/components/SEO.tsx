@@ -26,6 +26,9 @@ export function SEO({
       {/* Viewport - Prevent zoom on rotation */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       
+      {/* Google Site Verification */}
+      <meta name="google-site-verification" content="google127f4562652b22dd" />
+      
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
