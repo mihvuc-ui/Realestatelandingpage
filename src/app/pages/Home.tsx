@@ -51,11 +51,10 @@ export function Home() {
           
           {/* Content - TOP LAYER */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="text-center mb-8 -mt-12">
-              <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{t('featured.title')}</h2>
-              <p className="text-gray-100 dark:text-white max-w-2xl mx-auto text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                {t('featured.subtitle')}
-              </p>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl sm:text-4xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-4">{t('featured.title')}</h2>
+              <p className="text-gray-100 dark:text-white max-w-2xl mx-auto text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-4">
+                {t('featured.subtitle')}</p>
             </div>
             <FeaturedListings />
           </div>
