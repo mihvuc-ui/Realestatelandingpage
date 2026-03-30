@@ -39,11 +39,10 @@ export function Hero() {
         <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
           <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words" 
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[450] sm:font-[370]" 
             style={{ 
               WebkitTouchCallout: 'none', 
-              WebkitUserSelect: 'none', 
-              fontWeight: 370,
+              WebkitUserSelect: 'none',
               textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
             }}
             onContextMenu={preventContextMenu}
@@ -61,7 +60,11 @@ export function Hero() {
                     setTimeout(() => setIsHovering(false), 2000);
                   }}
                   onContextMenu={preventContextMenu}
-                  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                  style={{ 
+                    WebkitTouchCallout: 'none', 
+                    WebkitUserSelect: 'none',
+                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                  }}
                 >
                   {'stepenik'.split('').map((letter, index) => (
                     <span
@@ -70,7 +73,9 @@ export function Hero() {
                       style={{
                         transform: isHovering ? `translateY(${index * -4}px)` : 'translateY(0)',
                         transitionDelay: isHovering ? `${index * 50}ms` : '0ms',
-                        textShadow: isHovering ? '0 0 20px rgba(236, 72, 153, 0.8)' : 'none',
+                        textShadow: isHovering 
+                          ? '0 0 20px rgba(236, 72, 153, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)' 
+                          : '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)',
                       }}
                     >
                       {letter}
@@ -86,7 +91,11 @@ export function Hero() {
                   className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
-                  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                  style={{ 
+                    WebkitTouchCallout: 'none', 
+                    WebkitUserSelect: 'none',
+                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                  }}
                 >step</span> between offer{' '}
                 {t('hero.headlineAccent')}
               </>
@@ -97,7 +106,11 @@ export function Hero() {
                   className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
-                  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                  style={{ 
+                    WebkitTouchCallout: 'none', 
+                    WebkitUserSelect: 'none',
+                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                  }}
                 >шаг</span> ежду{' '}
                 {t('hero.headlineAccent')}
               </>
@@ -108,7 +121,11 @@ export function Hero() {
                   className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
                   onTouchStart={handleTouchFeedback}
                   onContextMenu={preventContextMenu}
-                  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+                  style={{ 
+                    WebkitTouchCallout: 'none', 
+                    WebkitUserSelect: 'none',
+                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                  }}
                 >adım</span>
               </>
             )}
