@@ -148,7 +148,7 @@ export function About() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="tel:+38162671155"
-              className="inline-flex items-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 rounded-lg transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
+              className="inline-flex items-center space-x-2 bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 rounded-lg transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <Phone className="h-4 w-4" />
               <span>+381 62 671-155</span>

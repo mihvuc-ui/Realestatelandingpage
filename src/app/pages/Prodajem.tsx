@@ -92,12 +92,12 @@ ${formData.message}`;
   const isFormValid = formData.name && formData.phone && formData.location && formData.squareMeters;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 transition-colors relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-purple-100 dark:from-purple-200 dark:via-pink-100 dark:to-purple-200 py-16 transition-colors relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -109,7 +109,7 @@ ${formData.message}`;
           <h1 className="text-5xl font-bold bg-gradient-to-r from-fuchsia-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 drop-shadow-2xl">
             {t('selling.title')}
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-800 max-w-2xl mx-auto">
             {t('selling.subtitle')}
           </p>
         </div>
@@ -318,7 +318,7 @@ ${formData.message}`;
                 <button
                   onClick={sendEmail}
                   disabled={!isFormValid}
-                  className="relative group flex items-center justify-center space-x-3 bg-pink-500/30 hover:bg-pink-500/60 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 disabled:hover:scale-100 disabled:hover:shadow-none overflow-hidden border-2 border-pink-700 disabled:border-gray-600"
+                  className="relative group flex items-center justify-center space-x-3 bg-pink-500/30 hover:bg-pink-500/60 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 disabled:hover:scale-100 disabled:hover:shadow-none overflow-hidden hover:border-2 hover:border-pink-700 disabled:border-0"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <Mail className="h-5 w-5 relative z-10" />

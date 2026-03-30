@@ -109,7 +109,7 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-700 dark:text-gray-700 mb-10 max-w-2xl mx-auto font-light">
+          <p className="text-xl text-gray-800 dark:text-gray-800 mb-10 max-w-2xl mx-auto font-medium">
             {t('hero.subtitle')}
           </p>
 
@@ -117,7 +117,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               to="/kupujem"
-              className="w-full sm:w-56 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 border-2 border-pink-700"
+              className="w-full sm:w-56 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
                 <ShoppingCart className="h-5 w-5" />
@@ -126,7 +126,7 @@ export function Hero() {
             </Link>
             <Link
               to="/prodajem"
-              className="w-full sm:w-56 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all border-2 border-pink-700 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+              className="w-full sm:w-56 bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
                 <TrendingUp className="h-5 w-5" />
