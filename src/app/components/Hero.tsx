@@ -39,8 +39,13 @@ export function Hero() {
         <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
           <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
-            style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', fontWeight: 370 }}
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words" 
+            style={{ 
+              WebkitTouchCallout: 'none', 
+              WebkitUserSelect: 'none', 
+              fontWeight: 370,
+              textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+            }}
             onContextMenu={preventContextMenu}
           >
             {language === 'sr' && (
