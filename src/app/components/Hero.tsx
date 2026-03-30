@@ -109,7 +109,7 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-800 dark:text-gray-800 mb-10 max-w-2xl mx-auto font-medium">
+          <p className="text-xl text-gray-800 dark:text-gray-800 mb-10 max-w-2xl mx-auto font-normal">
             {t('hero.subtitle')}
           </p>
 
