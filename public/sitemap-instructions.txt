@@ -1,0 +1,98 @@
+═══════════════════════════════════════════════════════════
+  🗺️  GOOGLE SITEMAP - QUICK START GUIDE
+═══════════════════════════════════════════════════════════
+
+✅ SITEMAP JE VEĆ KREIRAN I SPREMAN!
+
+📍 URL: https://nekretnine-stepenik.rs/sitemap.xml
+
+
+🚀 SLEDEĆI KORACI (10 minuta):
+
+┌─────────────────────────────────────────────────────────┐
+│  KORAK 1: Google Search Console Verifikacija            │
+└─────────────────────────────────────────────────────────┘
+
+1. Idi na: https://search.google.com/search-console
+2. Klikni: "Add Property"
+3. Unesi: nekretnine-stepenik.rs
+4. Izaberi verifikaciju metodom: "HTML tag"
+5. Google će dati meta tag koji izgleda ovako:
+   <meta name="google-site-verification" content="ABC123XYZ" />
+6. Kopiraj samo "ABC123XYZ" deo
+7. Otvori /src/app/components/SEO.tsx
+8. Pronađi liniju 30 i zameni:
+   content="google127f4562652b22dd"  →  content="ABC123XYZ"
+9. Sačuvaj fajl i deploy sajt
+10. Klikni "Verify" u Google Search Console
+
+┌─────────────────────────────────────────────────────────┐
+│  KORAK 2: Submit Sitemap                                 │
+└─────────────────────────────────────────────────────────┘
+
+1. U Google Search Console, klikni "Sitemaps" (levi meni)
+2. Unesi: sitemap.xml
+3. Klikni "Submit"
+4. ✅ GOTOVO! Google će početi indexing za 1-7 dana
+
+
+📊 ŠTA SITEMAP SADRŽI:
+
+✓ 7 glavnih stranica (Home, Browse, Kupujem, Prodajem, etc.)
+✓ 1 nekretnina (sa svim slikama)
+✓ Hreflang tagovi za 4 jezika (sr, en, ru, tr)
+✓ Image sitemap (sve slike nekretnina)
+✓ Priority i changefreq optimizovani
+
+
+🔄 KADA AŽURIRATI SITEMAP:
+
+• Dodaješ novu nekretninu → Pokreni: node scripts/generate-sitemap.js
+• Obrišeš nekretninu → Pokreni: node scripts/generate-sitemap.js
+• Dodaješ novu stranicu → Ručno dodaj u /public/sitemap.xml
+• Mesečno održavanje → Pokreni script ponovo
+
+
+🌐 DODATNI SEARCH ENGINES (Opciono):
+
+Bing Webmaster Tools:
+  → https://www.bing.com/webmasters
+  → Submit: https://nekretnine-stepenik.rs/sitemap.xml
+
+Yandex Webmaster (za ruske korisnike):
+  → https://webmaster.yandex.com
+  → Submit: https://nekretnine-stepenik.rs/sitemap.xml
+
+
+📈 PROVERA STATUSA:
+
+1. U Google Search Console → "Coverage"
+2. Vidi koliko stranica je indeksirano
+3. Proveri da nema grešaka
+4. Normalno čekaj 7-30 dana za potpunu indeksaciju
+
+
+🆘 AKO NEŠTO NE RADI:
+
+1. Proveri da je sitemap.xml accessible:
+   Otvori u browser: https://nekretnine-stepenik.rs/sitemap.xml
+   
+2. Proveri robots.txt:
+   Otvori: https://nekretnine-stepenik.rs/robots.txt
+   Treba da sadrži: Sitemap: https://nekretnine-stepenik.rs/sitemap.xml
+
+3. Validiraj XML:
+   Idi na: https://www.xml-sitemaps.com/validate-xml-sitemap.html
+   Unesi: https://nekretnine-stepenik.rs/sitemap.xml
+
+
+💡 NAPOMENA:
+
+• Sitemap nije magija - treba mu vreme (7-30 dana)
+• Google će automatski crawl-ovati sajt svaki put kada se ažurira
+• Re-submituj sitemap svaki put kada dodaš nove nekretnine
+
+
+═══════════════════════════════════════════════════════════
+  📖 Za detaljne informacije vidi: /SITEMAP-GUIDE.md
+═══════════════════════════════════════════════════════════
