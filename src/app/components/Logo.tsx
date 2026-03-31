@@ -34,8 +34,8 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
       <div className={`flex items-center ${currentSize.container}`}>
         {/* Custom Icon - Istočne kapije isometric view */}
         <div className={`${currentSize.icon} relative flex-shrink-0 flex items-center justify-center`}>
-          {/* Solid Pink Background */}
-          <div className="absolute inset-0 bg-pink-500 rounded-lg rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg shadow-pink-500/30 dark:shadow-pink-600/30"></div>
+          {/* Solid Pink Background - Ravna bez rotacije */}
+          <div className="absolute inset-0 bg-pink-500 rounded-lg group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-pink-500/30 dark:shadow-pink-600/30"></div>
           
           {/* Default Icon SVG - Building with stepped profile (side view) */}
           <svg 

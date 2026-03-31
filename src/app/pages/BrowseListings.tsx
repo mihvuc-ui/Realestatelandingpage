@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
-import { RangeSlider } from '@/app/components/RangeSlider';
 import { Footer } from '@/app/components/Footer';
 import { SEO } from '@/app/components/SEO';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
@@ -14,7 +13,7 @@ export function BrowseListings() {
   const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
-  const [typeFilter, setTypeFilter] = useState('all');
+  const [strukturaFilter, setStrukturaFilter] = useState('all'); // Promenjen sa typeFilter u strukturaFilter
   const [priceFrom, setPriceFrom] = useState(0);
   const [priceTo, setPriceTo] = useState(600000);
   const [sqmFrom, setSqmFrom] = useState(0);
@@ -159,7 +158,7 @@ export function BrowseListings() {
   const resetFilters = () => {
     setSearchQuery('');
     setLocationFilter('all');
-    setTypeFilter('all');
+    setStrukturaFilter('all');
     setPriceFrom(0);
     setPriceTo(600000);
     setSqmFrom(0);
@@ -171,13 +170,13 @@ export function BrowseListings() {
   const hasActiveFilters = useMemo(() => {
     return searchQuery !== '' || 
            locationFilter !== 'all' || 
-           typeFilter !== 'all' || 
+           strukturaFilter !== 'all' || 
            priceFrom !== 0 || 
            priceTo !== 600000 || 
            sqmFrom !== 0 || 
            sqmTo !== 1000 ||
            paymentMethod !== 'all';
-  }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
+  }, [searchQuery, locationFilter, strukturaFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
 
   const filteredApartments = useMemo(() => {
     let filtered = apartments.filter(apt => {
@@ -193,7 +192,7 @@ export function BrowseListings() {
       }
 
       // Type filter
-      if (typeFilter !== 'all' && apt.type !== typeFilter) {
+      if (strukturaFilter !== 'all' && apt.type !== strukturaFilter) {
         return false;
       }
 
@@ -226,20 +225,14 @@ export function BrowseListings() {
     });
 
     return filtered;
-  }, [searchQuery, locationFilter, typeFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
+  }, [searchQuery, locationFilter, strukturaFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 py-12 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-950 py-24 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{t('browse.title')}</h1>
-          <p className="text-gray-600 dark:text-gray-400">{t('browse.subtitle')}</p>
-        </div>
-
         {/* Search and Filters Bar */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-4 sm:p-6 mb-8 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
-          <div className="flex flex-col lg:flex-row gap-3 sm:gap-4">
+        <div className="bg-white dark:bg-slate-900 rounded-xl p-3 sm:p-4 mb-8 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
+          <div className="flex flex-col lg:flex-row gap-2 sm:gap-3">
             {/* Search */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -278,17 +271,19 @@ export function BrowseListings() {
           </div>
 
           {/* Filters Panel - Kompaktnija verzija za telefon */}
-          <div className={`mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
-            <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-3 sm:p-6 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-6">
+          <div className={`mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
+            <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-3 sm:p-4 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
+              
+              {/* Prvi red: Lokacija i Struktura */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
                 
                 {/* Lokacija */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('filters.location')}</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">{t('filters.location')}</label>
                   <select
                     value={locationFilter}
                     onChange={(e) => setLocationFilter(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
                   >
                     <option value="all">{t('filters.allLocations')}</option>
                     {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
@@ -297,81 +292,87 @@ export function BrowseListings() {
                   </select>
                 </div>
 
-                {/* Tip */}
+                {/* Struktura */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('filters.type')}</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Struktura</label>
                   <select
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
+                    value={strukturaFilter}
+                    onChange={(e) => setStrukturaFilter(e.target.value)}
+                    className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
                   >
-                    <option value="all">{t('filters.allTypes')}</option>
-                    <option value="sale">{t('filters.sale')}</option>
-                    <option value="rent">{t('filters.rent')}</option>
+                    <option value="all">Sve strukture</option>
+                    <option value="1.0">1.0</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2.0">2.0</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3.0">3.0</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4.0">4.0</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5.0">5.0</option>
+                    <option value="5.5">5.5</option>
+                    <option value="6.0">6.0</option>
+                    <option value="6.5">6.5</option>
+                    <option value="7.0">7.0</option>
+                    <option value="7.5">7.5</option>
+                    <option value="8.0">8.0</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9.0">9.0</option>
                   </select>
-                </div>
-
-                {/* Cena - Slider */}
-                <div className="md:col-span-2 lg:col-span-1">
-                  <RangeSlider
-                    min={0}
-                    max={600000}
-                    step={10000}
-                    value={priceTo}
-                    onChange={setPriceTo}
-                    label={t('browse.maxPrice')}
-                    formatValue={(v) => `€${v.toLocaleString()}`}
-                  />
-                </div>
-
-                {/* m² - Slider */}
-                <div className="md:col-span-2 lg:col-span-1">
-                  <RangeSlider
-                    min={0}
-                    max={1000}
-                    step={5}
-                    value={sqmTo}
-                    onChange={setSqmTo}
-                    label={t('browse.maxArea')}
-                    formatValue={(v) => `${v} m²`}
-                  />
                 </div>
               </div>
 
-              {/* Način plaćanja - Cela nova sekcija */}
-              <div className="mt-6 pt-6 border-t border-fuchsia-200 dark:border-slate-700">
-                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-4">{t('browse.paymentMethod')}</label>
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    onClick={() => setPaymentMethod('all')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
-                      paymentMethod === 'all'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
-                    }`}
-                  >
-                    {t('browse.allPaymentMethods')}
-                  </button>
-                  <button
-                    onClick={() => setPaymentMethod('cash')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
-                      paymentMethod === 'cash'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
-                    }`}
-                  >
-                    💵 {t('browse.cash')}
-                  </button>
-                  <button
-                    onClick={() => setPaymentMethod('credit')}
-                    className={`px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_0_3px_rgba(0,0,0,0.8),0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_0_3px_rgba(0,0,0,0.9),0_0_50px_rgba(236,72,153,0.9)] ${
-                      paymentMethod === 'credit'
-                        ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white border-2 border-fuchsia-400'
-                        : 'bg-white dark:bg-slate-700/50 text-gray-700 dark:text-gray-300 hover:bg-fuchsia-50 dark:hover:bg-slate-700 border-2 border-fuchsia-300 dark:border-slate-600'
-                    }`}
-                  >
-                    💳 {t('browse.credit')}
-                  </button>
+              {/* Drugi red: Cena i Površina */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                
+                {/* Cena - Input polja Od/Do */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Cena (€)</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="number"
+                      placeholder="Od"
+                      min="0"
+                      step="1000"
+                      value={priceFrom || ''}
+                      onChange={(e) => setPriceFrom(Math.max(0, Number(e.target.value) || 0))}
+                      className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Do"
+                      min="0"
+                      step="1000"
+                      value={priceTo === 600000 ? '' : priceTo}
+                      onChange={(e) => setPriceTo(Math.max(0, Number(e.target.value) || 600000))}
+                      className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Površina - Input polja Od/Do */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Površina (m²)</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="number"
+                      placeholder="Od"
+                      min="0"
+                      step="5"
+                      value={sqmFrom || ''}
+                      onChange={(e) => setSqmFrom(Math.max(0, Number(e.target.value) || 0))}
+                      className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Do"
+                      min="0"
+                      step="5"
+                      value={sqmTo === 1000 ? '' : sqmTo}
+                      onChange={(e) => setSqmTo(Math.max(0, Number(e.target.value) || 1000))}
+                      className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -389,11 +390,6 @@ export function BrowseListings() {
               </button>
             </div>
           )}
-        </div>
-
-        {/* Results */}
-        <div className="mb-6 text-gray-400">
-          {t('browse.showing')} {filteredApartments.length} {t('browse.properties')}
         </div>
 
         {/* Listings Grid */}

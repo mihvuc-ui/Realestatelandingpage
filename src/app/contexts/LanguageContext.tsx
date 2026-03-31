@@ -75,7 +75,7 @@ const translations: Record<Language, any> = {
   sr: {
     nav: {
       home: 'Početna',
-      browse: 'Ponuda',
+      browse: 'Prodaja',
       about: 'O Nama',
       contact: 'Kontaktirajte nas',
       buying: 'Kupujem',
@@ -237,7 +237,7 @@ const translations: Record<Language, any> = {
       search: 'Pretraži',
     },
     browse: {
-      title: 'Naša Ponuda',
+      title: 'Prodaja',
       subtitle: 'Istražite našu pažljivo odabranu kolekciju nekretnina',
       searchPlaceholder: 'Pretražite po nazivu ili lokaciji...',
       filters: 'Filteri',
@@ -325,7 +325,7 @@ const translations: Record<Language, any> = {
       description: 'Profesionalna agencija za nekretnine sa dugogodišnjim iskustvom u prodaji i iznajmljivanju stanova.',
       quickLinks: 'Brzi Linkovi',
       home: 'Početna',
-      browse: 'Ponuda',
+      browse: 'Prodaja',
       about: 'O Nama',
       contact: 'Kontakt',
       contactInfo: 'Kontakt Informacije',
@@ -775,7 +775,7 @@ const translations: Record<Language, any> = {
       search: 'Поиск',
     },
     browse: {
-      title: 'Наши Предложения',
+      title: 'Продажа',
       subtitle: 'Исследуйте нашу тщательно отобранный набор недвижимости',
       searchPlaceholder: 'Поиск по названию или местоположению...',
       filters: 'Фильтры',
@@ -1044,8 +1044,8 @@ const translations: Record<Language, any> = {
       search: 'Ara',
     },
     browse: {
-      title: 'Tekliflerimiz',
-      subtitle: 'Dikkatle seçilen emlak koleksiyonumuzu keşfedin',
+      title: 'Prodaja',
+      subtitle: 'İsaretli olarak seçilen emlak koleksiyonumuzu keşfedin',
       searchPlaceholder: 'Ad veya konumla ara...',
       filters: 'Filtreler',
       newest: 'En Yeni',
