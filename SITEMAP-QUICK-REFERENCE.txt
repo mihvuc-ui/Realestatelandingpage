@@ -1,0 +1,64 @@
+═══════════════════════════════════════════════════════════════════
+  🗺️  SITEMAP - BRZA REFERENCA
+═══════════════════════════════════════════════════════════════════
+
+📋 LISTA SVIH URL-OVA U SITEMAP-U (7 LINKOVA)
+───────────────────────────────────────────────────────────────────
+
+1. https://nekretnine-stepenik.rs/
+2. https://nekretnine-stepenik.rs/browse
+3. https://nekretnine-stepenik.rs/kupujem
+4. https://nekretnine-stepenik.rs/prodajem
+5. https://nekretnine-stepenik.rs/rentiranje
+6. https://nekretnine-stepenik.rs/about
+7. https://nekretnine-stepenik.rs/listing/1
+
+
+📊 DETALJI:
+───────────────────────────────────────────────────────────────────
+
+Glavne stranice: 6
+Nekretnine: 1
+Ukupno slike (image sitemap): 12
+
+Jezici (hreflang): sr, en, ru, tr, x-default
+
+
+🚀 KAKO DODATI NOVU NEKRETNINU:
+───────────────────────────────────────────────────────────────────
+
+1. Dodaj u /src/data/apartments.ts (id: '2', '3', etc.)
+2. Pokreni: npm run generate-sitemap
+3. Re-submituj u Google Search Console
+
+
+✅ SITEMAP JE VEĆ KREIRAN:
+───────────────────────────────────────────────────────────────────
+
+Lokacija: /public/sitemap.xml
+URL: https://nekretnine-stepenik.rs/sitemap.xml
+
+
+🎯 SLEDEĆI KORAK:
+───────────────────────────────────────────────────────────────────
+
+1. Verifikuj sajt u Google Search Console
+   → https://search.google.com/search-console
+
+2. Submituj sitemap.xml
+   → Sitemaps → Add sitemap → unesi: sitemap.xml
+
+3. Čekaj 7-30 dana za indexing
+
+
+📖 VIŠE INFO:
+───────────────────────────────────────────────────────────────────
+
+→ /SITEMAP-GUIDE.md - Kompletni vodič
+→ /docs/SITEMAP-URLS-LIST.md - Detaljna lista
+→ /docs/sitemap-urls-simple.txt - Jednostavna lista
+→ /docs/GOOGLE-SEARCH-CONSOLE-SETUP.md - GSC setup
+→ /SEO-CHECKLIST.md - SEO checklist
+
+
+═══════════════════════════════════════════════════════════════════

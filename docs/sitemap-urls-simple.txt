@@ -1,0 +1,164 @@
+═══════════════════════════════════════════════════════════
+  🗺️  SITEMAP URL LISTA - NEKRETNINE STEPENIK
+═══════════════════════════════════════════════════════════
+
+📋 KOMPLETNA LISTA URL-OVA ZA SITEMAP.XML
+
+
+✅ GLAVNE STRANICE (6 URL-ova)
+─────────────────────────────────────────────────────────
+
+1. Homepage (Priority: 1.0, Changefreq: daily)
+   https://nekretnine-stepenik.rs/
+
+2. Browse/Prodaja (Priority: 0.9, Changefreq: daily)
+   https://nekretnine-stepenik.rs/browse
+
+3. Kupujem (Priority: 0.8, Changefreq: weekly)
+   https://nekretnine-stepenik.rs/kupujem
+
+4. Prodajem (Priority: 0.8, Changefreq: weekly)
+   https://nekretnine-stepenik.rs/prodajem
+
+5. Rentiranje (Priority: 0.8, Changefreq: weekly)
+   https://nekretnine-stepenik.rs/rentiranje
+
+6. O Nama (Priority: 0.7, Changefreq: monthly)
+   https://nekretnine-stepenik.rs/about
+
+
+🏠 NEKRETNINE (1 URL)
+─────────────────────────────────────────────────────────
+
+7. Nekretnina #1 - Dvosoban stan Nehruova (Priority: 0.8, Changefreq: weekly)
+   https://nekretnine-stepenik.rs/listing/1
+   
+   Slike (12 slika - uključene u image sitemap):
+   - https://i.imgur.com/rhk2C8oh.jpg
+   - https://i.imgur.com/srqdJnBh.jpg
+   - https://i.imgur.com/nQxcF7Mh.jpg
+   - https://i.imgur.com/l3eyZ2oh.jpg
+   - https://i.imgur.com/lL8e1xxh.jpg
+   - https://i.imgur.com/AVnXiPlh.jpg
+   - https://i.imgur.com/P5DSIpCh.jpg
+   - https://i.imgur.com/0I3SQAQh.jpg
+   - https://i.imgur.com/E4cR7ICh.jpg
+   - https://i.imgur.com/B24eQRZh.jpg
+   - https://i.imgur.com/fYAApDHh.jpg
+   - https://i.imgur.com/EmaLgNlh.jpg
+
+
+═══════════════════════════════════════════════════════════
+📊 SUMMARY
+═══════════════════════════════════════════════════════════
+
+Ukupno URL-ova: 7
+- Glavne stranice: 6
+- Nekretnine: 1
+- Slike: 12 (image sitemap extension)
+
+
+═══════════════════════════════════════════════════════════
+📋 PLAIN LIST (Copy-Paste Ready)
+═══════════════════════════════════════════════════════════
+
+https://nekretnine-stepenik.rs/
+https://nekretnine-stepenik.rs/browse
+https://nekretnine-stepenik.rs/kupujem
+https://nekretnine-stepenik.rs/prodajem
+https://nekretnine-stepenik.rs/rentiranje
+https://nekretnine-stepenik.rs/about
+https://nekretnine-stepenik.rs/listing/1
+
+
+═══════════════════════════════════════════════════════════
+🚫 URL-OVI KOJI NE TREBA DA BUDU U SITEMAP-U
+═══════════════════════════════════════════════════════════
+
+❌ https://nekretnine-stepenik.rs/image-reorder
+   (Admin tool - ne treba indexirati)
+
+❌ https://nekretnine-stepenik.rs/browse?type=sale
+   (Query parameters - duplicate content)
+
+❌ https://nekretnine-stepenik.rs/contact
+   (Ako nemaš posebnu Contact stranicu - modal je dovoljan)
+
+
+═══════════════════════════════════════════════════════════
+➕ KAKO DODATI NOVU NEKRETNINU
+═══════════════════════════════════════════════════════════
+
+1. Dodaj nekretninu u: /src/data/apartments.ts
+   
+2. Automatski generiši novi sitemap:
+   npm run generate-sitemap
+   
+3. Re-submituj u Google Search Console:
+   https://search.google.com/search-console → Sitemaps
+
+
+═══════════════════════════════════════════════════════════
+🔗 MULTI-LANGUAGE LINKOVI (Hreflang)
+═══════════════════════════════════════════════════════════
+
+Svaki URL ima 4 jezika + x-default:
+
+- hreflang="sr" (Serbian)
+- hreflang="en" (English)
+- hreflang="ru" (Russian)
+- hreflang="tr" (Turkish)
+- hreflang="x-default" (Fallback)
+
+Primer za Homepage:
+<xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/" />
+<xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/" />
+<xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/" />
+
+
+═══════════════════════════════════════════════════════════
+✅ CHECKLIST PRE SUBMITA
+═══════════════════════════════════════════════════════════
+
+[ ] Svi URL-ovi rade (otvori ih u browser-u)
+[ ] Svi su HTTPS (ne HTTP)
+[ ] Nema duplikata
+[ ] XML format je validan
+[ ] robots.txt dozvoljava crawling
+[ ] Datum (lastmod) je ažuriran
+[ ] Google Search Console je verifikovan
+[ ] Spreman za submit!
+
+
+═══════════════════════════════════════════════════════════
+🚀 SLEDEĆI KORACI
+═══════════════════════════════════════════════════════════
+
+1. Proveri da sitemap.xml postoji:
+   → Otvori: https://nekretnine-stepenik.rs/sitemap.xml
+
+2. Verifikuj sajt u Google Search Console:
+   → https://search.google.com/search-console
+
+3. Submituj sitemap:
+   → Sitemaps → "Add a new sitemap" → unesi: sitemap.xml
+
+4. Sačekaj 7-30 dana za indexing
+
+5. Prati rezultate u Coverage i Performance reports
+
+
+═══════════════════════════════════════════════════════════
+📖 Za više informacija vidi:
+═══════════════════════════════════════════════════════════
+
+- /SITEMAP-GUIDE.md - Kompletni vodič
+- /docs/SITEMAP-URLS-LIST.md - Detaljna lista sa meta tagovima
+- /docs/GOOGLE-SEARCH-CONSOLE-SETUP.md - GSC setup
+- /SEO-CHECKLIST.md - SEO checklist
+
+═══════════════════════════════════════════════════════════
+🎉 GOTOVO! 🚀
+═══════════════════════════════════════════════════════════

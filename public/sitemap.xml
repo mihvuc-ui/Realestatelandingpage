@@ -1,150 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Homepage -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/" />
   </url>
 
-  <!-- Prodaja (Browse Listings) -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/browse</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/browse</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/browse" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/browse" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/browse" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/browse" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/browse" />
   </url>
 
-  <!-- Kupujem -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/kupujem</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/kupujem</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/kupujem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/kupujem" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/kupujem" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/kupujem" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/kupujem" />
   </url>
 
-  <!-- Prodajem -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/prodajem</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/prodajem</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/prodajem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/prodajem" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/prodajem" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/prodajem" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/prodajem" />
   </url>
 
-  <!-- Rentiranje -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/rentiranje</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/rentiranje</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/rentiranje" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/rentiranje" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/rentiranje" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/rentiranje" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/rentiranje" />
   </url>
 
-  <!-- O Nama -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/about</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/about</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/about" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/about" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/about" />
   </url>
 
-  <!-- Kontakt -->
   <url>
-    <loc>https://nekretnine-stepenik.rs/contact</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/contact" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/contact" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/contact" />
-  </url>
-
-  <!-- NEKRETNINE - Dinamički generisane -->
-  <!-- Nekretnina ID: 1 - Dvosoban stan Nehruova -->
-  <url>
-    <loc>https://nekretnine-stepenik.rs/property/1</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/listing/1</loc>
+    <lastmod>2024-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/property/1" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/property/1" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/property/1" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/property/1" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nekretnine-stepenik.rs/property/1" />
-    
-    <!-- Image Sitemap Extension - Slike nekretnine -->
     <image:image>
       <image:loc>https://i.imgur.com/rhk2C8oh.jpg</image:loc>
-      <image:title>Dvosoban stan - Nehruova, Savski blokovi - Slika 1</image:title>
-      <image:caption>65m² dvosoban stan u Novom Beogradu, Nehruova ulica</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://i.imgur.com/srqdJnBh.jpg</image:loc>
-      <image:title>Dvosoban stan - Nehruova, Savski blokovi - Slika 2</image:title>
-      <image:caption>Dnevna soba sa terasom</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://i.imgur.com/nQxcF7Mh.jpg</image:loc>
-      <image:title>Dvosoban stan - Nehruova, Savski blokovi - Slika 3</image:title>
-      <image:caption>Renovirana kuhinja</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://i.imgur.com/l3eyZ2oh.jpg</image:loc>
-      <image:title>Dvosoban stan - Nehruova, Savski blokovi - Slika 4</image:title>
-      <image:caption>Spavaća soba</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://i.imgur.com/lL8e1xxh.jpg</image:loc>
-      <image:title>Dvosoban stan - Nehruova, Savski blokovi - Slika 5</image:title>
-      <image:caption>Renovirano kupatilo</image:caption>
     </image:image>
   </url>
-
-  <!-- OVDE ĆE DOĆI DODATNE NEKRETNINE KADA IH DODAŠ -->
-  <!-- Format:
-  <url>
-    <loc>https://nekretnine-stepenik.rs/property/{ID}</loc>
-    <lastmod>YYYY-MM-DD</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    ... hreflang linkovi ...
-    ... image:image tagovi za svaku sliku ...
-  </url>
-  -->
 
 </urlset>
