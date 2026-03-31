@@ -31,7 +31,7 @@ export function Home() {
         </section>
 
         {/* Featured Listings */}
-        <section className="h-screen py-16 md:py-20 relative overflow-hidden flex items-center snap-start snap-always">
+        <section className="min-h-screen py-12 md:py-16 relative overflow-hidden flex items-center snap-start snap-always">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
@@ -50,10 +50,10 @@ export function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-fuchsia-950/20 to-fuchsia-950/40 z-[5] pointer-events-none"></div>
           
           {/* Content - TOP LAYER */}
-          <div className="relative z-10 max-w-6xl mx-auto px-8 sm:px-10 lg:px-16 w-full">
-            <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-4">{t('featured.title')}</h2>
-              <p className="text-gray-100 dark:text-white max-w-xl mx-auto text-sm sm:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-4">
+          <div className="relative z-10 max-w-6xl mx-auto px-8 sm:px-10 lg:px-16 w-full pt-16 md:pt-20">
+            <div className="text-center mb-4 md:mb-6">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extralight bg-gradient-to-r from-fuchsia-500 via-pink-600 to-fuchsia-700 dark:from-fuchsia-400 dark:via-pink-500 dark:to-fuchsia-600 bg-clip-text text-transparent mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-2">{t('featured.title')}</h2>
+              <p className="text-gray-100 dark:text-white max-w-xl mx-auto text-xs sm:text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] break-words px-2">
                 {t('featured.subtitle')}</p>
             </div>
             <FeaturedListings />
@@ -61,7 +61,7 @@ export function Home() {
         </section>
 
         {/* CTA Section with Belgrade Panorama */}
-        <section className="h-screen py-20 relative overflow-hidden flex items-center snap-start snap-always">
+        <section className="min-h-screen py-12 md:py-16 relative overflow-hidden flex items-center snap-start snap-always">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
           
@@ -78,10 +78,10 @@ export function Home() {
           
           {/* Content - TOP LAYER */}
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-3 sm:mb-5 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] px-2">
               {t('cta.title')}
             </h2>
-            <p className="text-gray-100 dark:text-white text-lg mb-8 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <p className="text-gray-100 dark:text-white text-sm sm:text-base lg:text-lg mb-5 sm:mb-7 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-2">
               {t('cta.subtitle')}
             </p>
             <div className="flex flex-col items-center justify-center gap-4">
@@ -115,19 +115,19 @@ export function Home() {
         </section>
 
         {/* Footer Section - Full Screen */}
-        <section className="h-screen py-20 relative overflow-hidden flex items-center snap-start snap-always bg-white dark:bg-slate-900">
+        <section className="min-h-screen py-12 md:py-16 relative overflow-hidden flex items-center snap-start snap-always bg-white dark:bg-slate-900">
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/30 to-transparent z-[5] pointer-events-none"></div>
           
           {/* Footer Content */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               {/* Brand */}
               <div className="col-span-1 md:col-span-2">
-                <div className="mb-4">
+                <div className="mb-3">
                   <Logo size="md" showTagline />
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm max-w-md mb-4 mt-6 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                <p className="text-gray-700 dark:text-gray-300 text-sm max-w-md mb-3 mt-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                   {t('footer.description')}
                 </p>
                 <div className="flex flex-col space-y-2 text-sm text-gray-700 dark:text-gray-300">
@@ -148,7 +148,7 @@ export function Home() {
 
               {/* Quick Links */}
               <div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.quickLinks')}</h3>
+                <h3 className="text-gray-900 dark:text-white font-semibold mb-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.quickLinks')}</h3>
                 <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li>
                     <Link to="/" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
@@ -170,7 +170,7 @@ export function Home() {
 
               {/* Services */}
               <div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.services')}</h3>
+                <h3 className="text-gray-900 dark:text-white font-semibold mb-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('footer.services')}</h3>
                 <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li>
                     <Link to="/kupujem" className="hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
@@ -197,8 +197,8 @@ export function Home() {
             </div>
 
             {/* Minimal Stats Section */}
-            <div className="mt-8 pt-8 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="mt-6 pt-6 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div className="group cursor-default transition-all">
                   <div className="text-3xl font-light text-gray-800 dark:text-gray-200 mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">2021</div>
                   <div className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t('stats.yearFounded')}</div>
@@ -215,7 +215,7 @@ export function Home() {
             </div>
 
             {/* Copyright */}
-            <div className="mt-8 pt-8 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30 text-center text-sm text-gray-700 dark:text-gray-300">
+            <div className="mt-6 pt-6 border-t border-fuchsia-300/50 dark:border-fuchsia-600/30 text-center text-sm text-gray-700 dark:text-gray-300">
               <p className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">&copy; 2026 Nekretnine Stepenik. {t('footer.rights')}</p>
             </div>
           </div>

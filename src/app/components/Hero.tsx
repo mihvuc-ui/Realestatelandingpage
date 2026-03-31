@@ -39,7 +39,7 @@ export function Hero() {
         <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
           <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[550] sm:font-[370] mt-8 sm:mt-0" 
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[700] sm:font-[550] mt-8 sm:mt-0" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'

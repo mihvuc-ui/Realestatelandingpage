@@ -9,13 +9,13 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
   const sizes = {
     sm: {
       icon: 'w-8 h-8',
-      text: 'text-lg',
+      text: 'text-xl',
       tagline: 'text-[9px]',
       container: 'space-x-2'
     },
     md: {
       icon: 'w-10 h-10',
-      text: 'text-lg',
+      text: 'text-xl',
       tagline: 'text-[10px]',
       container: 'space-x-3'
     },
@@ -44,51 +44,51 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
             className="relative z-10 w-full h-full p-1.5 transition-opacity duration-500 ease-in-out group-hover:opacity-0"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Single stepped building - side profile view */}
-            {/* Base/Ground level */}
+            {/* Modern Stepped Building - Cleaner design */}
+            {/* Base level - wider */}
             <path 
-              d="M3 21 L3 17 L7 17 L7 21 Z" 
+              d="M2 21 L2 16 L8 16 L8 21 Z" 
               fill="white"
-              opacity="0.95"
-              className="drop-shadow-sm"
+              opacity="0.98"
+              className="drop-shadow-md"
             />
             
             {/* Second step */}
             <path 
-              d="M7 17 L7 13 L11 13 L11 21 L7 21 Z" 
+              d="M8 16 L8 12 L13 12 L13 21 L8 21 Z" 
               fill="white"
-              opacity="0.9"
+              opacity="0.93"
             />
             
             {/* Third step */}
             <path 
-              d="M11 13 L11 9 L15 9 L15 21 L11 21 Z" 
+              d="M13 12 L13 8 L17 8 L17 21 L13 21 Z" 
               fill="white"
-              opacity="0.85"
+              opacity="0.88"
             />
             
             {/* Fourth step */}
             <path 
-              d="M15 9 L15 5 L19 5 L19 21 L15 21 Z" 
+              d="M17 8 L17 4 L20 4 L20 21 L17 21 Z" 
               fill="white"
-              opacity="0.8"
+              opacity="0.83"
             />
             
-            {/* Top/Peak */}
+            {/* Top peak - sharp */}
             <path 
-              d="M19 5 L19 3 L21 3 L21 21 L19 21 Z" 
+              d="M20 4 L20 2 L22 2 L22 21 L20 21 Z" 
               fill="white"
-              opacity="0.75"
+              opacity="0.78"
             />
             
-            {/* Windows/Details */}
-            <rect x="8" y="14.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
-            <rect x="12" y="10.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
-            <rect x="16" y="6.5" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            {/* Accent windows - pink glow */}
+            <circle cx="10.5" cy="14" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
+            <circle cx="15" cy="10" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
+            <circle cx="18.5" cy="6" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
             
-            <rect x="8" y="18" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
-            <rect x="12" y="14" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
-            <rect x="16" y="10" width="1.5" height="1.5" fill="rgba(236, 72, 153, 0.5)"/>
+            <circle cx="10.5" cy="18" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
+            <circle cx="15" cy="15" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
+            <circle cx="18.5" cy="11" r="0.8" fill="rgba(236, 72, 153, 0.6)" className="drop-shadow-lg"/>
           </svg>
 
           {/* Hover Icon SVG - 3D Isometric Stairs (3 steps) */}
@@ -164,7 +164,7 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
 
         {/* Text */}
         <div className="flex flex-col">
-          <span className={`${currentSize.text} font-normal text-gray-700 dark:text-gray-700 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300 whitespace-nowrap lowercase tracking-tight`} style={{ fontFamily: 'Montserrat, sans-serif', transform: 'scaleX(0.85)' }}>
+          <span className={`${currentSize.text} font-normal text-gray-700 dark:text-gray-700 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300 whitespace-nowrap lowercase`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
             nekretnine<span style={{ textShadow: '0 0 8px rgba(236, 72, 153, 0.5)' }}>stepenik</span>
           </span>
           {showTagline && (
