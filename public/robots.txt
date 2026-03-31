@@ -1,0 +1,25 @@
+# robots.txt za Nekretnine Stepenik
+# Dozvoljava indeksiranje svog sadržaja
+
+User-agent: *
+Allow: /
+
+# Blokiraj admin ili private foldere ako postoje
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap lokacija
+Sitemap: https://nekretnine-stepenik.rs/sitemap.xml
+
+# Popularni botovi
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Crawl-delay za prijateljsko indeksiranje
+Crawl-delay: 1

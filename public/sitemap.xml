@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/" />
+  </url>
+
+  <!-- Prodaja (Browse Listings) -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/browse</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/browse" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/browse" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/browse" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/browse" />
+  </url>
+
+  <!-- Kupujem -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/kupujem</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/kupujem" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/kupujem" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/kupujem" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/kupujem" />
+  </url>
+
+  <!-- Prodajem -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/prodajem</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/prodajem" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/prodajem" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/prodajem" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/prodajem" />
+  </url>
+
+  <!-- Rentiranje -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/rentiranje</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/rentiranje" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/rentiranje" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/rentiranje" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/rentiranje" />
+  </url>
+
+  <!-- O Nama -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/about</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/about" />
+  </url>
+
+  <!-- Kontakt -->
+  <url>
+    <loc>https://nekretnine-stepenik.rs/contact</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://nekretnine-stepenik.rs/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nekretnine-stepenik.rs/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://nekretnine-stepenik.rs/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://nekretnine-stepenik.rs/contact" />
+  </url>
+
+</urlset>

@@ -8,20 +8,51 @@ import { ShoppingCart, TrendingUp, Phone, MapPin, Mail } from 'lucide-react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { SEO } from '@/app/components/SEO';
 import { Logo } from '@/app/components/Logo';
+import { OrganizationSchema, LocalBusinessSchema, WebSiteSchema, FAQSchema } from '@/app/components/SchemaMarkup';
 
 export function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { t } = useLanguage();
+
+  // FAQ data za Schema markup
+  const faqs = [
+    {
+      question: "Da li vaša agencija pruža pravnu podršku?",
+      answer: "Da, pružamo potpunu pravnu podršku tokom celog procesa kupovine ili prodaje nekretnine. Naš tim vas vodi kroz svu potrebnu dokumentaciju."
+    },
+    {
+      question: "Kolika je provizija agencije?",
+      answer: "Naša provizija je konkurentna i zavisi od tipa transakcije. Kontaktirajte nas za detalje o ceni za vašu specifičnu situaciju."
+    },
+    {
+      question: "Da li mogu da zakažem razgledanje stana?",
+      answer: "Da, možete zakazati razgledanje direktno preko našeg sajta ili nas kontaktirati telefonom na +381 62 671 155."
+    },
+    {
+      question: "Koje lokacije pokrivate?",
+      answer: "Pokrivamo sve opštine Beograda i okolne gradove, uključujući Novi Beograd, Zvezdara, Vračar, Savski Venac i druge."
+    },
+    {
+      question: "Koliko dugo traje proces kupovine nekretnine?",
+      answer: "Proces obično traje između 30-60 dana, zavisno od dokumentacije i pravne provere. Mi olakšavamo ceo proces i brinemo o svim detaljima."
+    }
+  ];
 
   return (
     <>
       <SEO
         title="Nekretnine u Beogradu – Prodaja i Izdavanje Stanova"
         description="Agencija za nekretnine Stepenik Beograd. Prodaja stanova, iznajmljivanje stanova, kuće na prodaju. Preko 150 uspešno završenih poslova. Profesionalna pravna podrška."
-        keywords="nekretnine Beograd, prodaja stanov Beograd, izdavanje stanov Beograd, stan na prodaju, stan za izdavanje, agencija za nekretnine Beograd, kuće na prodaju Srbija, nekretnine Srbija"
+        keywords="nekretnine Beograd, prodaja stanova Beograd, izdavanje stanova Beograd, stan na prodaju, stan za izdavanje, agencija za nekretnine Beograd, kuće na prodaju Srbija, nekretnine Srbija, real estate Belgrade"
         canonical="/"
       />
-      
+
+      {/* Schema Markup */}
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <WebSiteSchema />
+      <FAQSchema faqs={faqs} />
+
       <div className="overflow-y-auto h-screen hide-scrollbar scroll-smooth snap-y snap-mandatory">
         {/* Hero Section */}
         <section className="h-screen flex flex-col relative snap-start snap-always">
