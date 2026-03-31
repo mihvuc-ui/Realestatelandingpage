@@ -42,8 +42,8 @@ export function Home() {
     <>
       <SEO
         title="Nekretnine u Beogradu – Prodaja i Izdavanje Stanova"
-        description="Agencija za nekretnine Stepenik Beograd. Prodaja stanova, iznajmljivanje stanova, kuće na prodaju. Preko 150 uspešno završenih poslova. Profesionalna pravna podrška."
-        keywords="nekretnine Beograd, prodaja stanova Beograd, izdavanje stanova Beograd, stan na prodaju, stan za izdavanje, agencija za nekretnine Beograd, kuće na prodaju Srbija, nekretnine Srbija, real estate Belgrade"
+        description="Agencija Stepenik - profesionalna agencija za nekretnine u Beogradu. Stepenik Nekretnine: prodaja stanova, iznajmljivanje, kuće na prodaju. Preko 150 uspešno završenih poslova."
+        keywords="agencija stepenik, stepenik nekretnine, nekretnine stepenik beograd, agencija stepenik beograd, nekretnine beograd, prodaja stanova beograd, izdavanje stanova beograd, stan na prodaju, agencija za nekretnine beograd, stepenik real estate, stepenik nekretnine srbija"
         canonical="/"
       />
 

@@ -9,7 +9,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap lokacija
-Sitemap: https://nekretnine-stepenik.rs/sitemap.xml
+Sitemap: https://stepeniknekretnine.com/sitemap.xml
 
 # Popularni botovi
 User-agent: Googlebot

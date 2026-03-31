@@ -22,8 +22,8 @@ export function SEO({
   noindex = false,
   jsonLd
 }: SEOProps) {
-  const siteUrl = 'https://nekretnine-stepenik.rs';
-  const fullTitle = `${title} | Nekretnine Stepenik`;
+  const siteUrl = 'https://stepeniknekretnine.com';
+  const fullTitle = `${title} | Nekretnine Stepenik - Agencija Stepenik Beograd`;
   const url = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const { currentLanguage } = useLanguage();
 
@@ -64,7 +64,7 @@ export function SEO({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={locale} />
-      <meta property="og:site_name" content="Nekretnine Stepenik" />
+      <meta property="og:site_name" content="Nekretnine Stepenik - Agencija Stepenik" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +75,7 @@ export function SEO({
       <meta name="twitter:creator" content="@NekretnineStepe" />
 
       {/* Additional SEO */}
-      <meta name="author" content="Nekretnine Stepenik" />
+      <meta name="author" content="Agencija Stepenik - Nekretnine Stepenik Beograd" />
       <meta name="geo.region" content="RS-00" />
       <meta name="geo.placename" content="Beograd" />
       <meta name="geo.position" content="44.787197;20.457273" />

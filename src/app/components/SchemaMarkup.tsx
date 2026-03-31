@@ -6,10 +6,10 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Nekretnine Stepenik",
-    "alternateName": "Agencija Stepenik",
-    "url": "https://nekretnine-stepenik.rs",
-    "logo": "https://nekretnine-stepenik.rs/logo.png",
-    "image": "https://nekretnine-stepenik.rs/og-default.jpg",
+    "alternateName": ["Agencija Stepenik", "Stepenik Nekretnine", "Agencija Stepenik Beograd", "Nekretnine Stepenik Beograd", "Stepenik Real Estate"],
+    "url": "https://stepeniknekretnine.com",
+    "logo": "https://stepeniknekretnine.com/logo.png",
+    "image": "https://stepeniknekretnine.com/og-default.jpg",
     "description": "Profesionalna agencija za nekretnine u Beogradu. Prodaja i izdavanje stanova, kuća i poslovnih prostora.",
     "address": {
       "@type": "PostalAddress",
@@ -66,9 +66,10 @@ export function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Nekretnine Stepenik",
-    "image": "https://nekretnine-stepenik.rs/og-default.jpg",
-    "@id": "https://nekretnine-stepenik.rs",
-    "url": "https://nekretnine-stepenik.rs",
+    "alternateName": ["Agencija Stepenik", "Stepenik Nekretnine Beograd"],
+    "image": "https://stepeniknekretnine.com/og-default.jpg",
+    "@id": "https://stepeniknekretnine.com",
+    "url": "https://stepeniknekretnine.com",
     "telephone": "+38162671155",
     "email": "agencijastepenik@gmail.com",
     "priceRange": "€€",
@@ -257,12 +258,13 @@ export function WebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Nekretnine Stepenik",
-    "url": "https://nekretnine-stepenik.rs",
+    "alternateName": "Agencija Stepenik Beograd",
+    "url": "https://stepeniknekretnine.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://nekretnine-stepenik.rs/browse?search={search_term_string}"
+        "urlTemplate": "https://stepeniknekretnine.com/browse?search={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

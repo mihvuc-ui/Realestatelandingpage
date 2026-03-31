@@ -239,8 +239,8 @@ export function BrowseListings() {
     <>
       <SEO
         title="Prodaja Nekretnina u Beogradu – Stanovi na Prodaju"
-        description="Pregledajte kompletnu ponudu nekretnina za prodaju u Beogradu. Stanovi, kuće i poslovni prostori sa detaljnim filterima po lokaciji, ceni i površini."
-        keywords="stanovi na prodaju Beograd, nekretnine prodaja Beograd, kupovina stana Beograd, prodaja nekretnina Beograd, stanovi Novi Beograd, Vračar, Zvezdara, Savski Venac"
+        description="Stepenik Nekretnine - pregledajte kompletnu ponudu nekretnina za prodaju u Beogradu. Agencija Stepenik: stanovi, kuće i poslovni prostori sa detaljnim filterima."
+        keywords="agencija stepenik, stepenik nekretnine beograd, stanovi na prodaju beograd, nekretnine prodaja beograd, kupovina stana beograd, agencija stepenik stanovi, stepenik real estate belgrade"
         canonical="/browse"
       />
       
