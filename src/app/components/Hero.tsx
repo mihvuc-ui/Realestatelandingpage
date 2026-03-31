@@ -39,11 +39,10 @@ export function Hero() {
         <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
           <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[450] sm:font-[370]" 
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[550] sm:font-[370] mt-8 sm:mt-0" 
             style={{ 
               WebkitTouchCallout: 'none', 
-              WebkitUserSelect: 'none',
-              textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+              WebkitUserSelect: 'none'
             }}
             onContextMenu={preventContextMenu}
           >
@@ -62,8 +61,7 @@ export function Hero() {
                   onContextMenu={preventContextMenu}
                   style={{ 
                     WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none',
-                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                    WebkitUserSelect: 'none'
                   }}
                 >
                   {'stepenik'.split('').map((letter, index) => (
@@ -73,9 +71,6 @@ export function Hero() {
                       style={{
                         transform: isHovering ? `translateY(${index * -4}px)` : 'translateY(0)',
                         transitionDelay: isHovering ? `${index * 50}ms` : '0ms',
-                        textShadow: isHovering 
-                          ? '0 0 20px rgba(236, 72, 153, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)' 
-                          : '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)',
                       }}
                     >
                       {letter}
@@ -93,8 +88,7 @@ export function Hero() {
                   onContextMenu={preventContextMenu}
                   style={{ 
                     WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none',
-                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                    WebkitUserSelect: 'none'
                   }}
                 >step</span> between offer{' '}
                 {t('hero.headlineAccent')}
@@ -108,8 +102,7 @@ export function Hero() {
                   onContextMenu={preventContextMenu}
                   style={{ 
                     WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none',
-                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                    WebkitUserSelect: 'none'
                   }}
                 >шаг</span> ежду{' '}
                 {t('hero.headlineAccent')}
@@ -123,8 +116,7 @@ export function Hero() {
                   onContextMenu={preventContextMenu}
                   style={{ 
                     WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none',
-                    textShadow: '0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)'
+                    WebkitUserSelect: 'none'
                   }}
                 >adım</span>
               </>
