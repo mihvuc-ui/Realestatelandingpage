@@ -89,7 +89,7 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4 ml-auto">
+          <div className="hidden md:flex items-center space-x-2 ml-auto">
             <Link
               to="/"
               className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
