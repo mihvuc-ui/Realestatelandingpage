@@ -9,13 +9,13 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
   const sizes = {
     sm: {
       icon: 'w-8 h-8',
-      text: 'text-xl',
+      text: 'text-lg',
       tagline: 'text-[9px]',
       container: 'space-x-2'
     },
     md: {
       icon: 'w-10 h-10',
-      text: 'text-2xl',
+      text: 'text-lg',
       tagline: 'text-[10px]',
       container: 'space-x-3'
     },
@@ -164,8 +164,8 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
 
         {/* Text */}
         <div className="flex flex-col">
-          <span className={`${currentSize.text} font-normal text-gray-700 dark:text-gray-700 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300 whitespace-nowrap lowercase`} style={{ fontFamily: 'Montserrat, sans-serif', textShadow: '0 2px 6px rgba(0, 0, 0, 0.3)' }}>
-            nekretninestepenik
+          <span className={`${currentSize.text} font-normal text-gray-700 dark:text-gray-700 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300 whitespace-nowrap lowercase tracking-tight`} style={{ fontFamily: 'Montserrat, sans-serif', transform: 'scaleX(0.85)' }}>
+            nekretnine<span style={{ textShadow: '0 0 8px rgba(236, 72, 153, 0.5)' }}>stepenik</span>
           </span>
           {showTagline && (
             <span className={`${currentSize.tagline} font-extralight text-gray-600 dark:text-gray-400 -mt-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
