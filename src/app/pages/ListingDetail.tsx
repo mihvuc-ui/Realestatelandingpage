@@ -206,27 +206,43 @@ export function ListingDetail() {
 
               {/* Features */}
               <div className="space-y-4 mb-6 pb-6 border-b border-fuchsia-200 dark:border-slate-800">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-gray-600 dark:text-gray-400">
-                    <Bed className="h-5 w-5 mr-2" />
-                    <span>{t('listing.bedrooms')}</span>
-                  </div>
-                  <span className="text-gray-900 dark:text-white font-semibold">{apartment.bedrooms}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-gray-600 dark:text-gray-400">
-                    <Bath className="h-5 w-5 mr-2" />
-                    <span>{t('listing.bathrooms')}</span>
-                  </div>
-                  <span className="text-gray-900 dark:text-white font-semibold">{apartment.bathrooms}</span>
-                </div>
+                {/* Površina - različito za zemljište i ostalo */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-gray-600 dark:text-gray-400">
                     <Square className="h-5 w-5 mr-2" />
-                    <span>{t('listing.area')}</span>
+                    <span>{apartment.propertyType === 'land' ? 'Površina' : t('listing.area')}</span>
                   </div>
-                  <span className="text-gray-900 dark:text-white font-semibold">{apartment.squareMeters} m²</span>
+                  <span className="text-gray-900 dark:text-white font-semibold">
+                    {apartment.propertyType === 'land'
+                      ? `${(apartment.squareMeters / 100).toFixed(2)} ari (${apartment.squareMeters} m²)`
+                      : `${apartment.squareMeters} m²`
+                    }
+                  </span>
                 </div>
+
+                {/* Sobe i kupatila - samo za stanove i kuće */}
+                {apartment.propertyType !== 'land' && (
+                  <>
+                    {apartment.bedrooms > 0 && (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                          <Bed className="h-5 w-5 mr-2" />
+                          <span>{t('listing.bedrooms')}</span>
+                        </div>
+                        <span className="text-gray-900 dark:text-white font-semibold">{apartment.bedrooms}</span>
+                      </div>
+                    )}
+                    {apartment.bathrooms > 0 && (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                          <Bath className="h-5 w-5 mr-2" />
+                          <span>{t('listing.bathrooms')}</span>
+                        </div>
+                        <span className="text-gray-900 dark:text-white font-semibold">{apartment.bathrooms}</span>
+                      </div>
+                    )}
+                  </>
+                )}
                 {apartment.floor && (
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
@@ -263,16 +279,50 @@ export function ListingDetail() {
                     <span className="text-gray-900 dark:text-white font-semibold">{apartment.yearRenovated}</span>
                   </div>
                 )}
-                {apartment.orientation && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
-                      <Compass className="h-5 w-5 mr-2" />
-                      <span>{t('listing.orientation')}</span>
+                {/* Zemljište - specifična polja */}
+                {apartment.propertyType === 'land' ? (
+                  <>
+                    {apartment.landLocation && (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                          <MapPin className="h-5 w-5 mr-2" />
+                          <span>Lokacija</span>
+                        </div>
+                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.landLocation}</span>
+                      </div>
+                    )}
+                    {apartment.buildingOnLand && (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                          <Building2 className="h-5 w-5 mr-2" />
+                          <span>Objekat na placu</span>
+                        </div>
+                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.buildingOnLand}</span>
+                      </div>
+                    )}
+                    {apartment.landType && (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                          <Square className="h-5 w-5 mr-2" />
+                          <span>Tip zemljišta</span>
+                        </div>
+                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.landType}</span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  // Stan/Kuća - orijentacija
+                  apartment.orientation && (
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-gray-600 dark:text-gray-400">
+                        <Compass className="h-5 w-5 mr-2" />
+                        <span>{t('listing.orientation')}</span>
+                      </div>
+                      <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.orientation}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.orientation}</span>
-                  </div>
+                  )
                 )}
-                {apartment.furnished && (
+                {apartment.furnished && apartment.propertyType !== 'land' && (
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                       <Armchair className="h-5 w-5 mr-2" />

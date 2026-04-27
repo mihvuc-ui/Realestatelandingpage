@@ -14,6 +14,7 @@ function convertSupabaseToApartment(apt: SupabaseApartment): Apartment {
     location: apt.location,
     price: apt.price,
     type: apt.type,
+    propertyType: apt.property_type || undefined,
     squareMeters: apt.square_meters,
     bedrooms: apt.bedrooms,
     bathrooms: apt.bathrooms,
@@ -33,6 +34,9 @@ function convertSupabaseToApartment(apt: SupabaseApartment): Apartment {
     orientation: apt.orientation || undefined,
     furnished: apt.furnished || undefined,
     distanceToRiver: apt.distance_to_river || undefined,
+    landLocation: apt.land_location || undefined,
+    buildingOnLand: apt.building_on_land || undefined,
+    landType: apt.land_type || undefined,
   };
 }
 
@@ -79,6 +83,11 @@ export function useApartments() {
           setApartments(converted);
           setUseSupabase(true);
           console.log('✅ Using Supabase data');
+          console.log('📋 Apartments loaded:', converted.map(apt => ({
+            name: apt.name,
+            type: apt.type,
+            propertyType: apt.propertyType,
+          })));
         } else {
           // Empty database - show no apartments instead of fallback
           setApartments([]);

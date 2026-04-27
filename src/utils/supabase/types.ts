@@ -9,6 +9,7 @@ export interface Database {
           location: string;
           price: number;
           type: 'sale' | 'rent';
+          property_type: string | null;
           square_meters: number;
           bedrooms: number;
           bathrooms: number;
@@ -25,6 +26,9 @@ export interface Database {
           orientation: string | null;
           furnished: string | null;
           distance_to_river: string | null;
+          land_location: string | null;
+          building_on_land: string | null;
+          land_type: string | null;
         };
         Insert: Omit<Database['public']['Tables']['apartments']['Row'], 'id' | 'created_at'>;
         Update: Partial<Database['public']['Tables']['apartments']['Insert']>;

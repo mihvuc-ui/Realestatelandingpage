@@ -4,6 +4,7 @@ export interface Apartment {
   location: string;
   price: number;
   type: 'sale' | 'rent';
+  propertyType?: string; // apartment, house, land, commercial, garage, etc.
   squareMeters: number;
   bedrooms: number;
   bathrooms: number;
@@ -23,6 +24,9 @@ export interface Apartment {
   orientation?: string;
   furnished?: string;
   distanceToRiver?: string;
+  landLocation?: string; // Za zemljište - tačna lokacija
+  buildingOnLand?: string; // Da li postoji objekat na placu
+  landType?: string; // Tip zemljišta - građevinsko, poljoprivredno, itd.
 }
 
 // Statički podaci su zamenjeni Supabase bazom podataka

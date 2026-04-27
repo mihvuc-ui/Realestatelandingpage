@@ -62,18 +62,33 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
 
         {/* Features */}
         <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300 mb-4 text-sm">
-          <div className="flex items-center">
-            <Bed className="h-4 w-4 mr-1" />
-            <span>{apartment.bedrooms}</span>
-          </div>
-          <div className="flex items-center">
-            <Bath className="h-4 w-4 mr-1" />
-            <span>{apartment.bathrooms}</span>
-          </div>
-          <div className="flex items-center">
-            <Square className="h-4 w-4 mr-1" />
-            <span>{apartment.squareMeters}m²</span>
-          </div>
+          {apartment.propertyType === 'land' ? (
+            // Zemljište - samo površina u arima
+            <div className="flex items-center">
+              <Square className="h-4 w-4 mr-1" />
+              <span>{(apartment.squareMeters / 100).toFixed(2)} ari</span>
+            </div>
+          ) : (
+            // Stan/Kuća - sobe, kupatila, m²
+            <>
+              {apartment.bedrooms > 0 && (
+                <div className="flex items-center">
+                  <Bed className="h-4 w-4 mr-1" />
+                  <span>{apartment.bedrooms}</span>
+                </div>
+              )}
+              {apartment.bathrooms > 0 && (
+                <div className="flex items-center">
+                  <Bath className="h-4 w-4 mr-1" />
+                  <span>{apartment.bathrooms}</span>
+                </div>
+              )}
+              <div className="flex items-center">
+                <Square className="h-4 w-4 mr-1" />
+                <span>{apartment.squareMeters}m²</span>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Price - Minimal style, enhanced on hover */}
