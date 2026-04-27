@@ -102,10 +102,9 @@ export function ListingDetail() {
           <span>{t('listing.backToBrowse')}</span>
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            {/* Image Gallery */}
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8">
+          {/* Image Gallery */}
+          <div className="lg:col-span-2 order-1">
             <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden mb-6 shadow-lg transition-colors border border-fuchsia-200 dark:border-slate-800">
               <div className="aspect-[16/10] relative">
                 <img
@@ -113,7 +112,7 @@ export function ListingDetail() {
                   alt={`${apartment.name} - Slika ${currentImageIndex + 1}`}
                   className="w-full h-full object-cover"
                 />
-                
+
                 {/* Navigation Arrows */}
                 {apartment.images.length > 1 && (
                   <>
@@ -170,17 +169,11 @@ export function ListingDetail() {
                 </div>
               )}
             </div>
-
-            {/* Description */}
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('listing.description')}</h2>
-              <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{getDescription()}</div>
-            </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 sticky top-24 shadow-lg transition-colors">
+          {/* Sidebar - Karakteristike */}
+          <div className="order-2 lg:col-span-1 lg:order-3 lg:row-span-2">
+            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 lg:sticky lg:top-24 shadow-lg transition-colors">
               {/* Type Badge */}
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 shadow-sm ${
                 apartment.type === 'sale' 
@@ -359,6 +352,14 @@ export function ListingDetail() {
                   {t('nav.contact')}
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="lg:col-span-2 order-3 lg:order-2">
+            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('listing.description')}</h2>
+              <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{getDescription()}</div>
             </div>
           </div>
         </div>
