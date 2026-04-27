@@ -21,12 +21,15 @@ export function FeaturedListings() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {/* Mobile: Horizontal Scroll, Desktop: Grid */}
+      <div className="flex md:grid overflow-x-auto md:overflow-x-visible md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
         {displayApartments.map((apartment) => (
-          <PropertyCard key={apartment.id} apartment={apartment} />
+          <div key={apartment.id} className="flex-shrink-0 w-[85vw] md:w-auto snap-center md:snap-align-none">
+            <PropertyCard apartment={apartment} />
+          </div>
         ))}
       </div>
-      
+
       <div className="text-center mt-8">
         <Link
           to="/browse"
