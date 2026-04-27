@@ -244,9 +244,9 @@ export function BrowseListings() {
   return (
     <>
       <SEO
-        title="Prodaja Nekretnina u Beogradu – Stanovi na Prodaju"
-        description="Stepenik Nekretnine - pregledajte kompletnu ponudu nekretnina za prodaju u Beogradu. Agencija Stepenik: stanovi, kuće i poslovni prostori sa detaljnim filterima."
-        keywords="agencija stepenik, stepenik nekretnine beograd, stanovi na prodaju beograd, nekretnine prodaja beograd, kupovina stana beograd, agencija stepenik stanovi, stepenik real estate belgrade"
+        title="Nekretnine Beograd - Prodaja Stanova, Kuća i Zemljišta | Stepenik"
+        description="Nekretnine na prodaju u Beogradu. Agencija Stepenik - stanovi, kuće, poslovni prostori i zemljišta. Pretraga po lokaciji, ceni i kvadraturi. Vračar, Zvezdara, Novi Beograd, Grocka. Besplatna procena nekretnine."
+        keywords="nekretnine, nekretnine beograd, prodaja nekretnina, stanovi na prodaju, stanovi beograd, prodaja stanova, kupovina stana, kuće na prodaju, zemljište na prodaju, nekretnine zvezdara, nekretnine vračar, nekretnine grocka, agencija stepenik, stepenik nekretnine, agencija za nekretnine beograd, real estate belgrade, apartments for sale belgrade"
         canonical="/browse"
       />
       

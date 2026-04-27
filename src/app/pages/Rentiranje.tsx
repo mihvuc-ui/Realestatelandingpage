@@ -2,7 +2,6 @@ import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
-import { RangeSlider } from '@/app/components/RangeSlider';
 import { Footer } from '@/app/components/Footer';
 import { SEO } from '@/app/components/SEO';
 import { useApartments } from '@/app/hooks/useApartments';
@@ -12,10 +11,6 @@ export function Rentiranje() {
   const { apartments, loading } = useApartments();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
-  const [priceFrom, setPriceFrom] = useState(0);
-  const [priceTo, setPriceTo] = useState(2000); // Lower max for rent
-  const [sqmFrom, setSqmFrom] = useState(0);
-  const [sqmTo, setSqmTo] = useState(1000);
   const [roomsFilter, setRoomsFilter] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
   const [showFilters, setShowFilters] = useState(false);
@@ -156,23 +151,15 @@ export function Rentiranje() {
   const resetFilters = () => {
     setSearchQuery('');
     setLocationFilter('all');
-    setPriceFrom(0);
-    setPriceTo(2000);
-    setSqmFrom(0);
-    setSqmTo(1000);
     setRoomsFilter('all');
     setSortBy('newest');
   };
 
   const hasActiveFilters = useMemo(() => {
-    return searchQuery !== '' || 
-           locationFilter !== 'all' || 
-           priceFrom !== 0 || 
-           priceTo !== 2000 || 
-           sqmFrom !== 0 || 
-           sqmTo !== 1000 ||
+    return searchQuery !== '' ||
+           locationFilter !== 'all' ||
            roomsFilter !== 'all';
-  }, [searchQuery, locationFilter, priceFrom, priceTo, sqmFrom, sqmTo, roomsFilter]);
+  }, [searchQuery, locationFilter, roomsFilter]);
 
   const filteredApartments = useMemo(() => {
     // Filter only rent properties
@@ -185,16 +172,6 @@ export function Rentiranje() {
 
       // Location filter
       if (locationFilter !== 'all' && apt.location !== locationFilter) {
-        return false;
-      }
-
-      // Price range (for rent, price is monthly rent)
-      if (apt.price < priceFrom || apt.price > priceTo) {
-        return false;
-      }
-
-      // Square meters range
-      if (apt.squareMeters < sqmFrom || apt.squareMeters > sqmTo) {
         return false;
       }
 
@@ -225,7 +202,7 @@ export function Rentiranje() {
     });
 
     return filtered;
-  }, [searchQuery, locationFilter, priceFrom, priceTo, sqmFrom, sqmTo, roomsFilter, sortBy]);
+  }, [searchQuery, locationFilter, roomsFilter, sortBy, apartments]);
 
   return (
     <>
@@ -286,7 +263,7 @@ export function Rentiranje() {
             {/* Filters Panel */}
             <div className={`mt-6 pt-6 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
               <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-6 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   
                   {/* Lokacija */}
                   <div>
@@ -317,32 +294,6 @@ export function Rentiranje() {
                       <option value="3">{t('rentiranje.threeRooms')}</option>
                       <option value="4">{t('rentiranje.fourPlusRooms')}</option>
                     </select>
-                  </div>
-
-                  {/* Mesečna Kirija - Slider */}
-                  <div>
-                    <RangeSlider
-                      min={0}
-                      max={2000}
-                      step={50}
-                      value={priceTo}
-                      onChange={setPriceTo}
-                      label={t('rentiranje.maxRent')}
-                      formatValue={(v) => `€${v.toLocaleString()}`}
-                    />
-                  </div>
-
-                  {/* m² - Slider */}
-                  <div>
-                    <RangeSlider
-                      min={0}
-                      max={1000}
-                      step={5}
-                      value={sqmTo}
-                      onChange={setSqmTo}
-                      label={t('browse.maxArea')}
-                      formatValue={(v) => `${v} m²`}
-                    />
                   </div>
                 </div>
               </div>

@@ -6,6 +6,8 @@ import { ScheduleViewingModal } from '@/app/components/ScheduleViewingModal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { Footer } from '@/app/components/Footer';
 import { useApartments } from '@/app/hooks/useApartments';
+import { SEO } from '@/app/components/SEO';
+import { PropertySchema, BreadcrumbSchema } from '@/app/components/SchemaMarkup';
 
 export function ListingDetail() {
   const { id } = useParams();
@@ -91,8 +93,42 @@ export function ListingDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 py-8 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      {/* SEO Meta Tags */}
+      <SEO
+        title={`${apartment.name} - ${formatPrice(apartment.price, apartment.type)}`}
+        description={`${apartment.name} u ${apartment.location}. ${apartment.propertyType === 'land' ? `Zemljište ${(apartment.squareMeters / 100).toFixed(2)} ari` : `${apartment.squareMeters}m²${apartment.bedrooms ? `, ${apartment.bedrooms} soba` : ''}`}. ${getDescription().substring(0, 150)}...`}
+        keywords={`${apartment.name}, nekretnine ${apartment.location}, ${apartment.type === 'sale' ? 'prodaja' : 'izdavanje'} ${apartment.propertyType === 'land' ? 'zemljište' : 'stan'}, nekretnine beograd, agencija stepenik`}
+        canonical={`/listing/${apartment.id}`}
+        ogImage={apartment.images[0]}
+        ogType="product"
+      />
+
+      {/* Property Schema Markup */}
+      <PropertySchema
+        name={apartment.name}
+        price={apartment.price}
+        location={apartment.location}
+        area={apartment.squareMeters}
+        type={apartment.type}
+        bedrooms={apartment.bedrooms}
+        bathrooms={apartment.bathrooms}
+        image={apartment.images[0]}
+        url={`https://stepeniknekretnine.com/listing/${apartment.id}`}
+        description={getDescription().substring(0, 200)}
+      />
+
+      {/* Breadcrumb Schema */}
+      <BreadcrumbSchema
+        items={[
+          { name: 'Početna', url: 'https://stepeniknekretnine.com/' },
+          { name: 'Prodaja', url: 'https://stepeniknekretnine.com/browse' },
+          { name: apartment.name, url: `https://stepeniknekretnine.com/listing/${apartment.id}` }
+        ]}
+      />
+
+      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link
           to="/browse"
@@ -430,8 +466,9 @@ export function ListingDetail() {
         apartmentName={apartment.name}
       />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 }

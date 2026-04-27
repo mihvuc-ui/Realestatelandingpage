@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-sitemap": "node --import tsx scripts/generate-sitemap.ts",
     "migrate-apartments": "tsx scripts/migrate-apartments.ts",
+    "seo": "node --import tsx scripts/generate-sitemap.ts",
     "dev": "vite"
   },
   "dependencies": {

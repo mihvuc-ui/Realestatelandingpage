@@ -24,9 +24,9 @@ export function PropertyCard({ apartment }: PropertyCardProps) {
     >
       {/* Image - Extended */}
       <div className="h-[220px] overflow-hidden relative flex-shrink-0">
-        <img 
-          src={apartment.images[0]} 
-          alt={apartment.name}
+        <img
+          src={apartment.images[0]}
+          alt={`${apartment.name} - ${apartment.location} - ${apartment.type === 'sale' ? 'Prodaja' : 'Izdavanje'} ${apartment.propertyType === 'land' ? 'Zemljište' : 'Stan'} ${apartment.squareMeters}m² - Nekretnine Beograd`}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
         {/* Type Badge */}

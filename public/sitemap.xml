@@ -1,68 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
+
   <url>
     <loc>https://stepeniknekretnine.com/</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://stepeniknekretnine.com/browse</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://stepeniknekretnine.com/kupujem</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://stepeniknekretnine.com/prodajem</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://stepeniknekretnine.com/rentiranje</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://stepeniknekretnine.com/about</loc>
-    <lastmod>2024-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://stepeniknekretnine.com/listing/1</loc>
-    <lastmod>2024-03-31</lastmod>
+    <loc>https://stepeniknekretnine.com/listing/1b0ad246-3a4e-4ede-be74-605332d0b623</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://i.imgur.com/rhk2C8oh.jpg</image:loc>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/IzdavanjeMagnolija/1.jpeg</image:loc>
+      <image:title>Jednoiposoban stan - Magnolija (Izdavanje)</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://i.imgur.com/srqdJnBh.jpg</image:loc>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/IzdavanjeMagnolija/2.jpeg</image:loc>
+      <image:title>Jednoiposoban stan - Magnolija (Izdavanje)</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://i.imgur.com/nQxcF7Mh.jpg</image:loc>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/IzdavanjeMagnolija/3.jpeg</image:loc>
+      <image:title>Jednoiposoban stan - Magnolija (Izdavanje)</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://i.imgur.com/l3eyZ2oh.jpg</image:loc>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/IzdavanjeMagnolija/4.jpeg</image:loc>
+      <image:title>Jednoiposoban stan - Magnolija (Izdavanje)</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://i.imgur.com/lL8e1xxh.jpg</image:loc>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/IzdavanjeMagnolija/5.jpeg</image:loc>
+      <image:title>Jednoiposoban stan - Magnolija (Izdavanje)</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://stepeniknekretnine.com/listing/cd3e5309-a1ce-4e81-b253-a1c8811ee734</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Desanke%20Maksimovic%201/WhatsApp%20Image%202026-03-21%20at%2016.16.53%20(2).jpeg</image:loc>
+      <image:title>Dvosoban stan - Vračar, Desanke Maksimović</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Desanke%20Maksimovic%201/WhatsApp%20Image%202026-03-21%20at%2016.16.55%20(1).jpeg</image:loc>
+      <image:title>Dvosoban stan - Vračar, Desanke Maksimović</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Desanke%20Maksimovic%201/WhatsApp%20Image%202026-03-21%20at%2016.16.55%20(2).jpeg</image:loc>
+      <image:title>Dvosoban stan - Vračar, Desanke Maksimović</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Desanke%20Maksimovic%201/WhatsApp%20Image%202026-03-21%20at%2016.16.55.jpeg</image:loc>
+      <image:title>Dvosoban stan - Vračar, Desanke Maksimović</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Desanke%20Maksimovic%201/WhatsApp%20Image%202026-03-21%20at%2016.16.56%20(1).jpeg</image:loc>
+      <image:title>Dvosoban stan - Vračar, Desanke Maksimović</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://stepeniknekretnine.com/listing/706b8583-24a8-4c51-b3ba-3bcac7245ded</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz2/1.jpeg</image:loc>
+      <image:title>Trosoban stan - Kluz, Zvezdara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz2/2.jpeg</image:loc>
+      <image:title>Trosoban stan - Kluz, Zvezdara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz2/3.jpeg</image:loc>
+      <image:title>Trosoban stan - Kluz, Zvezdara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz2/4.jpeg</image:loc>
+      <image:title>Trosoban stan - Kluz, Zvezdara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz2/5.jpeg</image:loc>
+      <image:title>Trosoban stan - Kluz, Zvezdara</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://stepeniknekretnine.com/listing/0e829f20-304a-4d60-bfee-1aa75c3a1190</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz1/1.jpeg</image:loc>
+      <image:title>Trosoban stan - Zvezdara, Kluz (Rasadnička)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz1/2.jpeg</image:loc>
+      <image:title>Trosoban stan - Zvezdara, Kluz (Rasadnička)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz1/3.jpeg</image:loc>
+      <image:title>Trosoban stan - Zvezdara, Kluz (Rasadnička)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz1/4.jpeg</image:loc>
+      <image:title>Trosoban stan - Zvezdara, Kluz (Rasadnička)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Kluz1/5.jpeg</image:loc>
+      <image:title>Trosoban stan - Zvezdara, Kluz (Rasadnička)</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://stepeniknekretnine.com/listing/4ec91169-eb57-4ca6-8dd3-5d6f5ac1b6ca</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Lestane1/1.jpeg</image:loc>
+      <image:title>Dvosoban stan - Leštane, Grocka</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Lestane1/2.jpeg</image:loc>
+      <image:title>Dvosoban stan - Leštane, Grocka</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Lestane1/3.jpeg</image:loc>
+      <image:title>Dvosoban stan - Leštane, Grocka</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Lestane1/4.jpeg</image:loc>
+      <image:title>Dvosoban stan - Leštane, Grocka</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/Lestane1/5.jpeg</image:loc>
+      <image:title>Dvosoban stan - Leštane, Grocka</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://stepeniknekretnine.com/listing/505f474b-15c3-4642-ba1e-12e8ef2574a1</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/PlacAvala/WhatsApp Image 2026-04-13 at 22.52.27 (1).jpeg</image:loc>
+      <image:title>Plac - Avala, Pinosava</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/PlacAvala/WhatsApp Image 2026-04-13 at 22.52.27.jpeg</image:loc>
+      <image:title>Plac - Avala, Pinosava</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/PlacAvala/WhatsApp Image 2026-04-13 at 22.52.28 (1).jpeg</image:loc>
+      <image:title>Plac - Avala, Pinosava</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/PlacAvala/WhatsApp Image 2026-04-13 at 22.52.28 (2).jpeg</image:loc>
+      <image:title>Plac - Avala, Pinosava</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/PlacAvala/WhatsApp Image 2026-04-13 at 22.52.28 (3).jpeg</image:loc>
+      <image:title>Plac - Avala, Pinosava</image:title>
     </image:image>
   </url>
 

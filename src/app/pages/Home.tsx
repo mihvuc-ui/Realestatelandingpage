@@ -41,9 +41,9 @@ export function Home() {
   return (
     <>
       <SEO
-        title="Nekretnine u Beogradu – Prodaja i Izdavanje Stanova"
-        description="Agencija Stepenik - profesionalna agencija za nekretnine u Beogradu. Stepenik Nekretnine: prodaja stanova, iznajmljivanje, kuće na prodaju. Preko 150 uspešno završenih poslova."
-        keywords="agencija stepenik, stepenik nekretnine, nekretnine stepenik beograd, agencija stepenik beograd, nekretnine beograd, prodaja stanova beograd, izdavanje stanova beograd, stan na prodaju, agencija za nekretnine beograd, stepenik real estate, stepenik nekretnine srbija"
+        title="Nekretnine Beograd - Prodaja i Izdavanje Stanova | Agencija Stepenik"
+        description="Nekretnine u Beogradu - Agencija Stepenik. Stanovi, kuće i poslovni prostori. Prodaja stanova Beograd, izdavanje stanova, nekretnine Zvezdara, Vračar, Novi Beograd. Preko 150 uspešno završenih poslova. Pozovite: 062 671 155"
+        keywords="nekretnine, nekretnine beograd, prodaja stanova beograd, agencija stepenik, stepenik nekretnine, stanovi beograd, izdavanje stanova, kupovina stana, stan na prodaju, agencija za nekretnine, nekretnine srbija, nekretnine zvezdara, nekretnine vračar, nekretnine novi beograd, agencija stepenik beograd, stepenik real estate, kupovina nekretnina, prodaja nekretnina, najam stanova beograd, rent apartment belgrade, real estate belgrade"
         canonical="/"
       />
 
