@@ -1,15 +1,17 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Settings } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ContactModal } from '@/app/components/ContactModal';
 import { Logo } from '@/app/components/Logo';
 import { LanguageSelector } from '@/app/components/LanguageSelector';
+import { ApartmentManager } from '@/app/components/admin/ApartmentManager';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [mouseY, setMouseY] = useState(0);
@@ -162,7 +164,17 @@ export function Header() {
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
-            
+
+            {/* Admin Panel Button */}
+            <button
+              onClick={() => setIsAdminPanelOpen(true)}
+              className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 border-transparent bg-transparent text-gray-700 dark:text-gray-300 hover:bg-purple-500/60 hover:border-purple-700 hover:text-white hover:shadow-lg hover:shadow-purple-500/40 hover:scale-105"
+              aria-label="Admin Panel"
+              title="Admin Panel"
+            >
+              <Settings className="h-5 w-5" />
+            </button>
+
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40 hover:bg-pink-500/80 hover:shadow-2xl hover:shadow-pink-500/50 hover:scale-105"
@@ -261,7 +273,19 @@ export function Header() {
                   </>
                 )}
               </button>
-              
+
+              {/* Admin Panel Mobile */}
+              <button
+                onClick={() => {
+                  setIsAdminPanelOpen(true);
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center space-x-2 text-sm py-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors font-semibold"
+              >
+                <Settings className="h-5 w-5" />
+                <span>Admin Panel</span>
+              </button>
+
               <button
                 onClick={() => setIsContactModalOpen(true)}
                 className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 hover:from-fuchsia-700 hover:to-fuchsia-800 text-white px-4 py-2 rounded-lg text-sm font-bold text-center transition-all shadow-md shadow-fuchsia-600/30 border-2 border-fuchsia-500/30"
@@ -273,6 +297,7 @@ export function Header() {
         )}
       </nav>
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      {isAdminPanelOpen && <ApartmentManager onClose={() => setIsAdminPanelOpen(false)} />}
     </header>
   );
 }

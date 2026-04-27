@@ -1,14 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
-import { apartments } from '@/data/apartments';
 import { Bed, Bath, Square, MapPin, ArrowLeft, ChevronLeft, ChevronRight, Building2, Flame, Car, Calendar, Compass, Armchair, Navigation, Maximize2, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { ScheduleViewingModal } from '@/app/components/ScheduleViewingModal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { Footer } from '@/app/components/Footer';
+import { useApartments } from '@/app/hooks/useApartments';
 
 export function ListingDetail() {
   const { id } = useParams();
+  const { apartments, loading } = useApartments();
   const apartment = apartments.find(apt => apt.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -20,6 +21,14 @@ export function ListingDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]); // Runs whenever the id changes (new apartment)
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center transition-colors">
+        <div className="text-center py-12">Učitavam oglas...</div>
+      </div>
+    );
+  }
 
   if (!apartment) {
     return (
@@ -237,12 +246,12 @@ export function ListingDetail() {
                   </div>
                 )}
                 {apartment.parking && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center text-gray-600 dark:text-gray-400 flex-shrink-0">
                       <Car className="h-5 w-5 mr-2" />
                       <span>{t('listing.parking')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.parking}</span>
+                    <span className="text-gray-900 dark:text-white font-semibold text-sm text-right break-words">{apartment.parking}</span>
                   </div>
                 )}
                 {apartment.yearRenovated && (

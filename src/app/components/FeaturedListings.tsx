@@ -1,17 +1,23 @@
-import { apartments } from '@/data/apartments';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { Link } from 'react-router-dom';
+import { useApartments } from '@/app/hooks/useApartments';
 
 export function FeaturedListings() {
+  const { apartments, loading } = useApartments();
+
   // Get featured apartments or first 3 apartments
   const featuredApartments = apartments
     .filter(apt => apt.featured)
     .slice(0, 3);
-  
+
   // If no featured apartments, show first 3
-  const displayApartments = featuredApartments.length > 0 
-    ? featuredApartments 
+  const displayApartments = featuredApartments.length > 0
+    ? featuredApartments
     : apartments.slice(0, 3);
+
+  if (loading) {
+    return <div className="text-center py-12">Učitavam oglase...</div>;
+  }
 
   return (
     <div>

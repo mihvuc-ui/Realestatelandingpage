@@ -1,7 +1,24 @@
-import { apartments } from '@/data/apartments';
+import { useApartments } from '@/app/hooks/useApartments';
 
 export function ImageReorder() {
+  const { apartments, loading } = useApartments();
   const apartment = apartments[0];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 flex items-center justify-center">
+        <div className="text-gray-600 dark:text-gray-400">Učitavam slike...</div>
+      </div>
+    );
+  }
+
+  if (!apartment) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 flex items-center justify-center">
+        <div className="text-gray-600 dark:text-gray-400">Nema oglasa.</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">

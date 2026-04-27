@@ -1,4 +1,3 @@
-import { apartments } from '@/data/apartments';
 import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
@@ -8,12 +7,13 @@ import { Footer } from '@/app/components/Footer';
 import { SEO } from '@/app/components/SEO';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { BreadcrumbSchema, ItemListSchema } from '@/app/components/SchemaMarkup';
+import { useApartments } from '@/app/hooks/useApartments';
 
 export function BrowseListings() {
   const { t } = useLanguage();
+  const { apartments, loading, useSupabase } = useApartments();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
-  const [strukturaFilter, setStrukturaFilter] = useState('all'); // Promenjen sa typeFilter u strukturaFilter
   const [priceFrom, setPriceFrom] = useState(0);
   const [priceTo, setPriceTo] = useState(600000);
   const [sqmFrom, setSqmFrom] = useState(0);
@@ -158,7 +158,6 @@ export function BrowseListings() {
   const resetFilters = () => {
     setSearchQuery('');
     setLocationFilter('all');
-    setStrukturaFilter('all');
     setPriceFrom(0);
     setPriceTo(600000);
     setSqmFrom(0);
@@ -168,15 +167,14 @@ export function BrowseListings() {
   };
 
   const hasActiveFilters = useMemo(() => {
-    return searchQuery !== '' || 
-           locationFilter !== 'all' || 
-           strukturaFilter !== 'all' || 
-           priceFrom !== 0 || 
-           priceTo !== 600000 || 
-           sqmFrom !== 0 || 
+    return searchQuery !== '' ||
+           locationFilter !== 'all' ||
+           priceFrom !== 0 ||
+           priceTo !== 600000 ||
+           sqmFrom !== 0 ||
            sqmTo !== 1000 ||
            paymentMethod !== 'all';
-  }, [searchQuery, locationFilter, strukturaFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
+  }, [searchQuery, locationFilter, priceFrom, priceTo, sqmFrom, sqmTo, paymentMethod]);
 
   const filteredApartments = useMemo(() => {
     let filtered = apartments.filter(apt => {
@@ -191,8 +189,9 @@ export function BrowseListings() {
         return false;
       }
 
-      // Type filter
-      if (strukturaFilter !== 'all' && apt.type !== strukturaFilter) {
+      // Note: Removed struktura filter - structure info not in database
+      // Filter only sale type (not rent) for this page
+      if (apt.type !== 'sale') {
         return false;
       }
 
@@ -225,7 +224,7 @@ export function BrowseListings() {
     });
 
     return filtered;
-  }, [searchQuery, locationFilter, strukturaFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
+  }, [apartments, searchQuery, locationFilter, priceFrom, priceTo, sqmFrom, sqmTo, sortBy]);
 
   // Prepare items for ItemList schema
   const schemaItems = filteredApartments.slice(0, 20).map(apt => ({
@@ -297,9 +296,8 @@ export function BrowseListings() {
             <div className={`mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
               <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-3 sm:p-4 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
                 
-                {/* Prvi red: Lokacija i Struktura */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
-                  
+                {/* Prvi red: Lokacija */}
+                <div className="mb-3 sm:mb-4">
                   {/* Lokacija */}
                   <div>
                     <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">{t('filters.location')}</label>
@@ -312,35 +310,6 @@ export function BrowseListings() {
                       {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
                         <option key={loc} value={loc}>{loc}</option>
                       ))}
-                    </select>
-                  </div>
-
-                  {/* Struktura */}
-                  <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Struktura</label>
-                    <select
-                      value={strukturaFilter}
-                      onChange={(e) => setStrukturaFilter(e.target.value)}
-                      className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
-                    >
-                      <option value="all">Sve strukture</option>
-                      <option value="1.0">1.0</option>
-                      <option value="1.5">1.5</option>
-                      <option value="2.0">2.0</option>
-                      <option value="2.5">2.5</option>
-                      <option value="3.0">3.0</option>
-                      <option value="3.5">3.5</option>
-                      <option value="4.0">4.0</option>
-                      <option value="4.5">4.5</option>
-                      <option value="5.0">5.0</option>
-                      <option value="5.5">5.5</option>
-                      <option value="6.0">6.0</option>
-                      <option value="6.5">6.5</option>
-                      <option value="7.0">7.0</option>
-                      <option value="7.5">7.5</option>
-                      <option value="8.0">8.0</option>
-                      <option value="8.5">8.5</option>
-                      <option value="9.0">9.0</option>
                     </select>
                   </div>
                 </div>

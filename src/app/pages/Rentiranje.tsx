@@ -1,4 +1,3 @@
-import { apartments } from '@/data/apartments';
 import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { PropertyCard } from '@/app/components/PropertyCard';
@@ -6,9 +5,11 @@ import { useLanguage } from '@/app/contexts/LanguageContext';
 import { RangeSlider } from '@/app/components/RangeSlider';
 import { Footer } from '@/app/components/Footer';
 import { SEO } from '@/app/components/SEO';
+import { useApartments } from '@/app/hooks/useApartments';
 
 export function Rentiranje() {
   const { t } = useLanguage();
+  const { apartments, loading } = useApartments();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('all');
   const [priceFrom, setPriceFrom] = useState(0);
