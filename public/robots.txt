@@ -7,6 +7,7 @@ Allow: /
 # Blokiraj admin ili private foldere ako postoje
 Disallow: /admin/
 Disallow: /private/
+Disallow: /image-reorder
 
 # Sitemap lokacija
 Sitemap: https://stepeniknekretnine.com/sitemap.xml

@@ -11,7 +11,6 @@ import { Prodajem } from '@/app/pages/Prodajem';
 import { Rentiranje } from '@/app/pages/Rentiranje';
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
-import { ImageReorder } from '@/app/components/ImageReorder';
 import { ContactModal } from '@/app/components/ContactModal';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
 import { Toaster } from '@/app/components/ui/sonner';
@@ -54,7 +53,6 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/kupujem" element={<Kupujem />} />
           <Route path="/prodajem" element={<Prodajem />} />
-          <Route path="/image-reorder" element={<ImageReorder />} />
         </Routes>
       </main>
       {!isHomePage && <Footer />}
