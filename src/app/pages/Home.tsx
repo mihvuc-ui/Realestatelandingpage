@@ -1,10 +1,11 @@
 import { Hero } from '@/app/components/Hero';
 import { FeaturedListings } from '@/app/components/FeaturedListings';
+import { AutoScrollThumbnails } from '@/app/components/AutoScrollThumbnails';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { ShoppingCart, TrendingUp, Phone, MapPin, Mail } from 'lucide-react';
+import { Phone, MapPin, Mail } from 'lucide-react';
 import { ContactModal } from '@/app/components/ContactModal';
 import { SEO } from '@/app/components/SEO';
 import { Logo } from '@/app/components/Logo';
@@ -115,28 +116,14 @@ export function Home() {
             <p className="text-gray-100 dark:text-white text-sm sm:text-base lg:text-lg mb-5 sm:mb-7 max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-2">
               {t('cta.subtitle')}
             </p>
-            <div className="flex flex-col items-center justify-center gap-4">
-              {/* Kupujem i Prodajem - Prvi red */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                <Link
-                  to="/kupujem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/40 hover:bg-pink-500/60 active:bg-pink-500/70 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] active:shadow-[0_0_50px_rgba(236,72,153,1)] hover:scale-105 active:scale-105 hover:border-2 hover:border-pink-700 active:border-2 active:border-pink-700 touch-manipulation"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  <span>{t('hero.buying')}</span>
-                </Link>
-                <Link
-                  to="/prodajem"
-                  className="w-full sm:w-56 inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/40 hover:bg-pink-500/60 active:bg-pink-500/70 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] active:shadow-[0_0_50px_rgba(236,72,153,1)] hover:border-2 hover:border-pink-700 active:border-2 active:border-pink-700 hover:scale-105 active:scale-105 touch-manipulation"
-                >
-                  <TrendingUp className="h-5 w-5" />
-                  <span>{t('hero.selling')}</span>
-                </Link>
-              </div>
-              {/* Kontaktirajte nas - Drugi red, centrirano */}
+            <div className="flex flex-col items-center justify-center gap-6">
+              {/* Auto-scrolling thumbnails */}
+              <AutoScrollThumbnails />
+
+              {/* Kontaktirajte nas dugme */}
               <button
                 onClick={() => setIsContactModalOpen(true)}
-                className="w-full sm:w-[464px] inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/40 hover:bg-pink-500/60 active:bg-pink-500/70 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] active:shadow-[0_0_50px_rgba(236,72,153,1)] hover:scale-105 active:scale-105 hover:border-2 hover:border-pink-700 active:border-2 active:border-pink-700 whitespace-nowrap touch-manipulation"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-pink-500/40 sm:bg-pink-500/40 hover:bg-pink-500/60 active:bg-pink-500/70 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] active:shadow-[0_0_50px_rgba(236,72,153,1)] hover:scale-105 active:scale-105 hover:border-2 hover:border-pink-700 active:border-2 active:border-pink-700 whitespace-nowrap touch-manipulation"
               >
                 <Phone className="h-5 w-5" />
                 <span>{t('cta.contact')}</span>

@@ -3,6 +3,7 @@ import { Search, Building, ShoppingCart, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { AutoScrollThumbnails } from '@/app/components/AutoScrollThumbnails';
 
 export function Hero() {
   const { t, language } = useLanguage();
@@ -35,11 +36,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24">
         <div className="text-center max-w-4xl mx-auto px-4">
           {/* Headline */}
-          <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-6 leading-tight select-none break-words font-[700] sm:font-[550] mt-8 sm:mt-0" 
+          <h1
+            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-5 leading-tight select-none break-words font-[700] sm:font-[550]" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'
@@ -124,12 +125,12 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-800 dark:text-gray-800 mb-10 max-w-2xl mx-auto font-normal">
+          <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-800 mb-6 max-w-2xl mx-auto font-normal">
             {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Link
               to="/kupujem"
               className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
@@ -148,6 +149,11 @@ export function Hero() {
                 <span>{t('hero.selling')}</span>
               </div>
             </Link>
+          </div>
+
+          {/* Auto-scrolling thumbnails */}
+          <div className="mt-6">
+            <AutoScrollThumbnails />
           </div>
         </div>
       </div>
