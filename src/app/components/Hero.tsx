@@ -36,11 +36,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
         <div className="text-center max-w-full sm:max-w-4xl mx-auto">
           {/* Headline */}
           <h1
-            className="text-xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-10 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
+            className="text-2xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-10 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'
@@ -125,7 +125,7 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-sm sm:text-lg lg:text-xl text-gray-800 dark:text-gray-800 mb-10 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-normal px-2">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-800 dark:text-gray-800 mb-10 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-normal px-2">
             {t('hero.subtitle')}
           </p>
 
