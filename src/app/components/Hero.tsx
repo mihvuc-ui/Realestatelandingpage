@@ -25,22 +25,30 @@ export function Hero() {
 
   return (
     <div className="relative bg-white dark:bg-gray-50 overflow-hidden transition-colors h-full flex items-center">
-      {/* Belgrade Panorama Background Image - Day - Clean */}
+      {/* Background Image */}
       <div className="fixed inset-0 z-0">
+        {/* Nova pozadina iz Supabase Storage */}
+        <ImageWithFallback
+          src="https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/slikazasajt/sajt.jpg"
+          alt="Background"
+          className="w-full h-full object-cover opacity-80"
+        />
+        {/* Stara Unsplash pozadina (za vraćanje):
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
           alt="Belgrade Panorama"
           className="w-full h-full object-cover opacity-80"
         />
+        */}
         {/* White fade overlay */}
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-44 pb-24 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
         <div className="text-center max-w-full sm:max-w-4xl mx-auto">
           {/* Headline */}
           <h1
-            className="text-2xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-10 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
+            className="text-3xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-10 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'
@@ -125,7 +133,7 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg lg:text-xl text-gray-800 dark:text-gray-800 mb-10 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-normal px-2">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-900 dark:text-gray-900 mb-10 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-semibold px-2">
             {t('hero.subtitle')}
           </p>
 

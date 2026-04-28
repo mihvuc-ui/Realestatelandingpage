@@ -67,17 +67,25 @@ export function Home() {
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/60 via-black/40 to-transparent z-[5] pointer-events-none"></div>
           
-          {/* Belgrade Panorama Background - Clean Day Image */}
+          {/* Background Image */}
           <div className="fixed inset-0 z-0">
+            {/* Nova pozadina iz Supabase Storage */}
+            <ImageWithFallback
+              src="https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/slikazasajt/sajt.jpg"
+              alt="Background"
+              className="w-full h-full object-cover opacity-80"
+            />
+            {/* Stara Unsplash pozadina (za vraćanje):
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
               alt="Belgrade Panorama"
               className="w-full h-full object-cover opacity-80"
             />
+            */}
             {/* White fade overlay for light mode / Dark gray for dark mode */}
             <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/90"></div>
           </div>
-          
+
           {/* Gradient blend to next section */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-fuchsia-950/20 to-fuchsia-950/40 z-[5] pointer-events-none"></div>
           
@@ -97,17 +105,25 @@ export function Home() {
           {/* Gradient blend from previous section */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-fuchsia-950/40 via-pink-950/30 to-transparent z-[5] pointer-events-none"></div>
           
-          {/* Belgrade Panorama Background - Clean Day Image */}
+          {/* Background Image */}
           <div className="fixed inset-0 z-0">
+            {/* Nova pozadina iz Supabase Storage */}
+            <ImageWithFallback
+              src="https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/slikazasajt/sajt.jpg"
+              alt="Background"
+              className="w-full h-full object-cover opacity-80"
+            />
+            {/* Stara Unsplash pozadina (za vraćanje):
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
               alt="Belgrade Panorama"
               className="w-full h-full object-cover opacity-80"
             />
+            */}
             {/* White fade overlay for light mode / Dark gray for dark mode */}
             <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/90"></div>
           </div>
-          
+
           {/* Content - TOP LAYER */}
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-3 sm:mb-5 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] px-2">
