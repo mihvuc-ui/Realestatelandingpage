@@ -24,7 +24,9 @@ export function AutoScrollThumbnails() {
     const scrollInterval = setInterval(() => {
       if (scrollContainerRef.current) {
         const container = scrollContainerRef.current;
-        const scrollAmount = 88; // Širina thumbnail-a + gap (80px + 8px)
+        // Responsive scroll amount: 72px za mobilni (64px + 8px), 104px za desktop (96px + 8px)
+        const isMobile = window.innerWidth < 640;
+        const scrollAmount = isMobile ? 72 : 104;
 
         // Skroluj za jedan thumbnail
         container.scrollLeft += scrollAmount;
@@ -87,7 +89,7 @@ export function AutoScrollThumbnails() {
     <div className="w-full max-w-3xl mx-auto">
       <div
         ref={scrollContainerRef}
-        className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
+        className="flex gap-2 sm:gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -105,7 +107,7 @@ export function AutoScrollThumbnails() {
             to={`/listing/${apartment.id}`}
             className="flex-shrink-0 group"
           >
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 border-2 border-pink-500/50 hover:border-pink-500">
+            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 border-2 border-pink-500/50 hover:border-pink-500">
               <img
                 src={apartment.images[0]}
                 alt={apartment.name}
@@ -113,7 +115,7 @@ export function AutoScrollThumbnails() {
               />
             </div>
             <div className="mt-1 text-center">
-              <p className="text-xs text-white font-semibold drop-shadow-lg truncate max-w-[80px] sm:max-w-[96px]">
+              <p className="text-xs text-white font-semibold drop-shadow-lg truncate max-w-[64px] sm:max-w-[96px]">
                 €{apartment.price.toLocaleString()}
               </p>
             </div>

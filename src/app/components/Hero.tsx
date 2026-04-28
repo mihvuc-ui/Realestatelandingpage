@@ -36,11 +36,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24">
-        <div className="text-center max-w-4xl mx-auto px-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20">
+        <div className="text-center max-w-4xl mx-auto px-3 sm:px-4">
           {/* Headline */}
           <h1
-            className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-5 leading-tight select-none break-words font-[700] sm:font-[550]" 
+            className="text-2xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-4 leading-tight select-none break-words font-[700] sm:font-[550]" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'
@@ -125,15 +125,15 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-800 mb-6 max-w-2xl mx-auto font-normal">
+          <p className="text-base sm:text-xl text-gray-800 dark:text-gray-800 mb-5 max-w-2xl mx-auto font-normal">
             {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
             <Link
               to="/kupujem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
                 <ShoppingCart className="h-5 w-5" />
@@ -142,7 +142,7 @@ export function Hero() {
             </Link>
             <Link
               to="/prodajem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
                 <TrendingUp className="h-5 w-5" />
@@ -152,7 +152,7 @@ export function Hero() {
           </div>
 
           {/* Auto-scrolling thumbnails */}
-          <div className="mt-6">
+          <div className="mt-4">
             <AutoScrollThumbnails />
           </div>
         </div>
