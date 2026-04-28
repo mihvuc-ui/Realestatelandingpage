@@ -8,9 +8,23 @@ export function FeaturedListings() {
   // Get featured apartments or first 3 apartments
   const featuredApartments = apartments
     .filter(apt => apt.featured)
+    .sort((a, b) => {
+      // Desanke Maksimović uvek prvi
+      const aIsDesanke = a.name.toLowerCase().includes('desanke');
+      const bIsDesanke = b.name.toLowerCase().includes('desanke');
+
+      if (aIsDesanke && !bIsDesanke) return -1;
+      if (!aIsDesanke && bIsDesanke) return 1;
+
+      // Prvo prodaja, zatim izdavanje
+      if (a.type === 'sale' && b.type === 'rent') return -1;
+      if (a.type === 'rent' && b.type === 'sale') return 1;
+
+      return 0;
+    })
     .slice(0, 3);
 
-  // If no featured apartments, show first 3
+  // If no featured apartments, show first 3 with same sorting
   const displayApartments = featuredApartments.length > 0
     ? featuredApartments
     : apartments.slice(0, 3);
