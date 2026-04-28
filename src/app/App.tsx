@@ -11,7 +11,6 @@ import { Prodajem } from '@/app/pages/Prodajem';
 import { Rentiranje } from '@/app/pages/Rentiranje';
 import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
-import { ContactModal } from '@/app/components/ContactModal';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
 import { Toaster } from '@/app/components/ui/sonner';
 import { useEffect, useState } from 'react';
