@@ -12,10 +12,10 @@ interface SEOProps {
   jsonLd?: object;
 }
 
-export function SEO({ 
-  title, 
-  description, 
-  canonical, 
+export function SEO({
+  title,
+  description,
+  canonical,
   keywords,
   ogImage = '/og-default.jpg',
   ogType = 'website',
@@ -25,7 +25,7 @@ export function SEO({
   const siteUrl = 'https://stepeniknekretnine.com';
   const fullTitle = `${title} | Nekretnine Stepenik - Agencija Stepenik Beograd`;
   const url = canonical ? `${siteUrl}${canonical}` : siteUrl;
-  const { currentLanguage } = useLanguage();
+  const { language } = useLanguage();
 
   // Language mappings
   const languageMap: { [key: string]: string } = {
@@ -35,12 +35,12 @@ export function SEO({
     tr: 'tr_TR'
   };
 
-  const locale = languageMap[currentLanguage] || 'sr_RS';
+  const locale = languageMap[language] || 'sr_RS';
 
   return (
     <Helmet>
-      {/* Viewport - Prevent zoom on rotation */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      {/* Viewport */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
       {/* Google Site Verification */}
       <meta name="google-site-verification" content="google127f4562652b22dd" />

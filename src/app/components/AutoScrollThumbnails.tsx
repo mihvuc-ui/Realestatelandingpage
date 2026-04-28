@@ -1,13 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApartments } from '@/app/hooks/useApartments';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export function AutoScrollThumbnails() {
   const { apartments, loading } = useApartments();
+  const { t } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isUserScrollingRef = useRef(false);
+
+  const formatPrice = (price: number, type: string) => {
+    if (type === 'rent') {
+      return `€${price.toLocaleString()}/${t('listing.perMonth')}`;
+    }
+    return `€${price.toLocaleString()}`;
+  };
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -43,7 +52,7 @@ export function AutoScrollThumbnails() {
   }, [loading, apartments.length, isPaused]);
 
   if (loading) {
-    return <div className="text-center text-white py-4">Učitavam oglase...</div>;
+    return <div className="text-center text-white py-4">{t('listing.loading') || 'Loading...'}</div>;
   }
 
   if (apartments.length === 0) {
@@ -86,7 +95,7 @@ export function AutoScrollThumbnails() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-full sm:max-w-3xl mx-auto px-2 sm:px-0">
       <div
         ref={scrollContainerRef}
         className="flex gap-2 sm:gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
@@ -116,7 +125,7 @@ export function AutoScrollThumbnails() {
             </div>
             <div className="mt-1 text-center">
               <p className="text-xs text-white font-semibold drop-shadow-lg truncate max-w-[64px] sm:max-w-[96px]">
-                €{apartment.price.toLocaleString()}
+                {formatPrice(apartment.price, apartment.type)}
               </p>
             </div>
           </Link>

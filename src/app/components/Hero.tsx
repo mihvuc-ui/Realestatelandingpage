@@ -36,11 +36,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20">
-        <div className="text-center max-w-4xl mx-auto px-3 sm:px-4">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+        <div className="text-center max-w-full sm:max-w-4xl mx-auto">
           {/* Headline */}
           <h1
-            className="text-2xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-4 leading-tight select-none break-words font-[700] sm:font-[550]" 
+            className="text-xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-3 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
             style={{ 
               WebkitTouchCallout: 'none', 
               WebkitUserSelect: 'none'
@@ -125,34 +125,34 @@ export function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-xl text-gray-800 dark:text-gray-800 mb-5 max-w-2xl mx-auto font-normal">
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-800 dark:text-gray-800 mb-4 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-normal px-2">
             {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-5 w-full px-2 sm:px-0">
             <Link
               to="/kupujem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 sm:px-8 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
-                <ShoppingCart className="h-5 w-5" />
+                <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span>{t('hero.buying')}</span>
               </div>
             </Link>
             <Link
               to="/prodajem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 sm:px-8 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
             >
               <div className="flex items-center justify-center space-x-2">
-                <TrendingUp className="h-5 w-5" />
+                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span>{t('hero.selling')}</span>
               </div>
             </Link>
           </div>
 
           {/* Auto-scrolling thumbnails */}
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4 w-full">
             <AutoScrollThumbnails />
           </div>
         </div>
