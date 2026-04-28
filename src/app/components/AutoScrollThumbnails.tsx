@@ -7,6 +7,7 @@ export function AutoScrollThumbnails() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isUserScrollingRef = useRef(false);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -51,6 +52,7 @@ export function AutoScrollThumbnails() {
   const displayApartments = [...apartments, ...apartments];
 
   const handleTouchStart = () => {
+    isUserScrollingRef.current = true;
     setIsPaused(true);
     if (resumeTimeoutRef.current) {
       clearTimeout(resumeTimeoutRef.current);
@@ -58,10 +60,27 @@ export function AutoScrollThumbnails() {
   };
 
   const handleTouchEnd = () => {
+    isUserScrollingRef.current = false;
     // Nastavi scroll nakon 3 sekunde od poslednjeg dodira
+    if (resumeTimeoutRef.current) {
+      clearTimeout(resumeTimeoutRef.current);
+    }
     resumeTimeoutRef.current = setTimeout(() => {
       setIsPaused(false);
     }, 3000);
+  };
+
+  const handleScroll = () => {
+    // Ako korisnik manuelno skroluje, pauziraj auto-scroll
+    if (isUserScrollingRef.current) {
+      setIsPaused(true);
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+      resumeTimeoutRef.current = setTimeout(() => {
+        setIsPaused(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -72,11 +91,13 @@ export function AutoScrollThumbnails() {
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
         }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        onScroll={handleScroll}
       >
         {displayApartments.map((apartment, index) => (
           <Link
