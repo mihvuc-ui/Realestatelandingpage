@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { useLanguage } from '@/app/contexts/LanguageContext';
@@ -11,153 +11,70 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [mouseY, setMouseY] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const { t } = useLanguage();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   const isActive = (path: string) => location.pathname === path;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      
-      // Check if we're on mobile (screen width < 768px)
-      const isMobile = window.innerWidth < 768;
-      
-      // On homepage with mobile, hide header on any scroll, show only at very top
-      if (isHomePage && isMobile) {
-        if (window.scrollY === 0) {
-          setIsHeaderVisible(true);
-        } else {
-          setIsHeaderVisible(false);
-        }
-      } else if (isHomePage && !isMobile && window.scrollY > 100) {
-        // Desktop: hide header when scrolled down
-        setIsHeaderVisible(false);
-      } else if (!isHomePage) {
-        setIsHeaderVisible(true);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouseY(e.clientY);
-      
-      // Only apply mouse hover logic on desktop
-      const isMobile = window.innerWidth < 768;
-      
-      // Show header when mouse is near the top (within 100px) on homepage and desktop
-      if (isHomePage && !isMobile && e.clientY < 100) {
-        setIsHeaderVisible(true);
-      } else if (isHomePage && !isMobile && window.scrollY > 100) {
-        setIsHeaderVisible(false);
-      }
-    };
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
-    // Handle touch on mobile - show header only when at very top
-    const handleTouchStart = (e: TouchEvent) => {
-      const isMobile = window.innerWidth < 768;
-      if (isHomePage && isMobile && window.scrollY === 0 && e.touches[0].clientY < 100) {
-        setIsHeaderVisible(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-    };
-  }, [isHomePage]);
+  const navItems = [
+    { to: '/', label: t('nav.home') },
+    { to: '/browse', label: t('nav.browse') },
+    { to: '/rentiranje', label: t('nav.renting') },
+    { to: '/kupujem', label: t('nav.buying') },
+    { to: '/prodajem', label: t('nav.selling') },
+    { to: '/about', label: t('nav.about') },
+  ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-slate-950/95 border-b-2 border-gray-700 dark:border-gray-600 transition-all duration-500 ${ 
-      scrolled ? 'shadow-lg shadow-gray-700/20 dark:shadow-gray-600/30' : ''
-    } ${
-      isHeaderVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b transition-all duration-300 ${
+        scrolled ? 'border-border shadow-sm' : 'border-border/60'
+      }`}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="mr-8">
-            <Logo size="md" />
-          </div>
+        <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
+          <Logo size="md" />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 ml-auto">
-            <Link
-              to="/"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.home')}
-            </Link>
-            <Link
-              to="/browse"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/browse') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.browse')}
-            </Link>
-            <Link
-              to="/rentiranje"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/rentiranje') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.renting')}
-            </Link>
-            <Link
-              to="/kupujem"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/kupujem') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.buying')}
-            </Link>
-            <Link
-              to="/prodajem"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/prodajem') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.selling')}
-            </Link>
-            <Link
-              to="/about"
-              className={`px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap hover:shadow-2xl hover:scale-105 ${ 
-                isActive('/about') 
-                  ? 'bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40' 
-                  : 'bg-transparent border-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40'
-              }`}
-            >
-              {t('nav.about')}
-            </Link>
-            
-            {/* Language Selector */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`relative px-3.5 py-2 text-sm font-medium rounded-full transition-colors ${
+                  isActive(item.to)
+                    ? 'text-primary'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-secondary'
+                }`}
+              >
+                {item.label}
+                {isActive(item.to) && (
+                  <span className="absolute left-3.5 right-3.5 -bottom-px h-0.5 bg-primary rounded-full" />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right actions */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <LanguageSelector />
-            
-            {/* Theme Toggle */}
+
             <button
               onClick={toggleTheme}
-              className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 border-transparent bg-transparent text-gray-700 dark:text-gray-300 hover:bg-pink-500/60 hover:border-pink-700 hover:text-white hover:shadow-lg hover:shadow-pink-500/40 hover:scale-105"
+              className="p-2.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-secondary transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -165,107 +82,49 @@ export function Header() {
 
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="px-4 py-2 text-sm font-black transition-all rounded-lg border-2 whitespace-nowrap bg-pink-500/60 border-pink-700 text-white shadow-lg shadow-pink-500/40 hover:bg-pink-500/80 hover:shadow-2xl hover:shadow-pink-500/50 hover:scale-105"
+              className="hidden sm:inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
             >
-              {t('nav.contact')}
+              <Phone className="h-4 w-4" />
+              <span className="hidden md:inline">{t('nav.contact')}</span>
+              <span className="md:hidden">{t('footer.contact')}</span>
+            </button>
+
+            {/* Mobile menu toggle */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Menu"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-fuchsia-400/30 dark:border-fuchsia-600/30">
-            <nav className="flex flex-col space-y-3">
-              <Link
-                to="/"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.home')}
-              </Link>
-              <Link
-                to="/browse"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/browse') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.browse')}
-              </Link>
-              <Link
-                to="/rentiranje"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/rentiranje') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.renting')}
-              </Link>
-              <Link
-                to="/kupujem"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/kupujem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.buying')}
-              </Link>
-              <Link
-                to="/prodajem"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/prodajem') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.selling')}
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-semibold py-2 transition-colors ${
-                  isActive('/about') ? 'text-fuchsia-600 dark:text-fuchsia-400' : 'text-gray-600 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400'
-                }`}
-              >
-                {t('nav.about')}
-              </Link>
-              
-              {/* Language Selector Mobile */}
-              <div className="py-2">
-                <LanguageSelector isMobile={true} />
-              </div>
-              
-              {/* Theme Toggle Mobile */}
+          <div className="lg:hidden pb-4 pt-2 border-t border-border animate-fade-up">
+            <nav className="flex flex-col gap-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`px-3 py-3 rounded-xl text-base font-medium transition-colors ${
+                    isActive(item.to)
+                      ? 'bg-secondary text-primary'
+                      : 'text-foreground/80 hover:bg-secondary'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
               <button
-                onClick={toggleTheme}
-                className="flex items-center space-x-2 text-sm py-2 text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-300 transition-colors font-semibold"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsContactModalOpen(true);
+                }}
+                className="mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-xl text-base font-semibold"
               >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun className="h-5 w-5" />
-                    <span>{t('nav.lightTheme')}</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="h-5 w-5" />
-                    <span>{t('nav.darkTheme')}</span>
-                  </>
-                )}
-              </button>
-
-              <button
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-gradient-to-r from-fuchsia-600 to-fuchsia-700 hover:from-fuchsia-700 hover:to-fuchsia-800 text-white px-4 py-2 rounded-lg text-sm font-bold text-center transition-all shadow-md shadow-fuchsia-600/30 border-2 border-fuchsia-500/30"
-              >
+                <Phone className="h-5 w-5" />
                 {t('nav.contact')}
               </button>
             </nav>

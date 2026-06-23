@@ -31,42 +31,42 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
       onClick={onClose}
     >
-      <div 
-        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-fuchsia-200 dark:border-slate-800 transition-colors"
+      <div
+        className="bg-card rounded-2xl shadow-2xl max-w-md w-full p-8 relative border border-border transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-fuchsia-500 hover:text-fuchsia-600 dark:text-fuchsia-400 dark:hover:text-fuchsia-500 transition-colors"
+          className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
         >
           <X className="h-6 w-6" />
         </button>
 
         {/* Icon */}
         <div className="flex justify-center mb-6">
-          <div className="bg-gradient-to-r from-fuchsia-500 to-pink-500 p-4 rounded-full">
-            <MessageCircle className="h-8 w-8 text-white" />
+          <div className="bg-primary p-4 rounded-full">
+            <MessageCircle className="h-8 w-8 text-primary-foreground" />
           </div>
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
+        <h2 className="text-2xl text-foreground text-center mb-2">
           Zakažite Razgledanje
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
+        <p className="text-muted-foreground text-center mb-6">
           Izaberite način kontakta
         </p>
 
         {/* Agent Info */}
-        <div className="bg-gradient-to-br from-fuchsia-50 to-pink-50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl p-4 mb-6 border border-fuchsia-100 dark:border-slate-700">
-          <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-1">
+        <div className="bg-secondary rounded-xl p-4 mb-6 border border-border">
+          <p className="text-sm text-muted-foreground text-center mb-1">
             Vaš agent
           </p>
-          <p className="font-semibold text-gray-900 dark:text-white text-center text-lg">
+          <p className="font-semibold text-foreground text-center text-lg">
             Branka Gojković
           </p>
-          <p className="text-gray-700 dark:text-gray-300 text-center text-sm mt-1">
+          <p className="text-foreground/80 text-center text-sm mt-1">
             {phoneFormatted}
           </p>
         </div>
@@ -96,7 +96,7 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
           {/* Email */}
           <a
             href={emailLink}
-            className="flex items-center justify-center space-x-3 w-full bg-pink-500/30 hover:bg-pink-500/60 text-white py-3 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+            className="flex items-center justify-center space-x-3 w-full bg-primary text-primary-foreground py-3 rounded-xl font-semibold transition-opacity hover:opacity-90"
           >
             <Mail className="h-5 w-5" />
             <span>Email</span>
@@ -104,10 +104,10 @@ export function ScheduleViewingModal({ isOpen, onClose, apartmentName }: Schedul
 
           {/* Ili nazovite */}
           <div className="text-center pt-2">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">ili pozovite direktno</p>
-            <a 
+            <p className="text-sm text-muted-foreground mb-2">ili pozovite direktno</p>
+            <a
               href={`tel:${phone}`}
-              className="text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-500 font-semibold text-lg transition-colors"
+              className="text-primary hover:underline font-semibold text-lg transition-colors"
             >
               {phoneFormatted}
             </a>

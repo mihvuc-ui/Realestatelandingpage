@@ -52,20 +52,20 @@ export function LanguageSelector({ isMobile = false }: LanguageSelectorProps) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center p-2 rounded-lg bg-pink-500/30 border-2 border-pink-700 hover:bg-pink-500/60 transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105"
+        className="flex items-center justify-center p-2.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-secondary transition-colors"
         aria-label="Izaberi jezik"
       >
-        {currentLanguage && <currentLanguage.FlagComponent className="w-6 h-4" />}
+        {currentLanguage && <currentLanguage.FlagComponent className="w-6 h-4 rounded-[3px]" />}
       </button>
 
       {isOpen && (
-        <div className={`absolute ${isMobile ? 'left-0' : 'right-0'} mt-2 w-16 bg-white dark:bg-slate-900 rounded-lg shadow-xl border-2 border-pink-700 py-2 z-50`}>
+        <div className={`absolute ${isMobile ? 'left-0' : 'right-0'} mt-2 w-14 bg-popover rounded-xl shadow-xl border border-border py-1.5 z-50`}>
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center justify-center px-2 py-2.5 hover:bg-pink-500/30 transition-colors ${
-                language === lang.code ? 'bg-pink-500/20' : ''
+              className={`w-full flex items-center justify-center px-2 py-2 hover:bg-secondary transition-colors ${
+                language === lang.code ? 'bg-secondary' : ''
               }`}
             >
               <lang.FlagComponent className="w-6 h-4" />

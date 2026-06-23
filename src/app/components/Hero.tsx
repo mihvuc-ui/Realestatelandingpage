@@ -1,170 +1,128 @@
-import { Link } from 'react-router-dom';
-import { Search, Building, ShoppingCart, TrendingUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Search, MapPin } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { AutoScrollThumbnails } from '@/app/components/AutoScrollThumbnails';
 
 export function Hero() {
-  const { t, language } = useLanguage();
-  const [isHovering, setIsHovering] = useState(false);
+  const { t } = useLanguage();
+  const navigate = useNavigate();
+  const [dealType, setDealType] = useState<'sale' | 'rent'>('sale');
+  const [query, setQuery] = useState('');
 
-  // Haptic feedback function for mobile
-  const handleTouchFeedback = (e: React.TouchEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Vibrate for 50ms on touch (supported on most mobile devices)
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
+    const params = new URLSearchParams();
+    if (query.trim()) params.set('q', query.trim());
+    if (dealType === 'rent') {
+      navigate(`/rentiranje${params.toString() ? `?${params}` : ''}`);
+    } else {
+      params.set('type', 'sale');
+      navigate(`/browse?${params}`);
     }
   };
 
-  // Prevent context menu on long press
-  const preventContextMenu = (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault();
-  };
-
   return (
-    <div className="relative bg-white dark:bg-gray-50 overflow-hidden transition-colors h-full flex items-center">
-      {/* Background Image */}
-      <div className="fixed inset-0 z-0">
-        {/* Nova pozadina iz Supabase Storage */}
+    <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
         <ImageWithFallback
-          src="https://saoxrazxkagpolfkszek.supabase.co/storage/v1/object/public/apartment-images/slikazasajt/sajt.jpg"
-          alt="Background"
-          className="w-full h-full object-cover opacity-80"
+          src="https://images.unsplash.com/photo-1724582586529-62622e50c0b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2000"
+          alt="Moderan svetao enterijer dnevne sobe — Nekretnine Stepenik Beograd"
+          className="w-full h-full object-cover"
         />
-        {/* Stara Unsplash pozadina (za vraćanje):
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1733561589475-2492c96283f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWxncmFkZSUyMGRheSUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NjkxMTI4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1920"
-          alt="Belgrade Panorama"
-          className="w-full h-full object-cover opacity-80"
-        />
-        */}
-        {/* White fade overlay */}
-        <div className="absolute inset-0 bg-white/40"></div>
+        {/* Legibility overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/50 to-stone-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-44 pb-24 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
-        <div className="text-center max-w-full sm:max-w-4xl mx-auto">
-          {/* Headline */}
-          <h1
-            className="text-3xl sm:text-3xl lg:text-5xl text-gray-700 dark:text-gray-700 mb-10 sm:mb-4 leading-tight select-none break-words font-[700] sm:font-[600] px-2" 
-            style={{ 
-              WebkitTouchCallout: 'none', 
-              WebkitUserSelect: 'none'
-            }}
-            onContextMenu={preventContextMenu}
-          >
-            {language === 'sr' && (
-              <>
-                Pravi <span 
-                  className="inline-flex relative cursor-default select-none touch-manipulation"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                  onTouchStart={(e) => {
-                    e.preventDefault();
-                    handleTouchFeedback(e);
-                    setIsHovering(true);
-                    setTimeout(() => setIsHovering(false), 2000);
-                  }}
-                  onContextMenu={preventContextMenu}
-                  style={{ 
-                    WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none'
-                  }}
-                >
-                  {'stepenik'.split('').map((letter, index) => (
-                    <span
-                      key={index}
-                      className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400"
-                      style={{
-                        transform: isHovering ? `translateY(${index * -4}px)` : 'translateY(0)',
-                        transitionDelay: isHovering ? `${index * 50}ms` : '0ms',
-                      }}
-                    >
-                      {letter}
-                    </span>
-                  ))}
-                </span> između ponude{' '}
-                {t('hero.headlineAccent')}
-              </>
-            )}
-            {language === 'en' && (
-              <>
-                The right <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
-                  onTouchStart={handleTouchFeedback}
-                  onContextMenu={preventContextMenu}
-                  style={{ 
-                    WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none'
-                  }}
-                >step</span> between offer{' '}
-                {t('hero.headlineAccent')}
-              </>
-            )}
-            {language === 'ru' && (
-              <>
-                Правильный <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
-                  onTouchStart={handleTouchFeedback}
-                  onContextMenu={preventContextMenu}
-                  style={{ 
-                    WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none'
-                  }}
-                >шаг</span> ежду{' '}
-                {t('hero.headlineAccent')}
-              </>
-            )}
-            {language === 'tr' && (
-              <>
-                Teklif ile {t('hero.headlineAccent')} arasında doğru <span 
-                  className="inline-block transition-all duration-700 ease-out hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:text-pink-400 active:drop-shadow-[0_0_40px_rgba(236,72,153,1)] active:text-pink-300 active:scale-110 cursor-default touch-manipulation animate-pulse-subtle select-none"
-                  onTouchStart={handleTouchFeedback}
-                  onContextMenu={preventContextMenu}
-                  style={{ 
-                    WebkitTouchCallout: 'none', 
-                    WebkitUserSelect: 'none'
-                  }}
-                >adım</span>
-              </>
-            )}
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        <div className="max-w-2xl animate-fade-up">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs sm:text-sm font-medium mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
+            {t('hero.badge')}
+          </span>
+
+          <h1 className="text-white mb-5 [font-size:clamp(2.5rem,6vw,4.5rem)]">
+            {t('hero.title')}
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-base sm:text-lg lg:text-xl text-gray-900 dark:text-gray-900 mb-10 sm:mb-5 max-w-full sm:max-w-2xl mx-auto font-semibold px-2">
+          <p className="text-base sm:text-lg text-white/85 max-w-xl mb-8 leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-3 mb-10 sm:mb-5 w-full px-2 sm:px-0">
-            <Link
-              to="/kupujem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 sm:px-8 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span>{t('hero.buying')}</span>
-              </div>
-            </Link>
-            <Link
-              to="/prodajem"
-              className="w-full sm:w-56 bg-pink-500/40 sm:bg-pink-500/30 hover:bg-pink-500/60 text-white px-4 py-2 sm:px-8 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span>{t('hero.selling')}</span>
-              </div>
-            </Link>
-          </div>
+          {/* Search card */}
+          <form
+            onSubmit={handleSearch}
+            className="bg-card/95 backdrop-blur-xl rounded-2xl shadow-2xl p-3 sm:p-4 border border-white/10"
+          >
+            {/* Deal type segmented control */}
+            <div className="inline-flex p-1 rounded-full bg-secondary mb-3">
+              <button
+                type="button"
+                onClick={() => setDealType('sale')}
+                className={`px-5 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                  dealType === 'sale'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {t('filters.sale')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setDealType('rent')}
+                className={`px-5 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                  dealType === 'rent'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {t('filters.rent')}
+              </button>
+            </div>
 
-          {/* Auto-scrolling thumbnails */}
-          <div className="mt-10 sm:mt-4 w-full">
-            <AutoScrollThumbnails />
+            <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex-1 flex items-center gap-2 px-4 rounded-xl bg-secondary border border-border focus-within:border-primary transition-colors">
+                <MapPin className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder={t('buying.locationPlaceholder')}
+                  className="w-full bg-transparent py-3.5 text-foreground placeholder:text-muted-foreground focus:outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3.5 rounded-xl font-semibold hover:opacity-90 transition-opacity"
+              >
+                <Search className="h-5 w-5" />
+                {t('filters.search')}
+              </button>
+            </div>
+          </form>
+
+          {/* Trust stats */}
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-8 text-white">
+            <div>
+              <span className="text-2xl font-display font-semibold">150+</span>
+              <span className="block text-xs text-white/70">{t('stats.completedDeals')}</span>
+            </div>
+            <div className="w-px h-9 bg-white/20 hidden sm:block" />
+            <div>
+              <span className="text-2xl font-display font-semibold">2021</span>
+              <span className="block text-xs text-white/70">{t('stats.yearFounded')}</span>
+            </div>
+            <div className="w-px h-9 bg-white/20 hidden sm:block" />
+            <div>
+              <span className="text-2xl font-display font-semibold">100%</span>
+              <span className="block text-xs text-white/70">{t('stats.legalSupport')}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

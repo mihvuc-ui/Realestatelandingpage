@@ -30,26 +30,38 @@ export function FeaturedListings() {
     : apartments.slice(0, 3);
 
   if (loading) {
-    return <div className="text-center py-12">Učitavam oglase...</div>;
+    return (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="rounded-2xl border border-border overflow-hidden">
+            <div className="aspect-[4/3] bg-secondary animate-pulse" />
+            <div className="p-5 space-y-3">
+              <div className="h-5 w-2/3 bg-secondary animate-pulse rounded" />
+              <div className="h-4 w-1/2 bg-secondary animate-pulse rounded" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (
     <div>
       {/* Mobile: Horizontal Scroll, Desktop: Grid */}
-      <div className="flex md:grid overflow-x-auto md:overflow-x-visible md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
+      <div className="flex md:grid overflow-x-auto hide-scrollbar md:overflow-x-visible md:grid-cols-2 lg:grid-cols-3 gap-6 pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
         {displayApartments.map((apartment) => (
-          <div key={apartment.id} className="flex-shrink-0 w-[85vw] md:w-auto snap-center md:snap-align-none">
+          <div key={apartment.id} className="flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-auto snap-center md:snap-align-none">
             <PropertyCard apartment={apartment} />
           </div>
         ))}
       </div>
 
-      <div className="text-center mt-8">
+      <div className="text-center mt-10">
         <Link
           to="/browse"
-          className="inline-block bg-pink-500/40 sm:bg-pink-500/40 hover:bg-pink-500/60 active:bg-pink-500/70 text-white px-6 py-2.5 rounded-lg font-black transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] active:shadow-[0_0_50px_rgba(236,72,153,1)] hover:scale-105 active:scale-105 hover:border-2 hover:border-pink-700 active:border-2 active:border-pink-700 text-sm touch-manipulation"
+          className="inline-flex items-center gap-2 border border-border bg-card hover:bg-secondary text-foreground px-7 py-3 rounded-full font-semibold transition-colors"
         >
-          Pogledajte Sve Nekretnine
+          Pogledajte sve nekretnine
         </Link>
       </div>
     </div>

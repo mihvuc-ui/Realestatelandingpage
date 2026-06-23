@@ -52,7 +52,7 @@ export function AutoScrollThumbnails() {
   }, [loading, apartments.length, isPaused]);
 
   if (loading) {
-    return <div className="text-center text-white py-4">{t('listing.loading') || 'Loading...'}</div>;
+    return <div className="text-center text-muted-foreground py-4">{t('listing.loading') || 'Loading...'}</div>;
   }
 
   if (apartments.length === 0) {
@@ -116,15 +116,15 @@ export function AutoScrollThumbnails() {
             to={`/listing/${apartment.id}`}
             className="flex-shrink-0 group"
           >
-            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:scale-105 border-2 border-pink-500/50 hover:border-pink-500">
+            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-xl overflow-hidden border border-white/20 shadow-sm hover:shadow-md transition-all hover:scale-105">
               <img
                 src={apartment.images[0]}
                 alt={apartment.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <div className="mt-1 text-center">
-              <p className="text-xs text-white font-semibold drop-shadow-lg truncate max-w-[64px] sm:max-w-[96px]">
+            <div className="mt-1.5 text-center">
+              <p className="text-xs text-white/90 font-semibold truncate max-w-[64px] sm:max-w-[96px]">
                 {formatPrice(apartment.price, apartment.type)}
               </p>
             </div>

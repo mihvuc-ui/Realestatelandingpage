@@ -34,8 +34,8 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
       <div className={`flex items-center ${currentSize.container}`}>
         {/* Custom Icon - Istočne kapije isometric view */}
         <div className={`${currentSize.icon} relative flex-shrink-0 flex items-center justify-center`}>
-          {/* Solid Pink Background - Ravna bez rotacije */}
-          <div className="absolute inset-0 bg-pink-500 rounded-lg group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-pink-500/30 dark:shadow-pink-600/30"></div>
+          {/* Solid brand background */}
+          <div className="absolute inset-0 bg-primary rounded-xl group-hover:rotate-3 transition-transform duration-300 shadow-sm"></div>
           
           {/* Default Icon SVG - Building with stepped profile (side view) */}
           <svg 
@@ -164,11 +164,11 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
 
         {/* Text */}
         <div className="flex flex-col">
-          <span className={`${currentSize.text} font-normal text-gray-700 dark:text-gray-700 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-all duration-300 whitespace-nowrap lowercase`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            nekretnine<span style={{ textShadow: '0 0 8px rgba(236, 72, 153, 0.5)' }}>stepenik</span>
+          <span className={`${currentSize.text} font-semibold text-foreground transition-colors duration-300 whitespace-nowrap lowercase tracking-tight`}>
+            nekretnine<span className="text-primary">stepenik</span>
           </span>
           {showTagline && (
-            <span className={`${currentSize.tagline} font-extralight text-gray-600 dark:text-gray-400 -mt-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <span className={`${currentSize.tagline} font-normal text-muted-foreground -mt-0.5`}>
               Pravi stepenik između ponude i promišljene odluke
             </span>
           )}

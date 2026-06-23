@@ -26,18 +26,18 @@ export function ListingDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center transition-colors">
-        <div className="text-center py-12">Učitavam oglas...</div>
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center transition-colors">
+        <div className="text-center py-12 text-muted-foreground">Učitavam oglas...</div>
       </div>
     );
   }
 
   if (!apartment) {
     return (
-      <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center transition-colors">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center transition-colors">
         <div className="text-center">
-          <h1 className="text-2xl text-gray-900 dark:text-white mb-4">{t('listing.notFound')}</h1>
-          <Link to="/browse" className="text-fuchsia-600 dark:text-fuchsia-400 hover:text-fuchsia-700 dark:hover:text-fuchsia-300">
+          <h1 className="text-2xl text-foreground mb-4">{t('listing.notFound')}</h1>
+          <Link to="/browse" className="text-primary hover:opacity-90 transition-opacity">
             {t('listing.backToBrowse')}
           </Link>
         </div>
@@ -127,12 +127,12 @@ export function ListingDetail() {
         ]}
       />
 
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-8 transition-colors">
+      <div className="min-h-screen bg-background text-foreground pt-24 pb-8 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link
           to="/browse"
-          className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-6 transition-colors"
+          className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>{t('listing.backToBrowse')}</span>
@@ -141,7 +141,7 @@ export function ListingDetail() {
         <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8">
           {/* Image Gallery */}
           <div className="lg:col-span-2 order-1">
-            <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden mb-6 shadow-lg transition-colors border border-fuchsia-200 dark:border-slate-800">
+            <div className="relative bg-card rounded-2xl overflow-hidden mb-6 shadow-lg transition-colors border border-border">
               <div className="aspect-[16/10] relative">
                 <img
                   src={apartment.images[currentImageIndex]}
@@ -154,13 +154,13 @@ export function ListingDetail() {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-primary text-white p-2 rounded-full transition-colors shadow-md"
                     >
                       <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-primary text-white p-2 rounded-full transition-colors shadow-md"
                     >
                       <ChevronRight className="h-6 w-6" />
                     </button>
@@ -170,14 +170,14 @@ export function ListingDetail() {
                 {/* Expand Button */}
                 <button
                   onClick={openLightbox}
-                  className="absolute top-4 right-4 bg-black/50 hover:bg-fuchsia-600 text-white p-2 rounded-full transition-colors shadow-lg"
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-primary text-white p-2 rounded-full transition-colors shadow-md"
                   title="Uvećaj sliku"
                 >
                   <Maximize2 className="h-5 w-5" />
                 </button>
 
                 {/* Image Counter */}
-                <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm shadow-lg">
+                <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm shadow-md">
                   {currentImageIndex + 1} / {apartment.images.length}
                 </div>
               </div>
@@ -189,10 +189,10 @@ export function ListingDetail() {
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
+                      className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden transition-all ${
                         index === currentImageIndex
-                          ? 'border-fuchsia-500'
-                          : 'border-transparent opacity-60 hover:opacity-100'
+                          ? 'ring-2 ring-primary'
+                          : 'border border-border opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img
@@ -209,39 +209,39 @@ export function ListingDetail() {
 
           {/* Sidebar - Karakteristike */}
           <div className="order-2 lg:col-span-1 lg:order-3 lg:row-span-2">
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 lg:sticky lg:top-24 shadow-lg transition-colors">
+            <div className="bg-card rounded-2xl p-6 border border-border lg:sticky lg:top-24 shadow-lg transition-colors">
               {/* Type Badge */}
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 shadow-sm ${
-                apartment.type === 'sale' 
-                  ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20' 
-                  : 'bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 border border-fuchsia-500/20'
+              <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4 ${
+                apartment.type === 'sale'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-stone-900/80 text-white'
               }`}>
                 {apartment.type === 'sale' ? t('listing.forSale') : t('listing.forRent')}
               </span>
 
               {/* Title & Location */}
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{apartment.name}</h1>
-              <div className="flex items-center text-gray-600 dark:text-gray-400 mb-6">
+              <h1 className="text-2xl font-bold text-foreground mb-2">{apartment.name}</h1>
+              <div className="flex items-center text-muted-foreground mb-6">
                 <MapPin className="h-4 w-4 mr-1" />
                 <span>{apartment.location}</span>
               </div>
 
               {/* Price */}
-              <div className="mb-6 pb-6 border-b border-fuchsia-200 dark:border-slate-800">
-                <div className="text-3xl font-bold bg-gradient-to-r from-fuchsia-600 to-pink-600 dark:from-fuchsia-400 dark:to-pink-400 bg-clip-text text-transparent">
+              <div className="mb-6 pb-6 border-b border-border">
+                <div className="text-3xl font-semibold text-foreground">
                   {formatPrice(apartment.price, apartment.type)}
                 </div>
               </div>
 
               {/* Features */}
-              <div className="space-y-4 mb-6 pb-6 border-b border-fuchsia-200 dark:border-slate-800">
+              <div className="space-y-3 mb-6 pb-6 border-b border-border">
                 {/* Površina - različito za zemljište i ostalo */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-gray-600 dark:text-gray-400">
+                <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                  <div className="flex items-center text-muted-foreground">
                     <Square className="h-5 w-5 mr-2" />
                     <span>{apartment.propertyType === 'land' ? 'Površina' : t('listing.area')}</span>
                   </div>
-                  <span className="text-gray-900 dark:text-white font-semibold">
+                  <span className="text-foreground font-semibold">
                     {apartment.propertyType === 'land'
                       ? `${(apartment.squareMeters / 100).toFixed(2)} ari (${apartment.squareMeters} m²)`
                       : `${apartment.squareMeters} m²`
@@ -253,122 +253,122 @@ export function ListingDetail() {
                 {apartment.propertyType !== 'land' && (
                   <>
                     {apartment.bedrooms > 0 && (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                        <div className="flex items-center text-muted-foreground">
                           <Bed className="h-5 w-5 mr-2" />
                           <span>{t('listing.bedrooms')}</span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold">{apartment.bedrooms}</span>
+                        <span className="text-foreground font-semibold">{apartment.bedrooms}</span>
                       </div>
                     )}
                     {apartment.bathrooms > 0 && (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                        <div className="flex items-center text-muted-foreground">
                           <Bath className="h-5 w-5 mr-2" />
                           <span>{t('listing.bathrooms')}</span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold">{apartment.bathrooms}</span>
+                        <span className="text-foreground font-semibold">{apartment.bathrooms}</span>
                       </div>
                     )}
                   </>
                 )}
                 {apartment.floor && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground">
                       <Building2 className="h-5 w-5 mr-2" />
                       <span>{t('listing.floor')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold">{apartment.floor}</span>
+                    <span className="text-foreground font-semibold">{apartment.floor}</span>
                   </div>
                 )}
                 {apartment.heating && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground">
                       <Flame className="h-5 w-5 mr-2" />
                       <span>{t('listing.heating')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold">{apartment.heating}</span>
+                    <span className="text-foreground font-semibold">{apartment.heating}</span>
                   </div>
                 )}
                 {apartment.parking && (
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400 flex-shrink-0">
+                  <div className="flex items-center justify-between gap-3 bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground flex-shrink-0">
                       <Car className="h-5 w-5 mr-2" />
                       <span>{t('listing.parking')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold text-sm text-right break-words">{apartment.parking}</span>
+                    <span className="text-foreground font-semibold text-sm text-right break-words">{apartment.parking}</span>
                   </div>
                 )}
                 {apartment.yearRenovated && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground">
                       <Calendar className="h-5 w-5 mr-2" />
                       <span>{t('listing.renovated')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold">{apartment.yearRenovated}</span>
+                    <span className="text-foreground font-semibold">{apartment.yearRenovated}</span>
                   </div>
                 )}
                 {/* Zemljište - specifična polja */}
                 {apartment.propertyType === 'land' ? (
                   <>
                     {apartment.landLocation && (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                        <div className="flex items-center text-muted-foreground">
                           <MapPin className="h-5 w-5 mr-2" />
                           <span>Lokacija</span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.landLocation}</span>
+                        <span className="text-foreground font-semibold text-sm">{apartment.landLocation}</span>
                       </div>
                     )}
                     {apartment.buildingOnLand && (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                        <div className="flex items-center text-muted-foreground">
                           <Building2 className="h-5 w-5 mr-2" />
                           <span>Objekat na placu</span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.buildingOnLand}</span>
+                        <span className="text-foreground font-semibold text-sm">{apartment.buildingOnLand}</span>
                       </div>
                     )}
                     {apartment.landType && (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                        <div className="flex items-center text-muted-foreground">
                           <Square className="h-5 w-5 mr-2" />
                           <span>Tip zemljišta</span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.landType}</span>
+                        <span className="text-foreground font-semibold text-sm">{apartment.landType}</span>
                       </div>
                     )}
                   </>
                 ) : (
                   // Stan/Kuća - orijentacija
                   apartment.orientation && (
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                      <div className="flex items-center text-muted-foreground">
                         <Compass className="h-5 w-5 mr-2" />
                         <span>{t('listing.orientation')}</span>
                       </div>
-                      <span className="text-gray-900 dark:text-white font-semibold text-sm">{apartment.orientation}</span>
+                      <span className="text-foreground font-semibold text-sm">{apartment.orientation}</span>
                     </div>
                   )
                 )}
                 {apartment.furnished && apartment.propertyType !== 'land' && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground">
                       <Armchair className="h-5 w-5 mr-2" />
                       <span>{t('listing.furniture')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold text-sm text-right">
+                    <span className="text-foreground font-semibold text-sm text-right">
                       {apartment.furnished}
                     </span>
                   </div>
                 )}
                 {apartment.distanceToRiver && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
+                    <div className="flex items-center text-muted-foreground">
                       <Navigation className="h-5 w-5 mr-2" />
                       <span>{t('listing.distanceToRiver')}</span>
                     </div>
-                    <span className="text-gray-900 dark:text-white font-semibold">{apartment.distanceToRiver}</span>
+                    <span className="text-foreground font-semibold">{apartment.distanceToRiver}</span>
                   </div>
                 )}
               </div>
@@ -377,13 +377,13 @@ export function ListingDetail() {
               <div className="space-y-3">
                 <button
                   onClick={openScheduleModal}
-                  className="w-full bg-pink-500/30 hover:bg-pink-500/60 text-white py-3 rounded-lg font-semibold transition-all shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_50px_rgba(236,72,153,0.9)] hover:scale-105 hover:border-2 hover:border-pink-700"
+                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-sm"
                 >
                   {t('listing.schedule')}
                 </button>
                 <button
                   onClick={openContactModal}
-                  className="w-full bg-fuchsia-50 dark:bg-slate-800 hover:bg-fuchsia-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white py-3 rounded-lg font-semibold transition-colors border border-fuchsia-200 dark:border-slate-700 shadow-sm"
+                  className="w-full border border-border bg-card hover:bg-secondary text-foreground py-3.5 rounded-xl font-semibold transition-colors"
                 >
                   {t('nav.contact')}
                 </button>
@@ -393,9 +393,9 @@ export function ListingDetail() {
 
           {/* Description */}
           <div className="lg:col-span-2 order-3 lg:order-2">
-            <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('listing.description')}</h2>
-              <div className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{getDescription()}</div>
+            <div className="bg-card rounded-2xl p-6 border border-border shadow-md transition-colors">
+              <h2 className="text-2xl font-bold text-foreground mb-4">{t('listing.description')}</h2>
+              <div className="text-muted-foreground leading-relaxed whitespace-pre-line">{getDescription()}</div>
             </div>
           </div>
         </div>
@@ -409,7 +409,7 @@ export function ListingDetail() {
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors shadow-lg z-10"
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors shadow-md z-10"
           >
             <X className="h-6 w-6" />
           </button>
@@ -418,7 +418,7 @@ export function ListingDetail() {
             <img
               src={apartment.images[currentImageIndex]}
               alt={`${apartment.name} - Slika ${currentImageIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-lg"
             />
 
             {/* Navigation in Lightbox */}
@@ -429,7 +429,7 @@ export function ListingDetail() {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-fuchsia-600 text-white p-3 rounded-full transition-colors shadow-lg"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-primary text-white p-3 rounded-full transition-colors shadow-md"
                 >
                   <ChevronLeft className="h-8 w-8" />
                 </button>
@@ -438,7 +438,7 @@ export function ListingDetail() {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-fuchsia-600 text-white p-3 rounded-full transition-colors shadow-lg"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-primary text-white p-3 rounded-full transition-colors shadow-md"
                 >
                   <ChevronRight className="h-8 w-8" />
                 </button>
@@ -446,7 +446,7 @@ export function ListingDetail() {
             )}
 
             {/* Counter in Lightbox */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-lg shadow-lg">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-lg shadow-md">
               {currentImageIndex + 1} / {apartment.images.length}
             </div>
           </div>

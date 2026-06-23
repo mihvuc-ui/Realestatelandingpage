@@ -1,5 +1,6 @@
 import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { Footer } from '@/app/components/Footer';
@@ -9,7 +10,8 @@ import { useApartments } from '@/app/hooks/useApartments';
 export function Rentiranje() {
   const { t } = useLanguage();
   const { apartments, loading } = useApartments();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [locationFilter, setLocationFilter] = useState('all');
   const [roomsFilter, setRoomsFilter] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
@@ -212,33 +214,33 @@ export function Rentiranje() {
         keywords={t('rentiranje.pageKeywords')}
       />
       
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-12 transition-colors">
+      <div className="min-h-screen bg-background pt-24 pb-12 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{t('rentiranje.title')}</h1>
-            <p className="text-gray-600 dark:text-gray-400">{t('rentiranje.subtitle')}</p>
+            <h1 className="text-4xl font-bold text-foreground mb-2">{t('rentiranje.title')}</h1>
+            <p className="text-muted-foreground">{t('rentiranje.subtitle')}</p>
           </div>
 
           {/* Search and Filters Bar */}
-          <div className="bg-white dark:bg-slate-900 rounded-xl p-6 mb-8 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
+          <div className="bg-card rounded-2xl p-6 mb-8 border border-border shadow-sm transition-colors">
             <div className="flex flex-col lg:flex-row gap-4">
               {/* Search */}
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder={t('rentiranje.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-10 pr-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500"
+                  className="w-full bg-secondary border border-border rounded-xl pl-11 pr-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
 
               {/* Filter Toggle (Mobile) */}
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white flex items-center justify-center space-x-2"
+                className="lg:hidden border border-border bg-card hover:bg-secondary rounded-full px-6 py-3 text-foreground flex items-center justify-center space-x-2 transition-colors"
               >
                 <SlidersHorizontal className="h-5 w-5" />
                 <span>{t('browse.filters')}</span>
@@ -249,29 +251,29 @@ export function Rentiranje() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="appearance-none bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-fuchsia-500 cursor-pointer"
+                  className="appearance-none bg-secondary border border-border rounded-xl pl-4 pr-10 py-3 text-foreground focus:outline-none focus:border-primary transition-colors cursor-pointer"
                 >
                   <option value="newest">{t('browse.newest')}</option>
                   <option value="price-asc">{t('browse.priceAsc')}</option>
                   <option value="price-desc">{t('browse.priceDesc')}</option>
                   <option value="sqm-desc">{t('browse.sqmDesc')}</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
               </div>
             </div>
 
             {/* Filters Panel */}
-            <div className={`mt-6 pt-6 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
-              <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-6 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
+            <div className={`mt-6 pt-6 border-t border-border ${showFilters ? '' : 'hidden lg:block'}`}>
+              <div className="bg-secondary rounded-2xl p-6 border border-border transition-colors">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  
+
                   {/* Lokacija */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('filters.location')}</label>
+                    <label className="block text-sm font-medium text-foreground mb-3">{t('filters.location')}</label>
                     <select
                       value={locationFilter}
                       onChange={(e) => setLocationFilter(e.target.value)}
-                      className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
+                      className="w-full bg-card border border-border text-foreground rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors cursor-pointer"
                     >
                       <option value="all">{t('filters.allLocations')}</option>
                       {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
@@ -282,11 +284,11 @@ export function Rentiranje() {
 
                   {/* Broj Soba */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">{t('rentiranje.rooms')}</label>
+                    <label className="block text-sm font-medium text-foreground mb-3">{t('rentiranje.rooms')}</label>
                     <select
                       value={roomsFilter}
                       onChange={(e) => setRoomsFilter(e.target.value)}
-                      className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-4 py-2.5 focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
+                      className="w-full bg-card border border-border text-foreground rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors cursor-pointer"
                     >
                       <option value="all">{t('rentiranje.allRooms')}</option>
                       <option value="1">{t('rentiranje.oneRoom')}</option>
@@ -301,12 +303,12 @@ export function Rentiranje() {
 
             {/* Reset Filters Button */}
             {hasActiveFilters && (
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-slate-800">
+              <div className="mt-4 pt-4 border-t border-border">
                 <button
                   onClick={resetFilters}
-                  className="inline-flex items-center space-x-2 text-sm bg-gray-100 dark:bg-slate-800 hover:bg-red-600 text-gray-900 dark:text-gray-300 hover:text-white px-4 py-2 rounded-lg transition-colors border border-red-500/30 hover:border-red-500"
+                  className="inline-flex items-center space-x-2 text-sm border border-border bg-card hover:bg-secondary text-foreground px-4 py-2 rounded-full transition-colors"
                 >
-                  <X className="h-4 w-4 text-red-400" />
+                  <X className="h-4 w-4 text-muted-foreground" />
                   <span>{t('browse.resetFilters')}</span>
                 </button>
               </div>
@@ -314,7 +316,7 @@ export function Rentiranje() {
           </div>
 
           {/* Results */}
-          <div className="mb-6 text-gray-400">
+          <div className="mb-6 text-muted-foreground">
             {t('browse.showing')} {filteredApartments.length} {t('rentiranje.properties')}
           </div>
 
@@ -327,10 +329,10 @@ export function Rentiranje() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">{t('browse.noPropertiesFound')}</p>
+              <p className="text-muted-foreground text-lg">{t('browse.noPropertiesFound')}</p>
               <button
                 onClick={resetFilters}
-                className="mt-4 text-blue-400 hover:text-blue-300"
+                className="mt-4 text-primary hover:opacity-90 transition-opacity"
               >
                 {t('browse.resetFilters')}
               </button>

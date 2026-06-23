@@ -1,6 +1,6 @@
 import { Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react';
 import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { PropertyCard } from '@/app/components/PropertyCard';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import { Footer } from '@/app/components/Footer';
@@ -12,7 +12,8 @@ import { useApartments } from '@/app/hooks/useApartments';
 export function BrowseListings() {
   const { t } = useLanguage();
   const { apartments, loading, useSupabase } = useApartments();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [locationFilter, setLocationFilter] = useState('all');
   const [propertyTypeFilter, setPropertyTypeFilter] = useState('all');
   const [priceFrom, setPriceFrom] = useState(0);
@@ -257,29 +258,35 @@ export function BrowseListings() {
         { name: 'Prodaja', url: 'https://nekretnine-stepenik.rs/browse' }
       ]} />
 
-      <div className="min-h-screen bg-white dark:bg-slate-950 py-24 transition-colors">
+      <div className="min-h-screen bg-background pt-24 pb-16 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Page header */}
+          <div className="mb-8">
+            <h1 className="text-foreground mb-2">{t('browse.title')}</h1>
+            <p className="text-muted-foreground">{t('browse.subtitle')}</p>
+          </div>
+
           {/* Search and Filters Bar */}
-          <div className="bg-white dark:bg-slate-900 rounded-xl p-3 sm:p-4 mb-8 border border-fuchsia-200 dark:border-slate-800 shadow-md transition-colors">
+          <div className="bg-card rounded-2xl p-3 sm:p-4 mb-10 border border-border shadow-sm">
             <div className="flex flex-col lg:flex-row gap-2 sm:gap-3">
               {/* Search */}
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder={t('browse.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-9 sm:pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500"
+                  className="w-full bg-secondary border border-border rounded-xl pl-11 pr-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
 
               {/* Filter Toggle (Mobile) */}
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base text-gray-900 dark:text-white flex items-center justify-center space-x-2"
+                className="lg:hidden bg-secondary border border-border rounded-xl px-4 py-3 text-foreground flex items-center justify-center gap-2 font-medium"
               >
-                <SlidersHorizontal className="h-4 w-4 sm:h-5 sm:w-5" />
+                <SlidersHorizontal className="h-5 w-5" />
                 <span>{t('browse.filters')}</span>
               </button>
 
@@ -288,147 +295,139 @@ export function BrowseListings() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="appearance-none bg-fuchsia-50 dark:bg-slate-800 border border-fuchsia-200 dark:border-slate-700 rounded-lg pl-3 sm:pl-4 pr-8 sm:pr-10 py-2 sm:py-3 text-sm sm:text-base text-gray-900 dark:text-white focus:outline-none focus:border-fuchsia-500 cursor-pointer"
+                  className="appearance-none bg-secondary border border-border rounded-xl pl-4 pr-10 py-3 text-foreground focus:outline-none focus:border-primary cursor-pointer w-full"
                 >
                   <option value="newest">{t('browse.newest')}</option>
                   <option value="price-asc">{t('browse.priceAsc')}</option>
                   <option value="price-desc">{t('browse.priceDesc')}</option>
                   <option value="sqm-desc">{t('browse.sqmDesc')}</option>
                 </select>
-                <ChevronDown className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
               </div>
             </div>
 
-            {/* Filters Panel - Kompaktnija verzija za telefon */}
-            <div className={`mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200 dark:border-fuchsia-500/30 ${showFilters ? '' : 'hidden lg:block'}`}>
-              <div className="bg-gradient-to-br from-gray-50 via-white to-fuchsia-50/30 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-fuchsia-950/30 rounded-2xl p-3 sm:p-4 shadow-2xl border-2 border-fuchsia-400/40 dark:border-fuchsia-500/40 transition-colors">
-                
-                {/* Prvi red: Lokacija i Tip Nekretnine */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
-                  {/* Lokacija */}
-                  <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">{t('filters.location')}</label>
-                    <select
-                      value={locationFilter}
-                      onChange={(e) => setLocationFilter(e.target.value)}
-                      className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
-                    >
-                      <option value="all">{t('filters.allLocations')}</option>
-                      {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
-                        <option key={loc} value={loc}>{loc}</option>
-                      ))}
-                    </select>
-                  </div>
+            {/* Filters Panel */}
+            <div className={`mt-4 pt-4 border-t border-border ${showFilters ? '' : 'hidden lg:block'}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                {/* Lokacija */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">{t('filters.location')}</label>
+                  <select
+                    value={locationFilter}
+                    onChange={(e) => setLocationFilter(e.target.value)}
+                    className="w-full bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors cursor-pointer"
+                  >
+                    <option value="all">{t('filters.allLocations')}</option>
+                    {uniqueLocations.filter(loc => loc !== 'all').map(loc => (
+                      <option key={loc} value={loc}>{loc}</option>
+                    ))}
+                  </select>
+                </div>
 
-                  {/* Tip Nekretnine */}
-                  <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Tip Nekretnine</label>
-                    <select
-                      value={propertyTypeFilter}
-                      onChange={(e) => setPropertyTypeFilter(e.target.value)}
-                      className="w-full bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-slate-700"
-                    >
-                      <option value="all">Sve</option>
-                      <option value="apartment">Stan</option>
-                      <option value="house">Kuća</option>
-                      <option value="land">Zemljište</option>
-                      <option value="commercial">Poslovni prostor</option>
-                      <option value="garage">Garaža</option>
-                      <option value="office">Kancelarija</option>
-                    </select>
+                {/* Tip Nekretnine */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Tip Nekretnine</label>
+                  <select
+                    value={propertyTypeFilter}
+                    onChange={(e) => setPropertyTypeFilter(e.target.value)}
+                    className="w-full bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors cursor-pointer"
+                  >
+                    <option value="all">Sve</option>
+                    <option value="apartment">Stan</option>
+                    <option value="house">Kuća</option>
+                    <option value="land">Zemljište</option>
+                    <option value="commercial">Poslovni prostor</option>
+                    <option value="garage">Garaža</option>
+                    <option value="office">Kancelarija</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Cena */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Cena (€)</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="number" placeholder="Od" min="0" step="1000"
+                      value={priceFrom || ''}
+                      onChange={(e) => setPriceFrom(Math.max(0, Number(e.target.value) || 0))}
+                      className="w-1/2 bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
+                    />
+                    <input
+                      type="number" placeholder="Do" min="0" step="1000"
+                      value={priceTo === 600000 ? '' : priceTo}
+                      onChange={(e) => setPriceTo(Math.max(0, Number(e.target.value) || 600000))}
+                      className="w-1/2 bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
+                    />
                   </div>
                 </div>
 
-                {/* Drugi red: Cena i Površina */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                  
-                  {/* Cena - Input polja Od/Do */}
-                  <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Cena (€)</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="number"
-                        placeholder="Od"
-                        min="0"
-                        step="1000"
-                        value={priceFrom || ''}
-                        onChange={(e) => setPriceFrom(Math.max(0, Number(e.target.value) || 0))}
-                        className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
-                      />
-                      <input
-                        type="number"
-                        placeholder="Do"
-                        min="0"
-                        step="1000"
-                        value={priceTo === 600000 ? '' : priceTo}
-                        onChange={(e) => setPriceTo(Math.max(0, Number(e.target.value) || 600000))}
-                        className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Površina - Input polja Od/Do */}
-                  <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-1.5 sm:mb-2">Površina (m²)</label>
-                    <div className="flex gap-2">
-                      <input
-                        type="number"
-                        placeholder="Od"
-                        min="0"
-                        step="5"
-                        value={sqmFrom || ''}
-                        onChange={(e) => setSqmFrom(Math.max(0, Number(e.target.value) || 0))}
-                        className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
-                      />
-                      <input
-                        type="number"
-                        placeholder="Do"
-                        min="0"
-                        step="5"
-                        value={sqmTo === 10000 ? '' : sqmTo}
-                        onChange={(e) => setSqmTo(Math.max(0, Number(e.target.value) || 10000))}
-                        className="w-1/2 bg-white dark:bg-slate-700/50 border-2 border-fuchsia-300 dark:border-slate-600 text-gray-900 dark:text-white rounded-lg px-3 py-1.5 sm:py-2 text-sm focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all"
-                      />
-                    </div>
+                {/* Površina */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Površina (m²)</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="number" placeholder="Od" min="0" step="5"
+                      value={sqmFrom || ''}
+                      onChange={(e) => setSqmFrom(Math.max(0, Number(e.target.value) || 0))}
+                      className="w-1/2 bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
+                    />
+                    <input
+                      type="number" placeholder="Do" min="0" step="5"
+                      value={sqmTo === 10000 ? '' : sqmTo}
+                      onChange={(e) => setSqmTo(Math.max(0, Number(e.target.value) || 10000))}
+                      className="w-1/2 bg-secondary border border-border text-foreground rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Reset Filters Button - Always visible when filters are active */}
+            {/* Reset Filters Button */}
             {hasActiveFilters && (
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-slate-800">
+              <div className="mt-4 pt-4 border-t border-border">
                 <button
                   onClick={resetFilters}
-                  className="inline-flex items-center space-x-2 text-sm bg-gray-100 dark:bg-slate-800 hover:bg-red-600 text-gray-900 dark:text-gray-300 hover:text-white px-4 py-2 rounded-lg transition-colors border border-red-500/30 hover:border-red-500"
+                  className="inline-flex items-center gap-2 text-sm bg-secondary hover:bg-destructive/10 text-foreground hover:text-destructive px-4 py-2 rounded-full transition-colors border border-border"
                 >
-                  <X className="h-4 w-4 text-red-400" />
+                  <X className="h-4 w-4" />
                   <span>{t('browse.resetFilters')}</span>
                 </button>
               </div>
             )}
           </div>
 
+          {/* Results count */}
+          {!loading && filteredApartments.length > 0 && (
+            <p className="text-sm text-muted-foreground mb-6">
+              {filteredApartments.length} {t('browse.resultsCount')}
+            </p>
+          )}
+
           {/* Listings Grid */}
           {filteredApartments.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filteredApartments.map(apartment => (
                 <PropertyCard key={apartment.id} apartment={apartment} />
               ))}
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">{t('browse.noPropertiesFound')}</p>
+              <p className="text-muted-foreground text-lg">{t('browse.noPropertiesFound')}</p>
               <button
                 onClick={resetFilters}
-                className="mt-4 text-blue-400 hover:text-blue-300"
+                className="mt-4 text-primary hover:underline font-medium"
               >
                 {t('browse.resetFilters')}
               </button>
             </div>
           )}
         </div>
-        <Footer />
+
+        <div className="mt-20">
+          <Footer />
+        </div>
       </div>
     </>
   );

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Header } from '@/app/components/Header';
-import { Footer } from '@/app/components/Footer';
 import { Home } from '@/app/pages/Home';
 import { BrowseListings } from '@/app/pages/BrowseListings';
 import { ListingDetail } from '@/app/pages/ListingDetail';
@@ -26,11 +25,8 @@ function AppContent() {
     }
   }, [location, displayLocation]);
 
-  // Check if current page is Home to hide footer
-  const isHomePage = location.pathname === '/';
-
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors flex flex-col">
+    <div className="min-h-screen bg-background text-foreground transition-colors flex flex-col">
       <OrganizationSchema />
       <Header />
       <main 
@@ -54,7 +50,6 @@ function AppContent() {
           <Route path="/prodajem" element={<Prodajem />} />
         </Routes>
       </main>
-      {!isHomePage && <Footer />}
     </div>
   );
 }
