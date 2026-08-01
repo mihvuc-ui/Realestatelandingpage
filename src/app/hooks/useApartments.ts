@@ -40,8 +40,20 @@ function convertSupabaseToApartment(apt: SupabaseApartment): Apartment {
   };
 }
 
+// Oglasi koji su uklonjeni iz ponude (sakriveni sa sajta)
+const HIDDEN_NAME_TERMS = ['desanke maksimović', 'plac'];
+
+function filterHidden(list: Apartment[]): Apartment[] {
+  return list.filter(
+    (apt) =>
+      !HIDDEN_NAME_TERMS.some((term) =>
+        apt.name.toLowerCase().includes(term),
+      ),
+  );
+}
+
 export function useApartments() {
-  const [apartments, setApartments] = useState<Apartment[]>(staticApartments);
+  const [apartments, setApartments] = useState<Apartment[]>(filterHidden(staticApartments));
   const [loading, setLoading] = useState(true);
   const [useSupabase, setUseSupabase] = useState(false);
 
@@ -55,7 +67,7 @@ export function useApartments() {
     // Check if Supabase is configured (via Figma Make)
     if (!projectId) {
       console.log('⚠️ Supabase not configured, using static data');
-      setApartments(staticApartments);
+      setApartments(filterHidden(staticApartments));
       setUseSupabase(false);
       setLoading(false);
       return;
@@ -72,14 +84,14 @@ export function useApartments() {
       if (error) {
         console.error('❌ Error loading apartments from Supabase:', error);
         // Fallback to static data
-        setApartments(staticApartments);
+        setApartments(filterHidden(staticApartments));
         setUseSupabase(false);
       } else {
         console.log(`✅ Loaded ${data?.length || 0} apartments from Supabase`);
 
         // ALWAYS use Supabase data when connected (even if empty)
         if (data && data.length > 0) {
-          const converted = data.map(convertSupabaseToApartment);
+          const converted = filterHidden(data.map(convertSupabaseToApartment));
           setApartments(converted);
           setUseSupabase(true);
           console.log('✅ Using Supabase data');
@@ -97,7 +109,7 @@ export function useApartments() {
       }
     } catch (err) {
       console.error('❌ Error connecting to Supabase:', err);
-      setApartments(staticApartments);
+      setApartments(filterHidden(staticApartments));
       setUseSupabase(false);
     }
 
