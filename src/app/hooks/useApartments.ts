@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/utils/supabase/client';
 import { projectId } from '@/utils/supabase/info';
 import { apartments as staticApartments } from '@/data/apartments';
+import { manualListings } from '@/data/manualListings';
 import type { Apartment } from '@/data/apartments';
 import type { Database } from '@/utils/supabase/types';
 
@@ -52,8 +53,13 @@ function filterHidden(list: Apartment[]): Apartment[] {
   );
 }
 
+// Spaja lokalne (ručno dodate) oglase sa oglasima iz baze i uklanja skrivene.
+function withManual(list: Apartment[]): Apartment[] {
+  return filterHidden([...manualListings, ...list]);
+}
+
 export function useApartments() {
-  const [apartments, setApartments] = useState<Apartment[]>(filterHidden(staticApartments));
+  const [apartments, setApartments] = useState<Apartment[]>(withManual(staticApartments));
   const [loading, setLoading] = useState(true);
   const [useSupabase, setUseSupabase] = useState(false);
 
@@ -67,7 +73,7 @@ export function useApartments() {
     // Check if Supabase is configured (via Figma Make)
     if (!projectId) {
       console.log('⚠️ Supabase not configured, using static data');
-      setApartments(filterHidden(staticApartments));
+      setApartments(withManual(staticApartments));
       setUseSupabase(false);
       setLoading(false);
       return;
@@ -84,14 +90,14 @@ export function useApartments() {
       if (error) {
         console.error('❌ Error loading apartments from Supabase:', error);
         // Fallback to static data
-        setApartments(filterHidden(staticApartments));
+        setApartments(withManual(staticApartments));
         setUseSupabase(false);
       } else {
         console.log(`✅ Loaded ${data?.length || 0} apartments from Supabase`);
 
         // ALWAYS use Supabase data when connected (even if empty)
         if (data && data.length > 0) {
-          const converted = filterHidden(data.map(convertSupabaseToApartment));
+          const converted = withManual(data.map(convertSupabaseToApartment));
           setApartments(converted);
           setUseSupabase(true);
           console.log('✅ Using Supabase data');
@@ -101,15 +107,15 @@ export function useApartments() {
             propertyType: apt.propertyType,
           })));
         } else {
-          // Empty database - show no apartments instead of fallback
-          setApartments([]);
+          // Empty database - show only manual (local) listings
+          setApartments(withManual([]));
           setUseSupabase(true);
           console.log('ℹ️ Supabase database is empty');
         }
       }
     } catch (err) {
       console.error('❌ Error connecting to Supabase:', err);
-      setApartments(filterHidden(staticApartments));
+      setApartments(withManual(staticApartments));
       setUseSupabase(false);
     }
 
