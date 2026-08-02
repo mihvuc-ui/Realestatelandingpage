@@ -77,6 +77,22 @@ export function Home() {
 
       <Hero />
 
+      {/* Featured */}
+      <section className="bg-secondary/50 border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+                {t('featured.viewAll')}
+              </p>
+              <h2 className="text-foreground mb-3">{t('featured.title')}</h2>
+              <p className="text-muted-foreground">{t('featured.subtitle')}</p>
+            </div>
+          </div>
+          <FeaturedListings />
+        </div>
+      </section>
+
       {/* Services */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="max-w-2xl mb-12">
@@ -104,22 +120,6 @@ export function Home() {
               </span>
             </Link>
           ))}
-        </div>
-      </section>
-
-      {/* Featured */}
-      <section className="bg-secondary/50 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-                {t('featured.viewAll')}
-              </p>
-              <h2 className="text-foreground mb-3">{t('featured.title')}</h2>
-              <p className="text-muted-foreground">{t('featured.subtitle')}</p>
-            </div>
-          </div>
-          <FeaturedListings />
         </div>
       </section>
 
