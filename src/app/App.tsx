@@ -12,6 +12,7 @@ import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
 import { Toaster } from '@/app/components/ui/sonner';
+import { AIAssistant } from '@/app/components/mia/AIAssistant';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 function AppContent() {
@@ -64,6 +65,7 @@ function AppContent() {
           <Route path="/prodajem" element={<Prodajem />} />
         </Routes>
       </main>
+      <AIAssistant />
     </div>
   );
 }
