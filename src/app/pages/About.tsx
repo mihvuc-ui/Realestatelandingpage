@@ -10,7 +10,7 @@ export function About() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-primary mb-6 shadow-sm">
             <Building2 className="h-8 w-8" />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">O Agenciji Nekretnine Stepenik</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">O Agenciji Stepenik</h1>
           <p className="text-xl text-muted-foreground">
             Vaš pouzdani partner u svetu nekretnina od 2021. godine
           </p>

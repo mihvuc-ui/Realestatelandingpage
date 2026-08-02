@@ -12,7 +12,7 @@ import { ThemeProvider } from '@/app/contexts/ThemeContext';
 import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
 import { Toaster } from '@/app/components/ui/sonner';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 function AppContent() {
   const location = useLocation();
@@ -24,6 +24,20 @@ function AppContent() {
       setTransitionStage('fadeOut');
     }
   }, [location, displayLocation]);
+
+  // Isključi automatsko vraćanje pozicije skrola pri navigaciji
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  // Uvek se vrati na vrh stranice pri prelasku na novu stranicu (pre iscrtavanja)
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [displayLocation.pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors flex flex-col">

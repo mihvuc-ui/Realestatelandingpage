@@ -49,12 +49,12 @@ export function Header() {
           <Logo size="md" />
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 flex-nowrap shrink-0">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`relative px-3.5 py-2 text-sm font-medium rounded-full transition-colors ${
+                className={`relative whitespace-nowrap px-3 py-2 text-sm font-medium rounded-full transition-colors ${
                   isActive(item.to)
                     ? 'text-primary'
                     : 'text-foreground/70 hover:text-foreground hover:bg-secondary'
@@ -62,7 +62,7 @@ export function Header() {
               >
                 {item.label}
                 {isActive(item.to) && (
-                  <span className="absolute left-3.5 right-3.5 -bottom-px h-0.5 bg-primary rounded-full" />
+                  <span className="absolute left-3 right-3 -bottom-px h-0.5 bg-primary rounded-full" />
                 )}
               </Link>
             ))}

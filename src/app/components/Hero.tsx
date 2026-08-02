@@ -39,10 +39,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
         <div className="max-w-2xl animate-fade-up">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs sm:text-sm font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-400" />
-            {t('hero.badge')}
-          </span>
+          
 
           <h1 className="text-white mb-5 [font-size:clamp(2.5rem,6vw,4.5rem)]">
             {t('hero.title')}
