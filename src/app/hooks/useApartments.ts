@@ -42,7 +42,7 @@ function convertSupabaseToApartment(apt: SupabaseApartment): Apartment {
 }
 
 // Oglasi koji su uklonjeni iz ponude (sakriveni sa sajta)
-const HIDDEN_NAME_TERMS = ['desanke maksimović', 'plac'];
+const HIDDEN_NAME_TERMS = ['desanke maksimović', 'plac', 'leštane'];
 
 function filterHidden(list: Apartment[]): Apartment[] {
   return list.filter(
