@@ -85,7 +85,7 @@ const translations: Record<Language, any> = {
       darkTheme: 'Tamna Tema',
     },
     hero: {
-      title: 'Pronađite Svoj Savršen Dom',
+      title: 'Pronađite svoj savršen dom',
       subtitle: 'Nekretnine nisu skok, već promišljen uspon. Svaka odluka počinje prvim stepenikom.',
       forSale: 'Prodaja',
       forRent: 'Iznajmljivanje',
