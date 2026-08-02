@@ -29,8 +29,13 @@ export function Logo({ size = 'md', showTagline = false }: LogoProps) {
 
   const currentSize = sizes[size];
 
+  const handleClick = () => {
+    // Ako smo već na početnoj, ipak se vrati na vrh
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  };
+
   return (
-    <Link to="/" className="flex items-center group">
+    <Link to="/" onClick={handleClick} className="flex items-center group">
       <div className={`flex items-center ${currentSize.container}`}>
         {/* Custom Icon - Istočne kapije isometric view */}
         <div className={`${currentSize.icon} relative flex-shrink-0 flex items-center justify-center`}>
