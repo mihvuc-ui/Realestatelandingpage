@@ -8,6 +8,7 @@ import { Footer } from '@/app/components/Footer';
 import { useApartments } from '@/app/hooks/useApartments';
 import { SEO } from '@/app/components/SEO';
 import { PropertySchema, BreadcrumbSchema } from '@/app/components/SchemaMarkup';
+import { trackEvent } from '@/app/utils/track';
 
 export function ListingDetail() {
   const { id } = useParams();
@@ -23,6 +24,11 @@ export function ListingDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]); // Runs whenever the id changes (new apartment)
+
+  // Beleži pregled oglasa (statistika)
+  useEffect(() => {
+    if (id) trackEvent('listing_view', { id });
+  }, [id]);
 
   if (loading) {
     return (

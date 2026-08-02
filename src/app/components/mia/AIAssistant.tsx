@@ -32,6 +32,7 @@ import {
   type SearchFilters,
   type Lead,
 } from './miaUtils';
+import { trackEvent, reportLead, reportBooking } from '@/app/utils/track';
 
 type MsgKind = 'text' | 'properties' | 'contact' | 'mortgage' | 'currency';
 
@@ -81,7 +82,10 @@ export function AIAssistant() {
     if (open && messages.length === 0) {
       pushMia({ kind: 'text', text: UI[lang].empty, quick: QUICK_ACTIONS[lang] });
     }
-    if (open) setTimeout(() => inputRef.current?.focus(), 300);
+    if (open) {
+      trackEvent('mia_open');
+      setTimeout(() => inputRef.current?.focus(), 300);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
@@ -247,6 +251,14 @@ export function AIAssistant() {
         f.data.phone = text;
         setFlow(null);
         saveLead({ name: f.data.name, phone: f.data.phone, createdAt: Date.now() });
+        reportBooking({
+          name: f.data.name,
+          phone: f.data.phone,
+          apartment: f.apt?.name || '',
+          apartmentId: f.apt?.id || '',
+          viewingDate: f.data.date || '',
+          viewingTime: f.data.time || '',
+        });
         miaSay([
           { kind: 'text', text: b.confirm(f.data, f.apt?.name) },
           { kind: 'contact', text: b.contactHint },
@@ -271,6 +283,7 @@ export function AIAssistant() {
         f.data.email = /preskoci|skip|-/i.test(text) ? '' : text;
         setFlow(null);
         saveLead(f.data);
+        reportLead({ name: f.data.name, phone: f.data.phone, email: f.data.email });
         miaSay([
           { kind: 'text', text: q.done(f.data.name || '') },
           { kind: 'contact', text: q.contactHint },

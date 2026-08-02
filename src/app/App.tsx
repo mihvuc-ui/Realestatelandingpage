@@ -13,6 +13,7 @@ import { LanguageProvider } from '@/app/contexts/LanguageContext';
 import { OrganizationSchema } from '@/app/components/SchemaMarkup';
 import { Toaster } from '@/app/components/ui/sonner';
 import { AIAssistant } from '@/app/components/mia/AIAssistant';
+import { trackEvent } from '@/app/utils/track';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 function AppContent() {
@@ -39,6 +40,11 @@ function AppContent() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   }, [displayLocation.pathname]);
+
+  // Beleži pregled stranice (statistika)
+  useEffect(() => {
+    trackEvent('pageview', { path: location.pathname });
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors flex flex-col">
